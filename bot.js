@@ -1,26 +1,19 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
 
-client.on('ready', () => {
-  client.user.setGame('perder el tiempo .help')
-});
+let prefix = "++";
+client.on("message", (message) => {
+  // Exit and stop if the prefix is not there or if user is a bot
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-client.on('message', message => {
-    if (message.content === '--ping') {
-    	message.reply('**Pong!** :ping_pong:');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === '--info') {
-    	message.reply('Bot creado por ElBuenAnvita. BETA VERSION 1.1.2');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === '--help') {
-    	message.reply('Mis actuales comandos son `--ping` `--info` `--help`. Más comandos se añadirán en breve.');
-  	}
+  if (message.content.startsWith(prefix + "ping")) {
+    message.channel.send("pong!");
+  } else
+  if (message.content.startsWith(prefix + "que")) {
+    message.channel.send("so!");
+  }
 });
 
 // THIS  MUST  BE  THIS  WAY
