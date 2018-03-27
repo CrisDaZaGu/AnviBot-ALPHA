@@ -4,16 +4,10 @@ const client = new Discord.Client();
 });
 
 client.on('message', message => {
-    if (message.content === 'nuv') {
-    	message.channel.send('Más nuv eres tú diciendo eso.');
+    if (message.content === '--info') {
+    	message.channel.send('Actualmente nuestro bot de ALPHA está caído, por favor, intentelo en `1 días`');
   	}
 });
-
-{game:
-  {name:"anime",
-    type:3
-  }
-}
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
