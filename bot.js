@@ -1,11 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+client.on('ready', () => {
+  client.user.setGame('perder el tiempo .help')
 });
 
 client.on('message', message => {
-    if (message.content === '--info') {
-    	message.channel.send('Actualmente nuestro bot de ALPHA está caído, por favor, intentelo en `1 días`');
+    if (message.content === '++info') {
+    	message.channel.send('Nuestros servidores han sufrido daños, y el bot por consiguiente, por favor, tenga paciencia, intente de nuevo en `1 día`');
   	}
 });
 
