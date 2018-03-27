@@ -17,5 +17,17 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', message => {
+    if (message.content === '++info') {
+    	message.reply('Mis actuales comandos son `++info`, `++cya` y `++help`. Soy el ALPHA de AnviBot.');
+  	}
+});
+
+client.on('message', message => {
+    if (message.content === 'so! :cheese: ') {
+    	message.reply('ciedad');
+  	}
+});
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
