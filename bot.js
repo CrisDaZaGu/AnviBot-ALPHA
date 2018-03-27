@@ -13,7 +13,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '++cya') {
-    	message.channel.send('Cya, ${message.author.username}, descansa bien y cuídate.');
+    	message.channel.send('Cya, <@USER_ID>, descansa bien y cuídate.');
   	}
 });
 
