@@ -1,19 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('ready', () => {
-  client.user.setGame('perder el tiempo .help')
-
 });
 
 client.on('message', message => {
-    if (message.content === '++ping') {
-    	message.channel.send('**Pong!** :ping_pong:');
+    if (message.content === 'nuv') {
+    	message.channel.send('Más nuv eres tú diciendo eso.');
   	}
 });
 
 {game:
-  {name:"you sleep O_O",
+  {name:"anime",
     type:3
   }
 }
