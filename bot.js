@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-  client.user.setGame('perder el tiempo .help')
+  client.user.setActivity('--help');
 });
 
 client.on('message', message => {
