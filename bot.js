@@ -24,8 +24,14 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content === 'so! :cheese: ') {
-    	message.reply('ciedad');
+    if (message.content === 'ciedad') {
+    	message.reply('más mala.');
+  	}
+});
+
+client.on('message', message => {
+    if (message.content === '++chiste') {
+    	message.reply('chiste1') or (message.reply('chiste2');
   	}
 });
 
