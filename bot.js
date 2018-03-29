@@ -31,7 +31,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '--rae') {
-    	message.channel.send('Cada día, un diccionario muere por la falta de ortografía. No dejes que pase esto, ayudale al que lo necesite, entrando a dle.rae.es tienes un diccionario completamente gratuito. #AyudemosAlRAE');
+    	message.channel.send('Cada día, un diccionario muere por la falta de ortografía. No dejes que pase esto, ayúdale al que lo necesite, entrando a __dle.rae.es__ tienes un diccionario completamente gratuito. #RAE4Evah');
   }
 });
 
