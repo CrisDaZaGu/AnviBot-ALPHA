@@ -37,7 +37,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '--rae') {
-    	message.reply('https://cdn.discordapp.com/attachments/427962744520835082/428767421034135572/triggered_rae.gif');
+    	message.channel.send('https://cdn.discordapp.com/attachments/427962744520835082/428767421034135572/triggered_rae.gif');
   	}
 });
 
