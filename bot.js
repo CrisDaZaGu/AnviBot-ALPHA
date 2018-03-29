@@ -29,5 +29,17 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', message => {
+    if (message.content === '--rae') {
+    	message.channel.send('Cada día, un diccionario muere por la falta de ortografía. No dejes que pase esto, ayudale al que lo necesite, entrando a dle.rae.es tienes un diccionario completamente gratuito. #AyudemosAlRAE');
+  }
+});
+
+client.on('message', message => {
+    if (message.content === '--rae') {
+    	message.reply('https://cdn.discordapp.com/attachments/427962744520835082/428767421034135572/triggered_rae.gif');
+  	}
+});
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
