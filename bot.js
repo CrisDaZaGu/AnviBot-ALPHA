@@ -2,44 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
- client.user.setActivity('--help');
+    console.log('Ready!');
 });
 
-client.on('message', message => {
-    if (message.content === '++info') {
-    	message.channel.send('Nuestros servidores han sufrido daños, y el bot por consiguiente, por favor, tenga paciencia, intente de nuevo en `1 día`');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === '++cya') {
-    	message.reply('descansa bien y cuídate, hasta mañana.');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === '++info') {
-    	message.reply('Mis actuales comandos son `++info`, `++cya` y `++help`. Soy el ALPHA de AnviBot.');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === 'ciedad') {
-    	message.reply('más mala.');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === '--rae') {
-    	message.channel.send('Cada día, un diccionario muere por la falta de ortografía. No dejes que pase esto, ayúdale al que lo necesite, entrando a __dle.rae.es__ tienes un diccionario completamente gratuito. #RAE4Evah');
-  }
-});
-
-client.on('message', message => {
-    if (message.content === '--rae') {
-    	message.channel.send('https://cdn.discordapp.com/attachments/427962744520835082/428767421034135572/triggered_rae.gif');
-  	}
-});
-
-// THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+client.login('BOT_TOKEN');
