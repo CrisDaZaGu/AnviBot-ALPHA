@@ -43,14 +43,27 @@ client.on('message', message => {
         "description": "¿Besandote tú mism@, **" + message.author.username + "**? Perdón por eso.",
         "color": 2335,
         "image": {
-          "url": "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"
+          "url": "https://media1.giphy.com/media/bGm9FuBCGg4SY/200.gif"
         }
       }
       message.channel.send({ embed });
     }
 });
 
-// Create an event listener for messages
+client.on('message', message => {
+    if (message.content.startsWith(prefix + "pat")) {
+      const embed = {
+        "title": "",
+        "description": "Tranquil@ **" + message.author.username + "**, yo te acaricio.",
+        "color": 2335,
+        "image": {
+          "url": "http://gifimage.net/wp-content/uploads/2017/09/anime-head-pat-gif-4.gif"
+        }
+      }
+      message.channel.send({ embed });
+    }
+});
+
 client.on('message', message => {
     if (message.content.startsWith(prefix + "avatar")) {
       const embed = {
