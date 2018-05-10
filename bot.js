@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Pruebas | anvibot.blogspot.com/alpha')
+  client.user.setGame('__ayuda | AnviBot Pruebas | anvibot.blogspot.com/alpha')
 });
 
 client.on("message", message => {
@@ -16,7 +16,7 @@ client.on("message", message => {
     message.channel.send("xDD");
   } else
   if (message.content.startsWith(prefix + "ayuda")) {
-    message.channel.send("Soy un bot too' raro.\n¡Consulta mi lista de comandos con `++comandos`!");
+    message.channel.send("Soy un bot too' raro.\n¡Consulta mi lista de comandos con `__comandos`!");
   } else
   if (message.content.startsWith(prefix + "comandos")) {
     message.channel.send("Te envié mis comandos por mensaje privado, " + message.author.username);
@@ -78,11 +78,4 @@ client.on('message', message => {
     }
 });
 
-client.on('message', message => {
-    if (message.content === 'omae wa mou shindeiro') {
-    	message.channel.send('なに？！');
-  	}
-});
-
-// THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
