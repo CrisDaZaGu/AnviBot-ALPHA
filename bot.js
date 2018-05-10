@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "++";
+const prefix = "__";
 
 client.on('ready', () => {
   client.user.setGame(prefix + 'ayuda | AnviBot ALPHA')
