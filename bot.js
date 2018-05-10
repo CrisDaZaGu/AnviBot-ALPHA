@@ -37,20 +37,6 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + "pat")) {
-      const embed = {
-        "title": "",
-        "description": "Tranquil@ **" + message.author.username + "**, yo te acaricio.",
-        "color": 2335,
-        "image": {
-          "url": "http://gifimage.net/wp-content/uploads/2017/09/anime-head-pat-gif-4.gif"
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
-client.on('message', message => {
     if (message.content.startsWith(prefix + "avatar")) {
       const embed = {
         "title": "",
