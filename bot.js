@@ -36,18 +36,4 @@ client.on('message', message => {
     }
 });
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "avatar")) {
-      const embed = {
-        "title": "",
-        "description": "Este es tu avatar, **" + message.author.username + "**",
-        "color": 2335,
-        "image": {
-          "url": message.author.avatarURL
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
 client.login(process.env.BOT_TOKEN);
