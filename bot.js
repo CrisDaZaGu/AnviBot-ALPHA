@@ -71,7 +71,7 @@ client.on('message', message => {
         "description": "No te preocupes, **" + message.author.username + "**, yo te acaricio.",
         "color": 2335,
         "image": {
-          "url": "http://gifimage.net/wp-content/uploads/2017/09/anime-head-pat-gif-4.gif"
+          "url": "http://2.bp.blogspot.com/-X0ZDtsVYvVk/WvOwG3Y1BYI/AAAAAAAABiQ/lt6TDbpSyXMoIglTBQH-JonovXCgB2QjACK4BGAYYCw/s1600/anime-head-pat-gif-4.gif"
         }
       }
       message.channel.send({ embed });
