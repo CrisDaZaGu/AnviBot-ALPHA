@@ -37,20 +37,6 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + "kiss")) {
-      const embed = {
-        "title": "",
-        "description": "¿Besandote tú mism@, **" + message.author.username + "**? Perdón por eso.",
-        "color": 2335,
-        "image": {
-          "url": "https://media1.giphy.com/media/bGm9FuBCGg4SY/200.gif"
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
-client.on('message', message => {
     if (message.content.startsWith(prefix + "pat")) {
       const embed = {
         "title": "",
