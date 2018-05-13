@@ -80,7 +80,8 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.StartsWith(prefix + '8ball')) {
-    	message.channel.send('Sí'||'No');
+      var ochoball = 'Sí' || 'Nel' || 'Nelson' || 'No. Definitivamente no.' || 'NO.' || 'No.';
+    	message.channel.send('Anvibot dice que...' + ochoball);
   	}
 });
 
