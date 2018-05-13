@@ -78,4 +78,11 @@ client.on('message', message => {
     }
 });
 
+client.on('message', message => {
+    if (message.content.StartsWith(prefix + '8ball')) {
+    	message.channel.send('Sí'||'No');
+  	}
+});
+
+
 client.login(process.env.BOT_TOKEN);
