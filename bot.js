@@ -32,6 +32,13 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
+    if (message.content.startsWith(prefix + "random")) {
+      var días = {'Lunes', 'Viernes'}
+      message.channel.send('Puede que...' + días);
+    }
+});
+
+client.on('message', message => {
     if (message.content.startsWith(prefix + "me")) {
       message.channel.send('Usuario: **' + message.author.username + '**\nID:' + message.author.id);
     }
