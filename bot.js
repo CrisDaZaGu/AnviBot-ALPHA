@@ -7,6 +7,7 @@ client.on('ready', () => {
 });
 
 client.on("message", message => {
+  const version = "alpha_0.1.3.9(edit_17)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -23,7 +24,7 @@ client.on("message", message => {
     message.author.send("```Comandos```\n**__ayuda**: Consigue ayuda del bot.\n**__info**: Información del bot\n**__me**: Consigue tu id de jugador.\n**__ping**: ¡Ping Pong! :ping_pong:\n**__avatar**: Consulta la URL de tu avatar actual.\n**__invite**: Invita a AnviBot a tu servidor de Discord!\n**__xDD**: xDD\n```Página```\nhttp://anvibot.blogspot.com/p/commands");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: **alpha_0.2.19**");
+    message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: " + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
