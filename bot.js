@@ -81,9 +81,10 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.StartsWith(prefix + '8ball')) {
-      var myArray = ['Sí', 'No'];
-      var rand = myArray[Math.floor(Math.random() * myArray.length)];
-    	message.channel.send('Anvibot dice que...' + rand);
+      var myArray = ['Sí',
+                     'No'
+                    ];
+    	message.channel.send('Anvibot dice que...' + myArray[Math.floor(Math.random() * myArray.length)]);
   	}
 });
 
