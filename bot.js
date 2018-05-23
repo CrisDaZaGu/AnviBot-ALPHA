@@ -81,8 +81,8 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + "prueba")) {
-      var myArray = ['Enero', 'Febrero', 'Marzo'];
-      var rand = myArray[Math.floor(Math.random() * myArray.length)];
+      const myArray = ['Enero', 'Febrero', 'Marzo'];
+      const rand = myArray[Math.floor(Math.random() * myArray.length)];
       const embed = {
         "title": "¡Esta es una prueba del bot!",
         "description": rand,
