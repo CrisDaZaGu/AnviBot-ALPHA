@@ -81,15 +81,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + "prueba")) {
-      const myArray = ['Enero', 'Febrero', 'Marzo'];
-      const rand = myArray[Math.floor(Math.random() * myArray.length)];
-      const embed = {
-        "title": "¡Esta es una prueba del bot!",
-        "description": rand,
-        "color": 2335,
-        }
-      }
-      message.channel.send({ embed });
+      message.channel.send(Math.floor(Math.random() * 10););
     }
 });
 
