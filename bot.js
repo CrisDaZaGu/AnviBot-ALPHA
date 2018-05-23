@@ -81,7 +81,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + "prueba")) {
-      message.channel.send(Math.floor(Math.random() * 10););
+      message.channel.send(Math.floor(Math.random() * 10));
     }
 });
 
