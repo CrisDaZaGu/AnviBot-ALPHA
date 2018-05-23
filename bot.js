@@ -79,5 +79,18 @@ client.on('message', message => {
     }
 });
 
+client.on('message', message => {
+    if (message.content.startsWith(prefix + "prueba")) {
+      var myArray = ['Enero', 'Febrero', 'Marzo'];
+      var rand = myArray[Math.floor(Math.random() * myArray.length)];
+      const embed = {
+        "title": "¡Esta es una prueba del bot!",
+        "description": rand,
+        "color": 2335,
+        }
+      }
+      message.channel.send({ embed });
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
