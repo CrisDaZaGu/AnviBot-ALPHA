@@ -85,4 +85,18 @@ client.on('message', message => {
     }
 });
 
+client.on("message", async message => {
+  
+  if(message.author.bot) return;
+  
+  if(message.content.indexOf(config.prefix) !== 0) return;
+  
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  
+  if(command === "ping") {
+    const m = await message.channel.send("Ok, esperame...")
+    m.edit(`**¡Pong!** :ping_pong: ${m.createdTimestamp - message.createdTimestamp}ms.`)
+  }
+
 client.login(process.env.BOT_TOKEN);
