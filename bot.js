@@ -1,14 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "__";
-var faker = require('faker');
 
 client.on('ready', () => {
   client.user.setGame(prefix + 'ayuda | AnviBot ALPHA | anvibot.blogspot.com/alpha')
 });
 
 client.on("message", message => {
-  const version = "alpha_0.1.3.9(edit_17)";
+  const version = "alpha_0.1.3.9(edit_19)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
