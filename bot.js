@@ -79,11 +79,4 @@ client.on('message', message => {
     }
 });
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "roll")) {
-      const randomnumber = Math.floor(Math.random() * 10);
-      message.channel.send('Tu número aleatorio es:' + randomnumber + '.');
-    }
-});
-
 client.login(process.env.BOT_TOKEN);
