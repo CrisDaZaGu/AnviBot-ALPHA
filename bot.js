@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot ALPHA | anvibot.blogspot.com/alpha')
+  client.user.setGame('en actualizaciones, no usarme a menos que seas tester.')
 });
 
 client.on("message", message => {
