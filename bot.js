@@ -67,7 +67,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const embed = {
         "title": "",
-        "description": "¿Besandote tú mism@, @" + message.author.tag + "? Perdón por eso.",
+        "description": "¿Besandote tú mism@, @" + message.author.id + "? Perdón por eso.",
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
