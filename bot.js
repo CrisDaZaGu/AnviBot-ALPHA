@@ -14,7 +14,7 @@ il.run();
 
 console.log(randomQuote());
 //from here down is different gif for command --kiss ------------------------------------------------------
-const quotes2 = ["https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
+const quotes2 = ["https://i.imgur.com/9y34cfo.gif", "https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif",]
 
 function randomQuote2() {
 	return quotes2[Math.floor(Math.random() * quotes.length)];
