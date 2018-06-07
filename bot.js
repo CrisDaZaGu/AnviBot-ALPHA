@@ -13,6 +13,17 @@ il.add(randomQuote, []);
 il.run();
 
 console.log(randomQuote());
+//from here down is different gif for command --kiss ------------------------------------------------------
+const quotes2 = ["https://4.bp.blogspot.com/-wDyi25-IHDQ/WxirA88rkyI/AAAAAAAABlU/UqqmXkZc1WMu66_OK7YwKTHqhldPKflrQCLcBGAs/s1600/beso_anvibot.gif", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
+
+function randomQuote2() {
+	return quotes2[Math.floor(Math.random() * quotes.length)];
+};
+il.add(randomQuote2, []);
+
+il.run();
+
+console.log(randomQuote2());
 
 client.on('ready', () => {
   client.user.setGame('en actualizaciones, no usarme a menos que seas tester.')
@@ -59,7 +70,7 @@ client.on('message', message => {
         "description": "¿Besandote tú mism@, **" + message.author.username + "**? Perdón por eso.",
         "color": 2335,
         "image": {
-          "url": "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"
+          "url": randomQuote2()
         }
       }
       message.channel.send({ embed });
