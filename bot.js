@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
-const quotes = ["Sí", "No"]
+const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
