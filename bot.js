@@ -14,7 +14,7 @@ il.run();
 
 console.log(randomQuote());
 //from here down is different gif for command --kiss ------------------------------------------------------
-const quotes2 = ["https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://4.bp.blogspot.com/-wDyi25-IHDQ/WxirA88rkyI/AAAAAAAABlU/UqqmXkZc1WMu66_OK7YwKTHqhldPKflrQCLcBGAs/s1600/beso_anvibot.gif", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
+const quotes2 = ["https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
 
 function randomQuote2() {
 	return quotes2[Math.floor(Math.random() * quotes.length)];
@@ -53,7 +53,7 @@ client.on("message", message => {
     message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
   }
   if (message.content.startsWith(prefix + "8ball")) {
-    message.channel.send(randomQuote());
+    message.reply(randomQuote());
   }
 });
 
