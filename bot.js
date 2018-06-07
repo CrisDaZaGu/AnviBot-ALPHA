@@ -14,7 +14,7 @@ il.run();
 
 console.log(randomQuote());
 //from here down is different gif for command --kiss ------------------------------------------------------
-const quotes2 = ["https://4.bp.blogspot.com/-wDyi25-IHDQ/WxirA88rkyI/AAAAAAAABlU/UqqmXkZc1WMu66_OK7YwKTHqhldPKflrQCLcBGAs/s1600/beso_anvibot.gif", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
+const quotes2 = ["https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://4.bp.blogspot.com/-wDyi25-IHDQ/WxirA88rkyI/AAAAAAAABlU/UqqmXkZc1WMu66_OK7YwKTHqhldPKflrQCLcBGAs/s1600/beso_anvibot.gif", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif"]
 
 function randomQuote2() {
 	return quotes2[Math.floor(Math.random() * quotes.length)];
@@ -69,6 +69,9 @@ client.on('message', message => {
         "title": "",
         "description": "¿Besandote tú mism@, **" + message.author.username + "**? Perdón por eso.",
         "color": 2335,
+        "footer": {
+          "text": "Las imágenes pueden estar sujetas a derechos de autor"
+        }
         "image": {
           "url": randomQuote2()
         }
@@ -97,6 +100,9 @@ client.on('message', message => {
         "title": "",
         "description": "No te preocupes, **" + message.author.username + "**, yo te acaricio.",
         "color": 2335,
+        "footer": {
+          "text": "Las imágenes pueden estar sujetas a derechos de autor"
+        }
         "image": {
           "url": "http://2.bp.blogspot.com/-X0ZDtsVYvVk/WvOwG3Y1BYI/AAAAAAAABiQ/lt6TDbpSyXMoIglTBQH-JonovXCgB2QjACK4BGAYYCw/s1600/anime-head-pat-gif-4.gif"
         }
