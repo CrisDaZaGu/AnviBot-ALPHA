@@ -71,7 +71,7 @@ client.on('message', message => {
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
-        }
+        },
         "image": {
           "url": randomQuote2()
         }
@@ -102,7 +102,7 @@ client.on('message', message => {
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
-        }
+        },
         "image": {
           "url": "http://2.bp.blogspot.com/-X0ZDtsVYvVk/WvOwG3Y1BYI/AAAAAAAABiQ/lt6TDbpSyXMoIglTBQH-JonovXCgB2QjACK4BGAYYCw/s1600/anime-head-pat-gif-4.gif"
         }
