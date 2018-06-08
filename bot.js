@@ -45,7 +45,7 @@ il.add(randomQuote4, []);
 
 il.run();
 
-console.log(randomQuote3());
+console.log(randomQuote4());
 
 client.on('ready', () => {
   client.user.setGame('en actualizaciones, no usarme a menos que seas tester.')
