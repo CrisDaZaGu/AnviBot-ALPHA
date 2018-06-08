@@ -64,6 +64,37 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content.startsWith(prefix + "comandos")) {
+    const embed = {
+      "title": "Comandos",
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es" + prefix,
+      "color": 2335,
+      "fields": [{
+        "name": "INFORMACIÓN",
+        "value": "`info`, `me`"
+      },
+      {
+        "name": "IMÁGENES",
+        "value": "`pat`, `kiss`" 
+      },
+      {
+        "name": "DIVERSIÓN",
+        "value": "`idk`, `xDD`, `8ball`"
+      },
+      {
+        "name": "PRONTO",
+        "value": "`say`, `ban`, `inu`, `neko`"
+      }],
+      "footer": {
+        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
+      }
+    }
+    message.channel.send('Usuario: **' + message.author.username + '**\nID:' + message.author.id);
+    message.author.send({ embed })
+  }
+});
+
+client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const embed = {
         "title": "",
