@@ -30,7 +30,7 @@ client.on('ready', () => {
 });
 
 client.on("message", message => {
-  const version = "alpha_0.1.3.9(edit_19)";
+  const version = "alpha_0.1.4.6(edit_49)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -38,9 +38,6 @@ client.on("message", message => {
   } else
   if (message.content.startsWith(prefix + "xDD")) {
     message.channel.send("xDD");
-  } else
-  if (message.content.startsWith(prefix + "ayuda")) {
-    message.channel.send("Soy un bot too' raro.\n¡Consulta mi lista de comandos con `__comandos`!");
   } else
   if (message.content.startsWith(prefix + "info")) {
     message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: " + version);
@@ -60,14 +57,48 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "comandos")) {
+  if (message.content.startsWith(prefix + "ayuda")) {
     const embed = {
-      "title": "Comandos",
+      "title": "",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es > **" + prefix + "**",
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » **" + prefix + "**",
+      "color": 2335,
+      "fields": [{
+        "name": "INFORMACIÓN",
+        "value": "`info`, `me`"
+      },
+      {
+        "name": "IMÁGENES",
+        "value": "`pat`, `kiss`" 
+      },
+      {
+        "name": "DIVERSIÓN",
+        "value": "`idk`, `xDD`, `8ball`"
+      },
+      {
+        "name": "PRONTO",
+        "value": "`say`, `ban`, `inu`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+      }],
+      "footer": {
+        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
+      },
+    }
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "comandos")) {
+    const embed = {
+      "title": "",
+      "author": {
+        "name": client.user.username,
+        "icon_url": client.user.avatarURL
+      },
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » **" + prefix + "**",
       "color": 2335,
       "fields": [{
         "name": "INFORMACIÓN",
@@ -114,7 +145,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "avatar")) {
       const embed = {
         "title": "",
-        "description": "Este eres tú, **" + message.author.username + "**, que wap@ estás.",
+        "description": "Este eres tú, <@!" + message.author.id + ">, que wap@ estás.",
         "color": 2335,
         "image": {
           "url": message.author.avatarURL
@@ -128,7 +159,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "pat")) {
       const embed = {
         "title": "",
-        "description": "No te preocupes, **" + message.author.username + "**, yo te acaricio.",
+        "description": "No te preocupes, <@!" + message.author.id + ">, yo te acaricio.",
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
