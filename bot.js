@@ -24,6 +24,28 @@ il.add(randomQuote2, []);
 il.run();
 
 console.log(randomQuote2());
+//from here down is different gif for command --pat ------------------------------------------------------
+const quotes3 = ["https://i.imgur.com/9y34cfo.gif", "https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif",]
+
+function randomQuote3() {
+	return quotes3[Math.floor(Math.random() * quotes3.length)];
+};
+il.add(randomQuote3, []);
+
+il.run();
+
+console.log(randomQuote3());
+//from here down is different gif for command --roll ------------------------------------------------------
+const quotes4 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" ]
+
+function randomQuote4() {
+	return quotes4[Math.floor(Math.random() * 100)];
+};
+il.add(randomQuote4, []);
+
+il.run();
+
+console.log(randomQuote3());
 
 client.on('ready', () => {
   client.user.setGame('en actualizaciones, no usarme a menos que seas tester.')
@@ -76,11 +98,11 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "`idk`, `xDD`, `8ball`"
+        "value": "`xDD`, `8ball`, `roll`"
       },
       {
         "name": "PRONTO",
-        "value": "`say`, `ban`, `inu`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`say`, `ban`, `inu`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
