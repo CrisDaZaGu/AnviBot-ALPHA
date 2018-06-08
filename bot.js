@@ -42,10 +42,6 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "ayuda")) {
     message.channel.send("Soy un bot too' raro.\n¡Consulta mi lista de comandos con `__comandos`!");
   } else
-  if (message.content.startsWith(prefix + "comandos")) {
-    message.channel.send("Te envié mis comandos por mensaje privado, " + message.author.username);
-    message.author.send("```Comandos```\n**__ayuda**: Consigue ayuda del bot.\n**__info**: Información del bot\n**__me**: Consigue tu id de jugador.\n**__ping**: ¡Ping Pong! :ping_pong:\n**__avatar**: Consulta la URL de tu avatar actual.\n**__invite**: Invita a AnviBot a tu servidor de Discord!\n**__xDD**: xDD\n```Página```\nhttp://anvibot.blogspot.com/p/commands");
-  } else
   if (message.content.startsWith(prefix + "info")) {
     message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: " + version);
   } else
