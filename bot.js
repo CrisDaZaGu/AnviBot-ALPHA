@@ -63,7 +63,11 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "comandos")) {
     const embed = {
       "title": "Comandos",
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es **" + prefix + "**",
+      "author": {
+        "name": client.user.username,
+        "icon_url": client.user.avatarURL
+      },
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es > **" + prefix + "**",
       "color": 2335,
       "fields": [{
         "name": "INFORMACIÓN",
@@ -85,8 +89,7 @@ client.on('message', message => {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
       },
     }
-    message.channel.send('Usuario: **' + message.author.username + '**\nID:' + message.author.id);
-    message.author.send({ embed })
+    message.channel.send({ embed })
   }
 });
 
