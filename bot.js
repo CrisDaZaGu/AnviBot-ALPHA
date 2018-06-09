@@ -25,7 +25,7 @@ il.run();
 
 console.log(randomQuote2());
 //from here down is different gif for command --pat ------------------------------------------------------
-const quotes3 = ["https://i.imgur.com/9y34cfo.gif", "https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif",]
+const quotes3 = ["HOLA", "PONÉ LINKS ACA CTM"]
 
 function randomQuote3() {
 	return quotes3[Math.floor(Math.random() * quotes3.length)];
@@ -39,7 +39,7 @@ console.log(randomQuote3());
 const quotes4 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "40", "41" ]
 
 function randomQuote4() {
-	return quotes4[Math.floor(Math.random() * quotes4.length)];
+	return Math.floor(Math.random() * 100);
 };
 il.add(randomQuote4, []);
 
