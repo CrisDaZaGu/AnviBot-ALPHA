@@ -87,7 +87,7 @@ client.on("message", message => {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
   } else
   if (message.content.startsWith(prefix + "say")) {
-    let text = args.slice(1).join(" ");
+    let text = args.slice(0).join(" ");
     message.delete();
     message.channel.send(text);
   }
