@@ -170,8 +170,9 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      let text = "<@!" + message.author.id + "> está besando a" + args.slice(1).join(" ");
-      if(!text) text = "¿Besandote sólo, <@!" + message.author.id + ">? Perdón por eso"
+      const args2 = args.slice(1).join(" ")
+      let text = "<@!" + message.author.id + "> está besando a " + args2;
+      if(!args2) text = "¿Besandote sólo, <@!" + message.author.id + ">? Perdón por eso"
       const embed = {
         "title": "",
         "description": text,
