@@ -112,7 +112,7 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "`xDD`, `8ball`, `roll`"
+        "value": "`xDD`, `8ball`, `roll`, `chiste`"
       },
       {
         "name": "PRONTO",
