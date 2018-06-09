@@ -63,6 +63,8 @@ client.on('ready', () => {
 });
 
 client.on("message", message => {
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
   const version = "alpha_0.1.4.6(edit_49)";
   if (!message.content.startsWith(prefix)) return;
   
