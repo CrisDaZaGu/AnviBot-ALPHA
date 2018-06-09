@@ -48,7 +48,7 @@ il.run();
 console.log(randomQuote4());
 
 client.on('ready', () => {
-  client.user.setGame('en actualizaciones, no usarme a menos que seas tester.')
+  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -71,7 +71,7 @@ client.on("message", message => {
     message.reply(randomQuote());
   } else
   if (message.content.startsWith(prefix + "roll")) {
-    message.channel.send('Tu número aleatorio es:' + randomQuote4());
+    message.channel.send('Tu número aleatorio es ' + randomQuote4());
   }
 });
 
@@ -184,7 +184,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "pat")) {
       const embed = {
         "title": "",
-        "description": "No te preocupes, <@!" + message.author.id + ">, yo te acaricio.",
+        "description": "No te preocupes <@!" + message.author.id + ">, yo te acaricio.",
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
