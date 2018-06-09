@@ -71,7 +71,7 @@ client.on("message", message => {
     message.reply(randomQuote());
   } else
   if (message.content.startsWith(prefix + "roll")) {
-    message.channel.send('Tu número aleatorio es:' + randomQuote3());
+    message.channel.send('Tu número aleatorio es:' + randomQuote4());
   }
 });
 
