@@ -170,11 +170,10 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      let text = args.slice(1).join(" ");
-      if(args.slice(0)) {"No estás besando a nadie! D:"}
+      let text = args.slice(1).join(" ")
       const embed = {
         "title": "",
-        "description": "<@!" + message.author.id + "> está besando a " + text,
+        "description": "<@!" + message.author.id + "> está besando a " + text || "<@!" + message.author.id + "> se está besando solo",
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
