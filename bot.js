@@ -185,7 +185,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Aquí tienes algunos chistes",
+      "description": "Aquí tienes algunos chistes, <@!" + message.author.id + ">",
       "color": 2335,
       "fields": [{
         "name": "Chiste",
