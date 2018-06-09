@@ -188,7 +188,7 @@ client.on('message', message => {
       "description": "Aquí tienes algunos chistes",
       "color": 2335,
       "fields": [{
-        "name": "",
+        "name": "Chiste",
         "value": randomQuote5()
       }]
     }
