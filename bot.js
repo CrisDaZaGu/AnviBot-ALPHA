@@ -174,7 +174,7 @@ client.on('message', message => {
       if(!text) text = "¿Besandote sólo, <@!" + message.author.id + ">? Perdón por eso"
       const embed = {
         "title": "",
-        "description": "<@!" + message.author.id + "> está besando a " + text,
+        "description": text,
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
