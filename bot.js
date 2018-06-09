@@ -171,6 +171,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       let text = args.slice(1).join(" ");
+      if(args.slice(0)) {"No estás besando a nadie! D:"}
       const embed = {
         "title": "",
         "description": "<@!" + message.author.id + "> está besando a " + text,
