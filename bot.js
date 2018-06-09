@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('En cambios, por favor no usarme a menos que seas tester')
 });
 
 client.on("message", message => {
@@ -85,6 +85,11 @@ client.on("message", message => {
   } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
+  } else
+  if (message.content.startsWith(prefix + "say")) {
+    let text = args.slice(1).join(" ");
+    message.delete();
+    message.channel.send(text);
   }
 });
 
