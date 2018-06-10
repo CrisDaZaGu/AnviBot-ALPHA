@@ -279,7 +279,7 @@ client.on('message', message => {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
         },
         "image": {
-          "url": randomQuote2()
+          "url": randomQuote3()
         }
       }
       message.channel.send({ embed });
