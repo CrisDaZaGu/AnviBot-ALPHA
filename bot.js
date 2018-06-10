@@ -57,17 +57,6 @@ il.add(randomQuote5, []);
 il.run();
 
 console.log(randomQuote5());
-//from here down is different gif for command --meme (?) ------------------------------------------------------
-const quotes5 = ["hola", "sjsjsjsj"]
-
-function randomQuote5() {
-	return quotes5[Math.floor(Math.random() * quotes5.length)];
-};
-il.add(randomQuote5, []);
-
-il.run();
-
-console.log(randomQuote5());
 
 client.on('ready', () => {
   client.user.setGame('En cambios, por favor no usarme a menos que seas tester')
@@ -182,7 +171,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "kiss")) {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const args2 = args.slice(1).join(" ")
-      let text = "<@!" + message.author.id + "> está besando a " + args2 + ". Qué lindos.";
+      let text = "<@!" + message.author.id + "> está besando a " + args2;
       if(!args2) text = "¿Besandote sólo, <@!" + message.author.id + ">? Perdón por eso"
       const embed = {
         "title": "",
