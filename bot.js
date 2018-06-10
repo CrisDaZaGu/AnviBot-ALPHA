@@ -192,8 +192,8 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "visto")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "A" + args2 + "le dejaron en visto <:visto:429237848022056960>";
-    if(!args2) text = "<@!" + message.author.id + "> lo dejaron en visto <:visto:429237848022056960>"
+    let text = "A" + args2 + "le dejaron en visto <:visto:429237848022056960> ";
+    if(!args2) text = "<@!" + message.author.id + "> lo dejaron en visto <:visto:429237848022056960> "
     const embed = {
       "title": "",
       "description": text,
