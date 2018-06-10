@@ -238,6 +238,10 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith(prefix + "pat")) {
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const args2 = args.slice(1).join(" ")
+      let text = "<@!" + message.author.id + "> está acariciando a " + args2 + " <:pat:455391227785773066>";
+      if(!args2) text = "No te preocupes <@!" + message.author.id + ">, yo te acaricio <:pat:455391227785773066>"
       const embed = {
         "title": "",
         "description": "No te preocupes <@!" + message.author.id + ">, yo te acaricio.",
