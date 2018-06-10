@@ -65,14 +65,14 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_0.1.4.6(edit_49)";
+  const version = "alpha_0.1.9.1(edit_93)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
     message.channel.send("**Pong!** :ping_pong:");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: " + version);
+    message.channel.send("**Estado del Bot:** Conectado\n**Fallos:** null\n**Creador:** **ElBuenAnvita**\nVersión del Bot: " + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
