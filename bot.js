@@ -127,7 +127,7 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
+        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
       },
       {
         "name": "PRONTO",
