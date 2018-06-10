@@ -92,6 +92,13 @@ client.on("message", message => {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
   }
+  if (message.content.startsWith(prefix + "kick")) {
+    let text = args.slice(0).join(" ");
+    message.channel.send(text);
+  } else
+  if (message.content.startsWith(prefix + "changelog")) {
+    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `xDD` eliminado\n- Variables de imágenes `kiss` y `pat`.\n- Comando `say` cambiado por `sayd`\n- Comando `say` cambiado. Ahora no se eliminan los mensajes sin el `sayd`\n- Comando `visto` agregado');
+  }
 });
 
 client.on('message', message => {
@@ -120,11 +127,11 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "`xDD`, `8ball`, `roll`, `chiste`"
+        "value": "8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
       },
       {
         "name": "PRONTO",
-        "value": "`say`, `ban`, `inu`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "ban`, `inu`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
