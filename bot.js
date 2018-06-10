@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En cambios, por favor no usarme a menos que seas tester')
+  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -70,9 +70,6 @@ client.on("message", message => {
   
   if (message.content.startsWith(prefix + "ping")) {
     message.channel.send("**Pong!** :ping_pong:");
-  } else
-  if (message.content.startsWith(prefix + "xDD")) {
-    message.channel.send("xDD");
   } else
   if (message.content.startsWith(prefix + "info")) {
     message.channel.send("Estado del Bot: **Conectado**\nFallos: **0**\nCreador: **ElBuenAnvita**\nVersión del Bot: " + version);
@@ -86,9 +83,13 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
   } else
-  if (message.content.startsWith(prefix + "say")) {
+  if (message.content.startsWith(prefix + "sayd")) {
     let text = args.slice(0).join(" ");
     message.delete();
+    message.channel.send(text);
+  } else
+  if (message.content.startsWith(prefix + "say")) {
+    let text = args.slice(0).join(" ");
     message.channel.send(text);
   }
 });
@@ -153,11 +154,11 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "`idk`, `xDD`, `8ball`"
+        "value": "`idk`, `xDD`, `8ball`, `say`, `sayd`"
       },
       {
         "name": "PRONTO",
-        "value": "`say`, `ban`, `inu`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`ban`, `inu`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
