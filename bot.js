@@ -57,7 +57,6 @@ il.add(randomQuote5, []);
 il.run();
 
 console.log(randomQuote5());
-
 //from here down is different gif for command --meme (?) ------------------------------------------------------
 const quotes5 = ["hola", "sjsjsjsj"]
 
@@ -264,21 +263,5 @@ client.on('message', message => {
       message.channel.send({ embed });
     }
 });
-
-client.on("message", async message => {
-
-  if(message.author.bot) return;
-
-  if(message.content.indexOf(prefix) !== 0) return;
-
-  const args = message.content.slice(prefix.lenght).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  if(command === "say") {
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{});
-    message.channel.send(sayMessage);
-  }
-})
 
 client.login(process.env.BOT_TOKEN);
