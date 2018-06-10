@@ -244,7 +244,7 @@ client.on('message', message => {
       if(!args2) text = "No te preocupes <@!" + message.author.id + ">, yo te acaricio <:pat:455391227785773066>"
       const embed = {
         "title": "",
-        "description": "No te preocupes <@!" + message.author.id + ">, yo te acaricio.",
+        "description": text,
         "color": 2335,
         "footer": {
           "text": "Las imágenes pueden estar sujetas a derechos de autor"
