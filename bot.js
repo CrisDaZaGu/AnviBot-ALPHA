@@ -134,7 +134,7 @@ client.on('message', message => {
       },
       {
         "name": "IMÁGENES",
-        "value": "`pat`, `kiss`" 
+        "value": "`pat`, `kiss`, `wasted`" 
       },
       {
         "name": "DIVERSIÓN",
@@ -168,7 +168,7 @@ client.on('message', message => {
       },
       {
         "name": "IMÁGENES",
-        "value": "`pat`, `kiss`" 
+        "value": "`pat`, `kiss`, `wasted`" 
       },
       {
         "name": "DIVERSIÓN",
@@ -274,6 +274,27 @@ client.on('message', message => {
       }
       message.channel.send({ embed });
     }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "wasted")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> fue ELIMINADO por " + args2;
+    if(!args2) text = "<@!" + message.author.id + ">? fue ELIMINADO"
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Las imágenes pueden estar sujetas a derechos de autor"
+      },
+      "image": {
+        "url": randomQuote6()
+      }
+    }
+    message.channel.send({ embed });
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
