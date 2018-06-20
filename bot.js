@@ -287,7 +287,7 @@ client.on('message', message => {
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Las imágenes pueden estar sujetas a derechos de autor"
+        "text": "Las imágenes pueden estar sujetas a derechos de autor | WASTED es una referencia a marcas de Rockstar"
       },
       "image": {
         "url": randomQuote6()
