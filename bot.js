@@ -299,10 +299,9 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "test")) {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = message.mentions.member.first();
-    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + args2;
-    if(!args2) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
+    const member = message.mentions.member.first();
+    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + member;
+    if(!member) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
     const embed = {
       "title": "",
       "description": text,
