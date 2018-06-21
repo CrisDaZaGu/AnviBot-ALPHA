@@ -61,13 +61,13 @@ console.log(randomQuote5());
 const quotes6 = ["https://media1.tenor.com/images/ff2dcd44504000e320c21ae5682b5369/tenor.gif?itemid=5749160", "https://pa1.narvii.com/5748/8c6805c5fb2172cfdc445ef193a4527f4492012a_hq.gif", "http://i0.kym-cdn.com/photos/images/original/000/966/850/d79.gif", "https://i.imgur.com/0qCUoL2.jpg", "https://i.imgur.com/0qCUoL2.jpg", "https://media1.tenor.com/images/3918ab9203b15b16cfc872f5540bfedc/tenor.gif?itemid=5958526", "http://i0.kym-cdn.com/photos/images/newsfeed/001/160/891/6d2.gif"]
 
 function randomQuote6() {
-	return Math.floor(Math.random() * quotes6.length);
+	return quotes6[Math.floor(Math.random() * quotes6.length)];
 };
 il.add(randomQuote6, []);
 
 il.run();
 
-console.log(randomQuote5());
+console.log(randomQuote6());
 
 client.on('ready', () => {
   client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
@@ -287,7 +287,7 @@ client.on('message', message => {
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Las imágenes pueden estar sujetas a derechos de autor | WASTED es una referencia a marcas de Rockstar"
+        "text": "Las imágenes pueden estar sujetas a derechos de autor"
       },
       "image": {
         "url": randomQuote6()
