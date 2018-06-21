@@ -281,7 +281,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> fue ELIMINADO por " + args2;
-    if(!args2) text = "<@!" + message.author.id + ">? fue ELIMINADO"
+    if(!args2) text = "<@!" + message.author.id + "> fue ELIMINADO"
     const embed = {
       "title": "",
       "description": text,
@@ -291,6 +291,24 @@ client.on('message', message => {
       },
       "image": {
         "url": randomQuote6()
+      }
+    }
+    message.channel.send({ embed });
+  }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "test")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = message.mentions.member.first();
+    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + args2;
+    if(!args2) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Comando de prueba."
       }
     }
     message.channel.send({ embed });
