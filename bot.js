@@ -298,19 +298,24 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "test")) {
-    const member = message.guild.member(message.mentions.member.first());
-    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + message.guild.member(message.mentions.member.first());
-    if(!member) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
-    const embed = {
-      "title": "",
-      "description": text,
-      "color": 2335,
-      "footer": {
-        "text": "Comando de prueba."
-      }
-    }
-    message.channel.send({ embed });
+  if (message.content.startsWith(prefix + "kick")) {
+  let modRole = message.guild.roles.find("name", "Mods");
+  if(!message.member.roles.has(modRole.id)) {
+    return message.reply("Oe aweonao, no puedes usar esta wea ermano").catch(console.error);
+  }
+  if(message.mention.users.size === 0) {
+    return message.reply("Por favor, menciona a un usuario para kickear").catch(console.error);
+  }
+  let kickMeber = message.guild.member(message.mentions.users.first());
+  if(!kickMember) {
+    return message.reply("Ese usuario no parece válido :thinking: ");
+  }
+  if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
+    return message.reply("No tengo permisos de KICK_MEMBER para hacer sta wea").catch(console.error);
+  }
+  kickMember.kick().then(member => {
+    message.reply(`${member.user.username} fue kickeao con éxito :ok_hand: `).catch(console.error);
+  }).catch(console.error)
   }
 });
 
