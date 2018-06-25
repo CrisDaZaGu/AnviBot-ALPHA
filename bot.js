@@ -70,13 +70,13 @@ il.run();
 console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame('en reparaciones >' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('en reparaciones2 >' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_0.1.9.1(edit_93)";
+  const version = "alpha_0.1.9.1(edit_95)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -300,7 +300,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content.startsWith(prefix + "test")) {
     const member = message.guild.member(message.mentions.member.first());
-    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + member;
+    let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + message.guild.member(message.mentions.member.first());
     if(!member) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
     const embed = {
       "title": "",
