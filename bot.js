@@ -70,7 +70,7 @@ il.run();
 console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('en reparaciones >' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -299,7 +299,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "test")) {
-    const member = message.mentions.member.first();
+    const member = message.guild.member(message.mentions.member.first());
     let text = "<@!" + message.author.id + "> acaba de hacer una prueba con " + member;
     if(!member) text = "<@!" + message.author.id + "> acaba de hacer una prueba"
     const embed = {
