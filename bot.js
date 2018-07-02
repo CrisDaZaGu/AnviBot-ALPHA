@@ -70,7 +70,7 @@ il.run();
 console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame('en reparaciones2 >' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('en reparaciones >' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
