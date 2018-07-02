@@ -298,6 +298,21 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content.startsWith(prefix + "f")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "**" + message.author.username + "** ha pagado sus respetos por **" + args2 + "**"
+    if(!args2) text = "**" + message.author.username + "** ha pagado sus respetos"
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+    }
+    message.channel.send({ embed });
+  }
+});
+
+client.on('message', message => {
   if (message.content.startsWith(prefix + "kick")) {
   let modRole = message.guild.roles.find("name", "Mods");
   if(!message.member.roles.has(modRole.id)) {
@@ -320,3 +335,4 @@ client.on('message', message => {
 });
 
 client.login(process.env.BOT_TOKEN);
+//'**' + message.author.username + '** ha pagado sus respetos por'
