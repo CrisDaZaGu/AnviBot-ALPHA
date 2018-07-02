@@ -76,7 +76,7 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_0.1.9.1(edit_95)";
+  const version = "alpha_0.2.0.0(non-stable_2)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -108,7 +108,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `xDD` eliminado\n- Variables de imágenes `kiss` y `pat`.\n- Comando `say` cambiado por `sayd`\n- Comando `say` cambiado. Ahora no se eliminan los mensajes sin el `sayd`\n- Comando `visto` agregado');
+    message.channel.send('Changelog ' + version + ' 2.07.2018\n\nComando `--visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos');
   }
 });
 
@@ -212,7 +212,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "A " + args2 + " le dejaron en visto <:visto:446514915273080832> ";
-    if(!args2) text = "<@!" + message.author.id + "> lo dejaron en visto <:visto:446514915273080832> "
+    if(!args2) text = "A <@!" + message.author.id + "> lo dejaron en visto <:visto:446514915273080832> "
     const embed = {
       "title": "",
       "description": text,
