@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
+const ud = require('urban-dictionary')
 const quotes = ["Sí", "No", "No sé", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 
 function randomQuote() {
@@ -227,7 +228,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Aquí tienes algunos chistes, <@!" + message.author.id + ">",
+      "description": "Aquí tienes algunos malos chistes, <@!" + message.author.id + ">",
       "color": 2335,
       "fields": [{
         "name": "Chiste",
@@ -298,8 +299,8 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "f")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "**" + message.author.username + "** ha pagado sus respetos por **" + args2 + "**"
-    if(!args2) text = "**" + message.author.username + "** ha pagado sus respetos"
+    let text = "**" + message.author.username + "** ha pagado sus respetos por **" + args2 + "**."
+    if(!args2) text = "**" + message.author.username + "** ha pagado sus respetos."
     const embed = {
       "title": "",
       "description": text,
