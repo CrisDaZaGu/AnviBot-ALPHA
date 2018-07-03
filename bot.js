@@ -88,9 +88,6 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
   } else
-  if (message.content.startsWith(prefix + "8ball")) {
-    message.reply(randomQuote());
-  } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
   } else
@@ -313,6 +310,29 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content.startsWith(prefix + "8ball")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = randomQuote()
+    if(!args2) message.reply = "pregunta algo.\nUso.: `" + prefix + "8ball <pregunta>`"
+    const embed = {
+      "title": "8ball",
+      "description": "",
+      "color": 2335,
+      "fields": [{
+        "name": "A tu pregunta:",
+        "value": args2
+      },
+      {
+        "name": "Respondo",
+        "value": text
+      }]
+    }
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', message => {
   if (message.content.startsWith(prefix + "kick")) {
   let modRole = message.guild.roles.find("name", "Mods");
   if(!message.member.roles.has(modRole.id)) {
@@ -335,4 +355,3 @@ client.on('message', message => {
 });
 
 client.login(process.env.BOT_TOKEN);
-//'**' + message.author.username + '** ha pagado sus respetos por'
