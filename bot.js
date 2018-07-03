@@ -105,7 +105,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 2.07.2018\n\nComando `--visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos');
+    message.channel.send('Changelog ' + version + ' 2.07.2018\n\n- Comando `--visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos\n- Comando `'+ prefix + '8ball` mejorado.');
   }
 });
 
