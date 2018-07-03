@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
-const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
+const quotes = ["Sí", "No", "No sé", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -70,7 +70,7 @@ il.run();
 console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame('en reparaciones >' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -105,7 +105,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 2.07.2018\n\n- Comando `--visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos\n- Comando `'+ prefix + '8ball` mejorado.');
+    message.channel.send('Changelog ' + version + ' 2.07.2018\n\n- Comando `' + prefix + 'visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos\n- Comando `'+ prefix + '8ball` mejorado.');
   }
 });
 
@@ -316,7 +316,11 @@ client.on('message', message => {
     let text = randomQuote()
     if(!args2) message.reply = "pregunta algo.\nUso.: `" + prefix + "8ball <pregunta>`"
     const embed = {
-      "title": "8ball",
+      "title": "",
+      "author": {
+        "name": "8ball",
+        "icon_url": client.user.avatarURL
+      },
       "description": "",
       "color": 2335,
       "fields": [{
