@@ -71,7 +71,7 @@ il.run();
 console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('probando-nojoder' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
