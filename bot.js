@@ -110,6 +110,24 @@ client.on("message", message => {
   }
 });
 
+client.on("message", message => {
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  const version = "alpha_0.2.0.0(non-stable_2)";
+  if (!message.content.startsWith(prefix)) return;
+  
+  if (message.content.startsWith(prefix + "urban-random")) {
+    ud.random(definition, function (error, entries, tags, sounds) {
+      if (error) {
+        message.channel.send('Hubo un error');
+        console.error(error.message)
+      } else {
+        message.channel.send(entry.word);
+        message.channel.send(entry.definition);      }
+    })
+  }
+});
+
 client.on('message', message => {
     if (message.content.startsWith(prefix + "me")) {
       message.channel.send('Usuario: **' + message.author.username + '**\nID:' + message.author.id);
@@ -334,28 +352,6 @@ client.on('message', message => {
       }]
     }
     message.channel.send({ embed })
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "kick")) {
-  let modRole = message.guild.roles.find("name", "Mods");
-  if(!message.member.roles.has(modRole.id)) {
-    return message.reply("Oe aweonao, no puedes usar esta wea ermano").catch(console.error);
-  }
-  if(message.mention.users.size === 0) {
-    return message.reply("Por favor, menciona a un usuario para kickear").catch(console.error);
-  }
-  let kickMeber = message.guild.member(message.mentions.users.first());
-  if(!kickMember) {
-    return message.reply("Ese usuario no parece válido :thinking: ");
-  }
-  if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
-    return message.reply("No tengo permisos de KICK_MEMBER para hacer sta wea").catch(console.error);
-  }
-  kickMember.kick().then(member => {
-    message.reply(`${member.user.username} fue kickeao con éxito :ok_hand: `).catch(console.error);
-  }).catch(console.error)
   }
 });
 
