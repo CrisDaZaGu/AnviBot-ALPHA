@@ -269,17 +269,27 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "dle")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "Resultados para la búsqueda de" + args2;
+    let text = "Resultados para la búsqueda de " + args2;
     if(!args2) text = "Ingresa la palabra que estás buscando en el diccionario"
+    var thum = require('thumb.io');
+    var thumbURL = thumb.getThumURL({
+      url: 'https://dle.rae.es/srv/search?w=' + args2,
+      width: 1200,
+      auth: {
+        type: 'md5',
+        secret: process.env.anvibot,
+        keyId: 1806,
+      },
+    });
     const embed = {
-      "title": "Definicion de la palabra" + args2,
+      "title": "Definición de la palabra " + args2,
       "description": text,
       "color": 2335,
       "footer": {
         "text": "Diccionario de la Real Academia Español (c) 2018"
       },
       "image": {
-        "url": "https://image.thum.io/get/noanimate/auth/1806-anvibot/http://dle.rae.es/srv/search?w=maculado"
+        "url": thumbURL
       }
     }
     message.channel.send({ embed });
