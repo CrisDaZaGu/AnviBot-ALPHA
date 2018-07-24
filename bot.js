@@ -276,7 +276,7 @@ client.on('message', message => {
       url: 'https://dle.rae.es/srv/search?w=' + args2,
       width: 1200,
       auth: {
-        type: 'md5',
+        type: 'raw',
         secret: process.env.anvibot,
         keyId: 1806,
       },
@@ -286,7 +286,7 @@ client.on('message', message => {
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Diccionario de la Real Academia Español (c) 2018"
+        "text": "Diccionario de la Real Academia Española (c) 2018"
       },
       "image": {
         "url": thumbURL
