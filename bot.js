@@ -3,8 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
-const ud = require('urban-dictionary')
-const quotes = ["Sí", "No", "No sé", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
+const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -58,26 +57,15 @@ il.add(randomQuote5, []);
 il.run();
 
 console.log(randomQuote5());
-//from here down is different gif for command --roll ------------------------------------------------------
-const quotes6 = ["https://media1.tenor.com/images/ff2dcd44504000e320c21ae5682b5369/tenor.gif?itemid=5749160", "https://pa1.narvii.com/5748/8c6805c5fb2172cfdc445ef193a4527f4492012a_hq.gif", "http://i0.kym-cdn.com/photos/images/original/000/966/850/d79.gif", "https://i.imgur.com/0qCUoL2.jpg", "https://i.imgur.com/0qCUoL2.jpg", "https://media1.tenor.com/images/3918ab9203b15b16cfc872f5540bfedc/tenor.gif?itemid=5958526", "http://i0.kym-cdn.com/photos/images/newsfeed/001/160/891/6d2.gif"]
-
-function randomQuote6() {
-	return quotes6[Math.floor(Math.random() * quotes6.length)];
-};
-il.add(randomQuote6, []);
-
-il.run();
-
-console.log(randomQuote6());
 
 client.on('ready', () => {
-  client.user.setGame('probando-nojoder' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_0.2.0.0(non-stable_2)";
+  const version = "beta_1.1.2(edit1)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -88,6 +76,9 @@ client.on("message", message => {
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
+  } else
+  if (message.content.startsWith(prefix + "8ball")) {
+    message.reply(randomQuote());
   } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
@@ -106,25 +97,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 2.07.2018\n\n- Comando `' + prefix + 'visto` arreglado gramaticalmente.\n- Versión de prueba al implementar nuevo comando, puede contener fallos\n- Comando `'+ prefix + '8ball` mejorado.');
-  }
-});
-
-client.on("message", message => {
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-  const version = "alpha_0.2.0.0(non-stable_2)";
-  if (!message.content.startsWith(prefix)) return;
-  
-  if (message.content.startsWith(prefix + "urban-random")) {
-    ud.random(definition, function (error, entries, tags, sounds) {
-      if (error) {
-        message.channel.send('Hubo un error');
-        console.error(error.message)
-      } else {
-        message.channel.send(entry.word);
-        message.channel.send(entry.definition);      }
-    })
+    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `xDD` eliminado\n- Variables de imágenes `kiss` y `pat`.\n- Comando `say` cambiado por `sayd`\n- Comando `say` cambiado. Ahora no se eliminan los mensajes sin el `sayd`\n- Comando `visto` agregado');
   }
 });
 
@@ -142,7 +115,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » **" + prefix + "**",
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
         "name": "INFORMACIÓN",
@@ -150,7 +123,7 @@ client.on('message', message => {
       },
       {
         "name": "IMÁGENES",
-        "value": "`pat`, `kiss`, `wasted`" 
+        "value": "`pat`, `kiss`" 
       },
       {
         "name": "DIVERSIÓN",
@@ -158,7 +131,7 @@ client.on('message', message => {
       },
       {
         "name": "PRONTO",
-        "value": "`ban`, `inu`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`ban`, `inu`, `kill, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -176,7 +149,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » **" + prefix + "**",
+      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
         "name": "INFORMACIÓN",
@@ -184,7 +157,7 @@ client.on('message', message => {
       },
       {
         "name": "IMÁGENES",
-        "value": "`pat`, `kiss`, `wasted`" 
+        "value": "`pat`, `kiss`" 
       },
       {
         "name": "DIVERSIÓN",
@@ -192,7 +165,7 @@ client.on('message', message => {
       },
       {
         "name": "PRONTO",
-        "value": "`ban`, `inu`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`ban`, `inu`, `kill`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -228,7 +201,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "A " + args2 + " le dejaron en visto <:visto:446514915273080832> ";
-    if(!args2) text = "A <@!" + message.author.id + "> lo dejaron en visto <:visto:446514915273080832> "
+    if(!args2) text = "<@!" + message.author.id + "> lo dejaron en visto <:visto:446514915273080832> "
     const embed = {
       "title": "",
       "description": text,
@@ -246,7 +219,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Aquí tienes algunos malos chistes, <@!" + message.author.id + ">",
+      "description": "Aquí tienes algunos chistes, <@!" + message.author.id + ">",
       "color": 2335,
       "fields": [{
         "name": "Chiste",
@@ -293,65 +266,23 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "wasted")) {
+  if (message.content.startsWith(prefix + "dle")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> fue ELIMINADO por " + args2;
-    if(!args2) text = "<@!" + message.author.id + "> fue ELIMINADO"
+    let text = "Resultados para la búsqueda de" + args2;
+    if(!args2) text = "Ingresa la palabra que estás buscando en el diccionario"
     const embed = {
-      "title": "",
+      "title": "Definicion de la palabra" + args2,
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Las imágenes pueden estar sujetas a derechos de autor"
+        "text": "Diccionario de la Real Academia Español (c) 2018"
       },
       "image": {
-        "url": randomQuote6()
+        "url": "https://image.thum.io/get/noanimate/auth/1806-anvibot/http://dle.rae.es/srv/search?w=maculado"
       }
     }
     message.channel.send({ embed });
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "f")) {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = args.slice(1).join(" ")
-    let text = "**" + message.author.username + "** ha pagado sus respetos por **" + args2 + "**."
-    if(!args2) text = "**" + message.author.username + "** ha pagado sus respetos."
-    const embed = {
-      "title": "",
-      "description": text,
-      "color": 2335,
-    }
-    message.channel.send({ embed });
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "8ball")) {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = args.slice(1).join(" ")
-    let text = randomQuote()
-    if(!args2) message.reply = "pregunta algo.\nUso.: `" + prefix + "8ball <pregunta>`"
-    const embed = {
-      "title": "",
-      "author": {
-        "name": "8ball",
-        "icon_url": client.user.avatarURL
-      },
-      "description": "",
-      "color": 2335,
-      "fields": [{
-        "name": "A tu pregunta:",
-        "value": args2
-      },
-      {
-        "name": "Respondo",
-        "value": text
-      }]
-    }
-    message.channel.send({ embed })
   }
 });
 
