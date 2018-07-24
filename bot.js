@@ -271,25 +271,15 @@ client.on('message', message => {
     const args2 = args.slice(1).join(" ")
     let text = "Resultados para la búsqueda de " + args2;
     if(!args2) text = "Ingresa la palabra que estás buscando en el diccionario"
-    var thum = require('thumb.io');
-    var thumbURL = thumb.getThumURL({
-      url: 'https://dle.rae.es/srv/search?w=' + args2,
-      width: 1200,
-      auth: {
-        type: 'raw',
-        secret: process.env.anvibot,
-        keyId: 1806,
-      },
-    });
     const embed = {
-      "title": "Definición de la palabra " + args2,
+      "title": "(en mantenimiento) Definición de la palabra " + args2,
       "description": text,
       "color": 2335,
       "footer": {
         "text": "Diccionario de la Real Academia Española (c) 2018"
       },
       "image": {
-        "url": thumbURL
+        "url": "http://dle.rae.es/images/logos/105x128xdle151x184.jpg.pagespeed.ic.CrK5v_K5eu.jpg"
       }
     }
     message.channel.send({ embed });
