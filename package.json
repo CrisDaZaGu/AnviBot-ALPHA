@@ -10,6 +10,7 @@
     "discord.js": "11.3.2",
     "request": "2.81.0",
     "infinite-loop": "0.2.2",
-    "urban-dictionary": "1.0.7"
+    "urban-dictionary": "1.0.7",
+    "thumb.io": "1.0.8"
   }
 }
