@@ -118,8 +118,8 @@ client.on('message', message => {
       "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
-        "name": "INFORMACIÓN",
-        "value": "`info`, `me`"
+        "name": "INFORMACIÓN/UTILIDAD",
+        "value": "`info`, `me`, `dle`"
       },
       {
         "name": "IMÁGENES",
@@ -131,7 +131,7 @@ client.on('message', message => {
       },
       {
         "name": "PRONTO",
-        "value": "`ban`, `inu`, `kill, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`ban`, `inu`, `kill`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -152,8 +152,8 @@ client.on('message', message => {
       "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
-        "name": "INFORMACIÓN",
-        "value": "`info`, `me`"
+        "name": "INFORMACIÓN/UTILIDAD",
+        "value": "`info`, `me`, `dle`"
       },
       {
         "name": "IMÁGENES",
@@ -161,11 +161,11 @@ client.on('message', message => {
       },
       {
         "name": "DIVERSIÓN",
-        "value": "`idk`, `xDD`, `8ball`, `say`, `sayd`"
+        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
       },
       {
         "name": "PRONTO",
-        "value": "`ban`, `inu`, `kill`, `neko`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "`ban`, `inu`, `kill`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -269,10 +269,12 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "dle")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "Resultados para la búsqueda de **" + args2 + "**";
-    if(!args2) text = "Ingresa la palabra que estás buscando en el diccionario"
+    let text = "Resultados para la búsqueda de **" + args2 + "** [Ir a la página](http://dle.rae.es/srv/search?w=" + args2 + ")";
+    let imgurl = "https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2 + "&width=1280";
+    if(!args2) text = "¡Ingresa la palabra que estás buscando en el diccionario!";
+    if(!args2) imgurl = "http://dle.rae.es/images/logos/105x128xdle151x184.jpg.pagespeed.ic.CrK5v_K5eu.jpg"
     const embed = {
-      "title": "(en mantenimiento) Diccionario RAE",
+      "title": "(beta) Diccionario RAE",
       "description": text,
       "color": 2335,
       "footer": {
