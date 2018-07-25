@@ -281,7 +281,7 @@ client.on('message', message => {
         "text": "Diccionario de la Real Academia Española (c) 2018"
       },
       "image": {
-        "url": imgurl
+        "url": "https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2 + "&width=1280"
       }
     }
     message.channel.send({ embed });
