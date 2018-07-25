@@ -65,7 +65,7 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "beta_1.1.2(edit1)";
+  const version = "alpha_1.2.4(edit4)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -97,7 +97,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `xDD` eliminado\n- Variables de imágenes `kiss` y `pat`.\n- Comando `say` cambiado por `sayd`\n- Comando `say` cambiado. Ahora no se eliminan los mensajes sin el `sayd`\n- Comando `visto` agregado');
+    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `dle` agregado para uso de diccionario de la Real Academia Española (en pruebas). \n- Corrección de errores en comandos.\n\n**¿Dudas, quejas, sugerencias?** Ven a nuestro servidor de Discord y te atenderemos. Usa `__invite`');
   }
 });
 
@@ -269,9 +269,8 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "dle")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "Resultados para la búsqueda de **" + args2 + "** [Ir a la página](http://dle.rae.es/srv/search?w=" + args2 + ")";
-    let imgurl = "https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2 + "&width=1280";
-    if(!args2) text = "¡Ingresa la palabra que estás buscando en el diccionario!";
+    let text = "Resultados para la búsqueda de **" + args2 + "** \n[Ir a la página](http://dle.rae.es/srv/search?w=" + args2 + ") \n[¿No carga la imagen?](https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2 + "&width=1280)";
+    if(!args2) text = "**¡Ingresa la palabra que estás buscando en el diccionario!**";
     if(!args2) imgurl = "http://dle.rae.es/images/logos/105x128xdle151x184.jpg.pagespeed.ic.CrK5v_K5eu.jpg"
     const embed = {
       "title": "(beta) Diccionario RAE",
