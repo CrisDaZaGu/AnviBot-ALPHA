@@ -269,17 +269,17 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "dle")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "Resultados para la búsqueda de " + args2;
+    let text = "Resultados para la búsqueda de **" + args2 + "**";
     if(!args2) text = "Ingresa la palabra que estás buscando en el diccionario"
     const embed = {
-      "title": "(en mantenimiento) Definición de la palabra " + args2,
+      "title": "(en mantenimiento) Diccionario RAE",
       "description": text,
       "color": 2335,
       "footer": {
         "text": "Diccionario de la Real Academia Española (c) 2018"
       },
       "image": {
-        "url": "http://dle.rae.es/images/logos/105x128xdle151x184.jpg.pagespeed.ic.CrK5v_K5eu.jpg"
+        "url": "http://api.page2images.com/directlink?p2i_url=http://dle.rae.es/srv/search?w=" + args2 + "&p2i_key=21e457ae29c9f42f"
       }
     }
     message.channel.send({ embed });
