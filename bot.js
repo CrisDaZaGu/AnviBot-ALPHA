@@ -97,7 +97,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + ' 10.06.2018\n\n- Comando `dle` agregado para uso de diccionario de la Real Academia Española (en pruebas). \n- Corrección de errores en comandos.\n\n**¿Dudas, quejas, sugerencias?** Ven a nuestro servidor de Discord y te atenderemos. Usa `__invite`');
+    message.channel.send('Changelog ' + version + '\n\n- Comando `dle` agregado para uso de diccionario de la Real Academia Española (en pruebas). \n- Corrección de errores en comandos.\n\n**¿Dudas, quejas, sugerencias?** Ven a nuestro servidor de Discord y te atenderemos. Usa `__invite`');
   }
 });
 
