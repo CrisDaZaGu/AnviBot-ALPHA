@@ -266,25 +266,46 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "dle")) {
+  if (message.content.startsWith(prefix + "diccionario")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "Resultados para la búsqueda de **" + args2 + "** \n[Ir a la página](http://dle.rae.es/srv/search?w=" + args2 + ") \n[¿No carga la imagen?](https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2 + "&width=1280)";
+    var Dictionary = require("oxford-dictionary");
+
+    var config = {
+      app_id : "OXFORD_APP_ID",
+      app_key : "OXFORD_APP_KEY",
+      source_lang : "es"
+    };
+
+    var dict = new Dictionary(config);
+
+    var props = {
+      word: `${args2}`,
+    };
+
+    var lookup = dict.definitions(props);
+
+    let text = "Resultados para la búsqueda de la palabra **" + args2 + "** \n[Ir a la página](https://es.oxforddictionaries.com/definicion/" + args2 + ")";
     if(!args2) text = "**¡Ingresa la palabra que estás buscando en el diccionario!**";
-    if(!args2) imgurl = "http://dle.rae.es/images/logos/105x128xdle151x184.jpg.pagespeed.ic.CrK5v_K5eu.jpg"
+    if(!args2) imgurl = "https://cdn-images-1.medium.com/max/1600/1*aqazUIF8nUQvrvGGDaqJAQ.jpeg"
     const embed = {
-      "title": "(beta) Diccionario RAE",
+      "title": "(beta) Diccionario Oxford (Español)",
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Diccionario de la Real Academia Española (c) 2018"
+        "text": "Diccionario Oxford"
       },
       "image": {
-        "url": "https://thumbnail.ws/get/thumbnail/?apikey=ab45a17344aa033247137cf2d457fc39ee4e7e16a464&url=dle.rae.es/srv/search?w=" + args2
+        "url": "https://cdn-images-1.medium.com/max/1600/1*aqazUIF8nUQvrvGGDaqJAQ.jpeg"
       }
     }
-    message.channel.send({ embed });
-  }
-});
+    lookup.then(function(res) {
+      message.channel.send(res);
+    },
+    function(err) {
+      message.channel.send(err);
+    });
+    }
+  });
 
 client.login(process.env.BOT_TOKEN);
