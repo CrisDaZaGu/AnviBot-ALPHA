@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[2] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -269,17 +269,19 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "prueba")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está testeando a " + args2 + " <:pat:455391227785773066>";
-    if(!args2) text = "No te preocupes <@!" + message.author.id + ">, yo te testeo <:pat:455391227785773066>"
+    const args3 = args.slice(2).join(" ")
+    const args4 = args.slice(3).join(" ")
+    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda" + args2;
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\nUsage: __maps <ciudad> <provincia/estado/departamento> <país>"
     const embed = {
-      "title": "",
+      "title": "[BETA] Mapas de Google",
       "description": text,
       "color": 2335,
       "footer": {
         "text": "Imágenes y mapas por Google Maps"
       },
       "image": {
-        "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=Santa%20Marta,Magdalena,Colombia&zoom=15"
+        "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "," + args3 + "," + args4 + "&zoom=15"
       }
     }
     message.channel.send({ embed });
