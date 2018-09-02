@@ -59,13 +59,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[6] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[7] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_1.3.1(edit5)";
+  const version = "alpha_1.3.1(edit7)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -269,7 +269,7 @@ client.on('message', message => {
     const args3 = args.slice(2).join(" ")
     const args4 = args.slice(3).join(" ")
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**\n[Buscar sitio en Google](https://www.google.com.co/search?q=" + args2 + ")";
-    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nEl comando no funcionará con espacios y/o"
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nEl comando no funcionará con espacios"
     const embed = {
       "title": "[BETA] Mapas de Google",
       "description": text,
@@ -312,14 +312,14 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "alpha_1.3.1 (edit5)"
+    const version = "alpha_1.3.1 (edit7)"
     const embed = {
       "title": "Cambios en esta versión",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Cambios en esta versión.",
+      "description": "Listado del registro de cambios",
       "color": 2335,
       "fields": [
       {
@@ -328,14 +328,14 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`maps`: Obtén una imagen 640x640 de una ciudad en el mapa\n`usage`: Revisa el uso correcto de un comando del bot."
+        "value": "`maps`: Obtén una imagen 640x640 de una ciudad en el mapa"
       },
       {
         "name": "Comandos retirados",
         "value": "`kick`: Comando retirado temporalmente por mal uso/infuncional.\n`ban`: Comando retirado temporalmente por mal uso/infuncional.\n`dle`: Comando retirado temporalmente por mal uso/infuncional."
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita#7699"
+        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
       },
     }
     message.channel.send({ embed })
