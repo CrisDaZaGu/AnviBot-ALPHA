@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -266,46 +266,24 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "diccionario")) {
+  if (message.content.startsWith(prefix + "prueba")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    var Dictionary = require("oxford-dictionary");
-
-    var config = {
-      app_id : "OXFORD_APP_ID",
-      app_key : "OXFORD_APP_KEY",
-      source_lang : "es"
-    };
-
-    var dict = new Dictionary(config);
-
-    var props = {
-      word: `${args2}`,
-    };
-
-    var lookup = dict.definitions(props);
-
-    let text = "Resultados para la búsqueda de la palabra **" + args2 + "** \n[Ir a la página](https://es.oxforddictionaries.com/definicion/" + args2 + ")";
-    if(!args2) text = "**¡Ingresa la palabra que estás buscando en el diccionario!**";
-    if(!args2) imgurl = "https://cdn-images-1.medium.com/max/1600/1*aqazUIF8nUQvrvGGDaqJAQ.jpeg"
+    let text = "<@!" + message.author.id + "> está testeando a " + args2 + " <:pat:455391227785773066>";
+    if(!args2) text = "No te preocupes <@!" + message.author.id + ">, yo te testeo <:pat:455391227785773066>"
     const embed = {
-      "title": "(beta) Diccionario Oxford (Español)",
+      "title": "",
       "description": text,
       "color": 2335,
       "footer": {
-        "text": "Diccionario Oxford"
+        "text": "Imágenes y mapas por Google Maps"
       },
       "image": {
-        "url": "https://cdn-images-1.medium.com/max/1600/1*aqazUIF8nUQvrvGGDaqJAQ.jpeg"
+        "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=Santa%20Marta,Magdalena,Colombia&zoom=15"
       }
     }
-    lookup.then(function(res) {
-      message.channel.send(res);
-    },
-    function(err) {
-      message.channel.send(err);
-    });
-    }
-  });
+    message.channel.send({ embed });
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
