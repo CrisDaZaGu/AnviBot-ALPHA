@@ -59,13 +59,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[4] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[6] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_1.2.4(edit4)";
+  const version = "alpha_1.3.1(edit5)";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -95,9 +95,6 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "kick")) {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
-  } else
-  if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send('Changelog ' + version + '\n\n- Comando `dle` agregado para uso de diccionario de la Real Academia Española (en pruebas). \n- Corrección de errores en comandos.\n\n**¿Dudas, quejas, sugerencias?** Ven a nuestro servidor de Discord y te atenderemos. Usa `__invite`');
   }
 });
 
@@ -271,8 +268,8 @@ client.on('message', message => {
     const args2 = args.slice(1).join(" ")
     const args3 = args.slice(2).join(" ")
     const args4 = args.slice(3).join(" ")
-    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**";
-    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nComando en pruebas."
+    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**\n[Buscar sitio en Google](https://www.google.com.co/search?q=" + args2 + ")";
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nEl comando no funcionará con espacios y/o"
     const embed = {
       "title": "[BETA] Mapas de Google",
       "description": text,
@@ -285,6 +282,63 @@ client.on('message', message => {
       }
     }
     message.channel.send({ embed });
+  }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "usage")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    const text = "Error: no encontrado";
+    if(args2 === maps) text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
+    if(args2 === kiss) text = "Uso: " + prefix + "kiss <usuario/texto>";
+    if(args2 === pat) text = "Uso: " + prefix + "pat <usuario/texto>";
+    if(args2 === visto) text = "Uso: " + prefix + "visto <usuario/texto>";
+    if(!args2) text = "Error desconocido ocurrido"
+    const embed = {
+      "title": "Uso del comando " + args2,
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Las imágenes pueden estar sujetas a derechos de autor"
+      },
+      "image": {
+        "url": randomQuote3()
+      }
+    }
+    message.channel.send({ embed });
+  }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "changelog")) {
+    const version = "alpha_1.3.1 (edit5)"
+    const embed = {
+      "title": "Cambios en esta versión",
+      "author": {
+        "name": client.user.username,
+        "icon_url": client.user.avatarURL
+      },
+      "description": "Cambios en esta versión.",
+      "color": 2335,
+      "fields": [
+      {
+        "name": "Versión actual del Bot",
+        "value": version
+      },
+      {
+        "name": "Nuevos comandos",
+        "value": "`maps`: Obtén una imagen 640x640 de una ciudad en el mapa\n`usage`: Revisa el uso correcto de un comando del bot."
+      },
+      {
+        "name": "Comandos retirados",
+        "value": "`kick`: Comando retirado temporalmente por mal uso/infuncional.\n`ban`: Comando retirado temporalmente por mal uso/infuncional.\n`dle`: Comando retirado temporalmente por mal uso/infuncional."
+      }],
+      "footer": {
+        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita#7699"
+      },
+    }
+    message.channel.send({ embed })
   }
 });
 
