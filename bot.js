@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[3] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[4] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -272,7 +272,7 @@ client.on('message', message => {
     const args3 = args.slice(2).join(" ")
     const args4 = args.slice(3).join(" ")
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**";
-    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n`Usage:` __maps <ciudad>,(provincia/estado/departamento),(país)\n`Ejemplo:` __maps Nueva+York\n`Ejemplo 2:` __maps Nueva+York,NY,Estados+Unidos\n\nLos espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nComando en pruebas."
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nComando en pruebas."
     const embed = {
       "title": "[BETA] Mapas de Google",
       "description": text,
