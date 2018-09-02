@@ -266,13 +266,13 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(prefix + "prueba")) {
+  if (message.content.startsWith(prefix + "maps")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     const args3 = args.slice(2).join(" ")
     const args4 = args.slice(3).join(" ")
-    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda" + args2;
-    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\nUsage: __maps <ciudad> <provincia/estado/departamento> <país>"
+    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**";
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n`Usage:` __maps <ciudad>,(provincia/estado/departamento),(país)\n`Ejemplo:` __maps Nueva+York\n`Ejemplo 2:` __maps Nueva+York,NY,Estados+Unidos\n\nLos espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nComando en pruebas."
     const embed = {
       "title": "[BETA] Mapas de Google",
       "description": text,
@@ -281,7 +281,7 @@ client.on('message', message => {
         "text": "Imágenes y mapas por Google Maps"
       },
       "image": {
-        "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "," + args3 + "," + args4 + "&zoom=15"
+        "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "&zoom=15"
       }
     }
     message.channel.send({ embed });
