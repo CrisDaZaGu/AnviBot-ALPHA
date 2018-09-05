@@ -95,6 +95,13 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "kick")) {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
+  } else
+  if (message.content.startsWith(prefix + "cat")) {
+    async function work() {
+      let owo = await neko.getSFWHug();
+      message.channel.send(owo)
+    }
+    work();
   }
 });
 
@@ -339,26 +346,6 @@ client.on('message', message => {
       },
     }
     message.channel.send({ embed })
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "cat")) {
-    const client_nekos = require('nekos.life');
-    const neko = new client_nekos();
-    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + neko.getSFWCatText().then((catText) => (catText));
-    const embed = {
-      "title": "",
-      "description": catText(),
-      "color": 2335,
-      "footer": {
-        "text": "Powered by nekos.life"
-      },
-      "image": {
-        "url": "https://avatars2.githubusercontent.com/u/6971304?s=88&v=4"
-      }
-    }
-    message.channel.send({ embed });
   }
 });
 
