@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[11](509) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[12](509) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -346,14 +346,10 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "cat")) {
     const client_nekos = require('nekos.life');
     const neko = new client_nekos();
-    
-    async function test() {
-      await neko.getSFWNeko();
-    }
-    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + test();
+    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + neko.getSFWCatText().then((catText) => (catText));
     const embed = {
       "title": "",
-      "description": text,
+      "description": catText(),
       "color": 2335,
       "footer": {
         "text": "Powered by nekos.life"
