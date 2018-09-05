@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[7] En Mantenimiento ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[8](409) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -339,6 +339,29 @@ client.on('message', message => {
       },
     }
     message.channel.send({ embed })
+  }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "cat")) {
+    const client_nekos = require('nekos.life');
+    const neko = new client_nekos();
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + ">, here you have some cats nwn";
+    if(!args2) text = "<@!" + message.author.id + ">, here you have some cats nwn"
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": neko.getSFWNeko()
+      }
+    }
+    message.channel.send({ embed });
   }
 });
 
