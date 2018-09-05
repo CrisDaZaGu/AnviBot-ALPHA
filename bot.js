@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[8](409) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[9](409) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -348,8 +348,8 @@ client.on('message', message => {
     const neko = new client_nekos();
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + ">, here you have some cats nwn";
-    if(!args2) text = "<@!" + message.author.id + ">, here you have some cats nwn"
+    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + neko.getSFWNeko();
+    if(!args2) text = "<@!" + message.author.id + ">, here you have some cats nwn" + neko.getSFWNeko()
     const embed = {
       "title": "",
       "description": text,
