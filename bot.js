@@ -59,7 +59,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[9](409) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('[10](409) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
 });
 
 client.on("message", message => {
@@ -358,7 +358,7 @@ client.on('message', message => {
         "text": "Powered by nekos.life"
       },
       "image": {
-        "url": neko.getSFWNeko()
+        "url": "https://avatars2.githubusercontent.com/u/6971304?s=88&v=4"
       }
     }
     message.channel.send({ embed });
