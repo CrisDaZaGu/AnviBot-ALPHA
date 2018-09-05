@@ -346,10 +346,11 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "cat")) {
     const client_nekos = require('nekos.life');
     const neko = new client_nekos();
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + await neko.getSFWNeko();
-    if(!args2) text = "<@!" + message.author.id + ">, here you have some cats nwn" + await neko.getSFWNeko()
+    
+    async function test() {
+      await neko.getSFWNeko();
+    }
+    let text = "<@!" + message.author.id + ">, here you have some cats nwn" + test();
     const embed = {
       "title": "",
       "description": text,
