@@ -4,6 +4,7 @@ const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
 const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
+const request = require('snekfetch');
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -59,7 +60,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Maintenance mode. Use AnviBot instead');
+  client.user.setGame('[1] Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -348,6 +349,38 @@ client.on('message', message => {
     }
     message.channel.send({ embed })
   }
+});
+
+client.on('message', message => {
+  let stats = await client.getStats();
+  stats.lewd++;
+  client.saveStats(stats);
+  if (message.channel.nsfw) {
+      await client.snekfetch.get('https://nekos.life/api/lewd/neko')
+          .then(message.channel.send({
+              embed: {
+                  color: client.getRandomColor(),
+                  author: {
+                      name: "Lewd Nekos >.<",
+                      icon_url: client.user.avatarURL
+                  },
+                  image: {
+                      url: r.body.neko
+                  }
+              }
+          }).catch(console.warn('wew tf happened here ' + e)));
+
+  } else {
+     await message.channel.send({
+          embed: {
+              color: client.getRandomColor(),
+              author: {
+                  name: client.user.username,
+                  icon_url: client.user.avatarURL
+              },
+              description: "o.O lewd nekos are shy they can only be found in discord NSFW channels. mew!"
+          }
+      }).catch(console.warn('wew tf happened here ' + e))
 });
 
 client.login(process.env.BOT_TOKEN);
