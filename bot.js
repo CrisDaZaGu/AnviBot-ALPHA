@@ -59,7 +59,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[12](509) En Mantenimiento | ' + prefix + 'ayuda | AnviBot Alpha')
+  client.user.setGame('Maintenance mode. Use AnviBot instead');
+  client.user.setStatus('dnd')
 });
 
 client.on("message", message => {
