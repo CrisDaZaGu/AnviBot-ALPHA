@@ -351,23 +351,4 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "pat")) {
-    await client.snekfetch.get('https://nekos.life/api/neko')
-      .then(message.channel.send({
-          "title": "",
-          "description": "Cats >w<",
-          "color": 2335,
-          "footer": {
-            "text": "Powered by nekos.life | Las imágenes pueden estar sujetas a derechos de autor",
-          },
-          "image": {
-            "url": r.body.neko,
-          }
-        }
-      )
-    )
-  }
-});
-
 client.login(process.env.BOT_TOKEN);
