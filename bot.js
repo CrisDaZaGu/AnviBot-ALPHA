@@ -61,7 +61,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[4-lst] Maintenance mode. Use AnviBot instead');
+  client.user.setGame('[5] Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -360,7 +360,8 @@ client.on('message', async message => {
     const embed = new Discord.RichEmbed()
     .setDescription("Aquí tienes unos gatos nya~")
     .setImage(res.body.data.neko)
-    .setFooter("Powered by nekos.life")
+
+    message.channel.send({embed: embed})
   }
 })
 
