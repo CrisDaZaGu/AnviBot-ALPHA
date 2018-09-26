@@ -5,6 +5,7 @@ const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
 const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 const request = require('snekfetch');
+const got = require('got');
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -350,5 +351,17 @@ client.on('message', message => {
     message.channel.send({ embed })
   }
 });
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "nya")) {
+    const res = await got('https://nekos.life/api/neko', {json: true})
+    if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = new Discord.RichEmbed()
+    .setDescription("Aquí tienes unos gatos nya~")
+    .setImage(res.body.data.neko)
+    .setFooter("Powered by nekos.life")
+  }
+})
 
 client.login(process.env.BOT_TOKEN);
