@@ -61,7 +61,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[5] Maintenance mode. Use AnviBot instead');
+  client.user.setGame('[6] Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -357,11 +357,19 @@ client.on('message', async message => {
     const res = await got('https://nekos.life/api/neko', {json: true})
     if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
-    const embed = new Discord.RichEmbed()
-    .setDescription("Aquí tienes unos gatos nya~")
-    .setImage(res.body.data.neko)
+    const embed = {
+      "title": "",
+      "description": "Aquí tienes unos gatitos, nya~",
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life | Las imágenes pueden estar sujetas a derechos de autor"
+      },
+      "image": {
+        "url": res.body.neko
+      },
+    }
 
-    message.channel.send({embed: embed})
+    message.channel.send({ embed })
   }
 })
 
