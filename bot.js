@@ -342,7 +342,7 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "neko")) {
+  if (message.content.startsWith(prefix + "test")) {
     const res = await got('https://nekos.life/api/neko', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
