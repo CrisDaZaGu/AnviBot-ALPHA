@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[2] Mantenimimiento');
+  client.user.setGame('[3] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -347,7 +347,7 @@ client.on('message', async message => {
         "text": "Powered by nekos.life"
       },
       "image": {
-        "url": res.body.neko
+        "url": res.body.url
       },
     }
 
