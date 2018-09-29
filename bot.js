@@ -6,6 +6,8 @@ const il = new InfiniteLoop;
 const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
 const request = require('snekfetch');
 const got = require('got');
+const clientneko = require('nekos.life');
+const neko = new clientneko();
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -61,8 +63,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('__ayuda | AnviBot Beta');
-  // client.user.setStatus('dnd')
+  client.user.setGame('Mantenimimiento');
+  client.user.setStatus('dnd')
 });
 
 client.on("message", message => {
@@ -314,6 +316,27 @@ client.on('message', message => {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
       },
     }
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "neko")) {
+    const res = await got('https://nekos.life/api/neko', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, nya~",
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.neko
+      },
+    }
+
     message.channel.send({ embed })
   }
 });
