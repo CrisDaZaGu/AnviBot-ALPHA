@@ -61,7 +61,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[6] Maintenance mode. Use AnviBot instead');
+  client.user.setGame('[7] Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -355,7 +355,7 @@ client.on('message', message => {
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "nya")) {
     const res = await got('https://nekos.life/api/neko', {json: true})
-    if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
       "title": "",
