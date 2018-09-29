@@ -39,8 +39,8 @@ il.add(randomQuote3, []);
 il.run();
 
 console.log(randomQuote3());
-//from here down is different gif for command --roll ------------------------------------------------------
-const quotes4 = ["nada", "por", "aqui"]
+//from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
+const quotes4 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
 
 function randomQuote4() {
 	return Math.floor(Math.random() * 100);
@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[5] Mantenimimiento');
+  client.user.setGame('[6] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -97,9 +97,8 @@ client.on("message", message => {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
   } else
-  if (message.content.startsWith(prefix + "kick")) {
-    let text = args.slice(0).join(" ");
-    message.channel.send(text);
+  if (message.content.startsWith(prefix + "visto")) {
+    message.channel.send(randomQuote4());
   }
 });
 
@@ -117,7 +116,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "H-Hola, soy AnviBot... estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
+      "description": "H-Hola, soy AnviBot... estos son mis comandos, mi prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
         "name": "Información/Utilidad",
@@ -125,7 +124,7 @@ client.on('message', message => {
       },
       {
         "name": "Imágenes",
-        "value": "`pat`, `kiss`, `neko` (**¡NUEVO!**)" 
+        "value": "`pat` (**¡MEJORADO!**), `hug` (**¡NUEVO!**), `kiss` (**¡MEJORADO!**), `neko` (**¡NUEVO!**), `cat` (**¡NUEVO!**)" 
       },
       {
         "name": "Diversión",
@@ -133,49 +132,13 @@ client.on('message', message => {
       },
       {
         "name": "Pronto",
-        "value": "`ban`, `inu`, `kill`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
       },
     }
     message.channel.send({ embed })
-  }
-});
-
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "kiss")) {
-      const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      const args2 = args.slice(1).join(" ")
-      let text = "<@!" + message.author.id + "> está besando a " + args2;
-      if(!args2) text = "¿Besandote sólo, <@!" + message.author.id + ">? Perdón por eso"
-      const embed = {
-        "title": "",
-        "description": text,
-        "color": 2335,
-        "footer": {
-          "text": "Las imágenes pueden estar sujetas a derechos de autor"
-        },
-        "image": {
-          "url": randomQuote2()
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "visto")) {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = args.slice(1).join(" ")
-    let text = "A " + args2 + " le dejaron en visto <:visto:446514915273080832> ";
-    if(!args2) text = "<@!" + message.author.id + "> lo dejaron en visto <:visto:446514915273080832> "
-    const embed = {
-      "title": "",
-      "description": text,
-      "color": 2335,
-    }
-    message.channel.send({ embed });
   }
 });
 
@@ -213,34 +176,13 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + "pat")) {
-      const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      const args2 = args.slice(1).join(" ")
-      let text = "<@!" + message.author.id + "> está acariciando a " + args2 + " <:pat:455391227785773066>";
-      if(!args2) text = "No te preocupes <@!" + message.author.id + ">, yo te acaricio <:pat:455391227785773066>"
-      const embed = {
-        "title": "",
-        "description": text,
-        "color": 2335,
-        "footer": {
-          "text": "Las imágenes pueden estar sujetas a derechos de autor"
-        },
-        "image": {
-          "url": randomQuote3()
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
-client.on('message', message => {
   if (message.content.startsWith(prefix + "maps")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     const args3 = args.slice(2).join(" ")
     const args4 = args.slice(3).join(" ")
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu búsqueda **" + args2 + "**\n[Buscar sitio en Google](https://www.google.com.co/search?q=" + args2 + ")";
-    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando una ciudad.\n**Uso correcto:** `__maps <ciudad>,(provincia/estado/departamento),(país)`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n\n**NOTAS:** Los espacios entre nombres de ciudades/países/estados serán un signo mas (+).\nEl zoom predeterminado es 15.\nEl comando no funcionará con espacios\nPuede tener fallos al mostar la imágen o el sitio específico."
+    if(!args2) text = "<@!" + message.author.id + ">, sé específico colocando un sitio en el mapa.\n**Uso correcto:** `__maps <sitio/ciudad/país>`\n**Ejemplo:** `__maps Nueva+York`\n**Ejemplo 2:** `__maps Nueva+York,NY,Estados+Unidos`\n**Ejemplo 3:** `__maps Times+Square`\n\n**NOTAS:** Los espacios entre los nombres serán un signo mas (+).\nEl zoom predeterminado es 15.\nEl comando no funcionará con espacios\nPuede tener fallos al mostar la imágen o el sitio, para solucionar esto, sea específico colocando su ciudad, estado o departamento."
     const embed = {
       "title": "[BETA] Mapas de Google",
       "description": text,
@@ -299,7 +241,11 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)"
+        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)\n`hug`: Abraza a un usuario o cosa. (o a ti mismo)\n`kiss`: Besa a un usuario o cosa. (o a ti mismo)\n`pat`: Acaricia a un usuario o cosa. (o a ti mismo)\n`cat`: Obtén una imagen de un lindo gato (real)"
+      },
+      {
+        "name": "Comandos modificados",
+        "value": "`visto`: Ya no usa RE, envía un emote random del visto.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)"
       },
       {
         "name": "Comandos retirados",
@@ -335,7 +281,28 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "test")) {
+  if (message.content.startsWith(prefix + "cat")) {
+    const res = await got('https://api.thecatapi.com/v1/images/search?', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos",
+      "color": 2335,
+      "footer": {
+        "text": "Powered by thecatapi"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "hug")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está abrazando a " + args2;
@@ -357,6 +324,56 @@ client.on('message', async message => {
 
     message.channel.send({ embed })
   }
-})
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "kiss")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está besando a " + args2;
+    if(!args2) text = "Sé que no tienes a quién besar, yo te daré uno, *lo besa*";
+    const res = await got('https://nekos.life/api/kiss', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "pat")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está besando a " + args2;
+    if(!args2) text = "Está bien, yo te acariciaré, <@!" + message.author.id + "> <:pat:455391227785773066>";
+    const res = await got('https://nekos.life/api/pat', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
