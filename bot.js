@@ -61,8 +61,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Maintenance mode. Use AnviBot instead');
-  client.user.setStatus('dnd')
+  client.user.setGame('__ayuda | AnviBot Beta');
+  // client.user.setStatus('dnd')
 });
 
 client.on("message", message => {
