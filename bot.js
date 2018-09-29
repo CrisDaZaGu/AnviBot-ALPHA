@@ -61,7 +61,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[7] Maintenance mode. Use AnviBot instead');
+  client.user.setGame('[8] Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -359,10 +359,10 @@ client.on('message', async message => {
     
     const embed = {
       "title": "",
-      "description": "Aquí tienes unos gatitos, nya~",
+      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, nya~",
       "color": 2335,
       "footer": {
-        "text": "Powered by nekos.life | Las imágenes pueden estar sujetas a derechos de autor"
+        "text": "Powered by nekos.life"
       },
       "image": {
         "url": res.body.neko
