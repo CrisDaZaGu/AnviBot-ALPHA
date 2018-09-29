@@ -61,7 +61,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[8] Maintenance mode. Use AnviBot instead');
+  client.user.setGame('Maintenance mode. Use AnviBot instead');
   client.user.setStatus('dnd')
 });
 
@@ -122,57 +122,23 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
+      "description": "H-Hola, soy AnviBot... estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
       "color": 2335,
       "fields": [{
-        "name": "INFORMACIÓN/UTILIDAD",
-        "value": "`info`, `me`, `dle`"
+        "name": "Información/Utilidad",
+        "value": "`info`, `me`"
       },
       {
-        "name": "IMÁGENES",
-        "value": "`pat`, `kiss`" 
+        "name": "Imágenes",
+        "value": "`pat`, `kiss`, `neko` (**¡NUEVO!**)" 
       },
       {
-        "name": "DIVERSIÓN",
+        "name": "Diversión",
         "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
       },
       {
-        "name": "PRONTO",
-        "value": "`ban`, `inu`, `kill`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
-      }],
-      "footer": {
-        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
-      },
-    }
-    message.channel.send({ embed })
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "comandos")) {
-    const embed = {
-      "title": "",
-      "author": {
-        "name": client.user.username,
-        "icon_url": client.user.avatarURL
-      },
-      "description": "Estos son mis comandos, recuerda que mi actual prefijo es » `" + prefix + "`",
-      "color": 2335,
-      "fields": [{
-        "name": "INFORMACIÓN/UTILIDAD",
-        "value": "`info`, `me`, `dle`"
-      },
-      {
-        "name": "IMÁGENES",
-        "value": "`pat`, `kiss`" 
-      },
-      {
-        "name": "DIVERSIÓN",
-        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
-      },
-      {
-        "name": "PRONTO",
-        "value": "`ban`, `inu`, `kill`, `neko`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "name": "Pronto",
+        "value": "`ban`, `inu`, `kill`, `idk`\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -322,7 +288,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "alpha_1.3.1 (edit7)"
+    const version = "alpha_1.4.5 (edit9)"
     const embed = {
       "title": "Cambios en esta versión",
       "author": {
@@ -338,11 +304,11 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`maps`: Obtén una imagen 640x640 de una ciudad en el mapa"
+        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)"
       },
       {
         "name": "Comandos retirados",
-        "value": "`kick`: Comando retirado temporalmente por mal uso/infuncional.\n`ban`: Comando retirado temporalmente por mal uso/infuncional.\n`dle`: Comando retirado temporalmente por mal uso/infuncional."
+        "value": "`comandos`: Comando retirado, use --ayuda."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -353,7 +319,7 @@ client.on('message', message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "nya")) {
+  if (message.content.startsWith(prefix + "neko")) {
     const res = await got('https://nekos.life/api/neko', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
