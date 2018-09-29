@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[1] Mantenimimiento');
+  client.user.setGame('[2] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -336,7 +336,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "test")) {
-    const res = await got(neko.getSFWHug, {json: true})
+    const res = await got(neko.getSFWHug(), {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
