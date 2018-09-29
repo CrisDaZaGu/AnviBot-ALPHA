@@ -288,14 +288,14 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "alpha_1.4.5 (edit9)"
+    const version = "alpha_1.4.5 (edit10)"
     const embed = {
-      "title": "Cambios en esta versión",
+      "title": "",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Listado del registro de cambios",
+      "description": "__**Listado del registro de cambios**__",
       "color": 2335,
       "fields": [
       {
