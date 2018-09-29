@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Mantenimimiento');
+  client.user.setGame('[1] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -100,13 +100,6 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "kick")) {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
-  } else
-  if (message.content.startsWith(prefix + "cat")) {
-    async function work() {
-      let owo = await neko.getSFWHug();
-      message.channel.send(owo)
-    }
-    work();
   }
 });
 
@@ -343,12 +336,12 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "test")) {
-    const res = await got('https://nekos.life/api/neko', {json: true})
+    const res = await got(neko.getSFWHug, {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
       "title": "",
-      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, nya~",
+      "description": "Yo te daré un abrazo, <@!" + message.author.id + ">",
       "color": 2335,
       "footer": {
         "text": "Powered by nekos.life"
