@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[4.5] Mantenimimiento');
+  client.user.setGame('[5] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -336,6 +336,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "test")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está abrazando a " + args2;
     if(!args2) text = "Aww, estás solito/a, toma un abrazo :heart:";
