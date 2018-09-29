@@ -63,7 +63,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[4] Mantenimimiento');
+  client.user.setGame('[4.5] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -336,12 +336,15 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "test")) {
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está abrazando a " + args2;
+    if(!args2) text = "Aww, estás solito/a, toma un abrazo :heart:";
     const res = await got('https://nekos.life/api/hug', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
       "title": "",
-      "description": "Yo te daré un abrazo, <@!" + message.author.id + ">",
+      "description": text,
       "color": 2335,
       "footer": {
         "text": "Powered by nekos.life"
