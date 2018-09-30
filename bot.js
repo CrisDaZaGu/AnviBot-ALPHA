@@ -50,7 +50,7 @@ il.run();
 
 console.log(randomQuote8());
 //from here down is different gif for command --chiste ------------------------------------------------------
-const quotes5 = (
+const quotes5 = [
   "— ¡Soldado López!\n- ¡Sí, mi capitán!\n- ¡No lo ví ayer en la prueba de camuflaje.\n- ¡Gracias, mi capitán",
   "— ¿Qué pasa si te corto una oreja?\n- Me quedo medio sordo.\n- ¿Y si te corto la otra?\n- Me quedo ciego.\n- ¿Por qué?\n- Porque se me caen los lentes",
   "¿Cuál es el colmo de un peluquero?\n¡Perder el bus por los pelos!",
@@ -66,7 +66,7 @@ const quotes5 = (
   "*En una pequeña farmacia del pueblo entra una mujer y dice:*\n—Por favor, quiero comprar Arsénico.\n—No puedo venderle eso. ¿Cuál es su finalidad\n—¡Matar a mi marido!\n—Mucho peor, para ese fin no se lo puedo vender.\n*La mujer abre su cartera y extrae una foto del marido haciendo el amor con la mujer del farmacéutico\n—Ahh, buenooo, con receta es otra cosa...",
   "—Hijo, si repruebas el examen de mañana olvídate que soy tu padre.\n*Al día siguiente*\n—Hijo, ¿cómo te fue en el exámen?\n—¿Y tú quién eres?",
   "—Roberto, ¿cuál es tu verdura favorita?\n—La zanahoria\n—¿Me la puedes deletrear?\n—Mmm... ahora que lo pienso es la papa"
-)
+]
 
 function randomQuote5() {
 	return quotes5[Math.floor(Math.random() * quotes5.length)];
@@ -78,7 +78,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Mantenimimiento');
+  client.user.setGame('[1] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -95,7 +95,7 @@ client.on("message", message => {
     message.channel.send("**Estado del Bot:** Conectado\n**Fallos:** null\n**Creador:** ElBuenAnvita\n**Versión del Bot:** " + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
-    message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot\n\n**¡Gracias por usar AnviBot n.n!**");
+    message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\nhttps://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot&redirect_url=http://anvibot.blogspot.com/p/commands\n\n**¡Gracias por usar AnviBot n.n!**");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
     message.reply(randomQuote());
@@ -111,9 +111,6 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "say")) {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
-  } else
-  if (message.content.startsWith(prefix + "visto")) {
-    message.channel.send(randomQuote8());
   }
 });
 
@@ -121,6 +118,17 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + "me")) {
       message.channel.send('Usuario: **' + message.author.username + '**\nID:' + message.author.id);
     }
+});
+
+client.on('message', message => {
+  if (message.content.startsWith(prefix + "visto")) {
+    const embed = {
+      "title": "",
+      "description": randomQuote8(),
+      "color": 2335,
+    }
+    message.channel.send({ embed });
+  }
 });
 
 client.on('message', message => {
@@ -235,7 +243,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "`visto`: Ya no usa RE, envía un emote random del visto.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)"
+        "value": "`visto`: Solo envía un emote random del visto.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)"
       },
       {
         "name": "Comandos retirados",
