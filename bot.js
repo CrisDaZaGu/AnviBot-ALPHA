@@ -50,7 +50,18 @@ il.run();
 
 console.log(randomQuote8());
 //from here down is different gif for command --chiste ------------------------------------------------------
-const quotes5 = ["- ¡Soldado López!\n- ¡Sí, mi capitán!\n- ¡No lo ví ayer en la prueba de camuflaje.\n- ¡Gracias, mi capitán", "- ¿Qué pasa si te corto una oreja?\n- Me quedo medio sordo.\n- ¿Y si te corto la otra?\n- Me quedo ciego.\n- ¿Por qué?\n- Porque se me caen los lentes", "¿Cuál es el colmo de un peluquero?\n¡Perder el bus por los pelos!", "- Ayer ví un letrero que hizo que me cagara en los pantalones\n- ¿Y qué decía?\n - «Baño cerrado»", "Llegan a una casa para el Censo y le preguntan:\n- ¿Su nombre?\n- Adan\n- ¿El de su esposa?\n- Eva\n- ¡Increíble! Por casualidad, ¿La serpiente también vive aquí?\n- Sí, un momento,\n  ¡¡SUEGRAAA, LA BUSCAN!!", "Cuando muera, pondré en mi tumba «WiFi Gratis»\nAsí vendrá gente a visitarme", "- Señor, su esposa cayó al río\n- Búsquenla río arriba\n- Pero si el río va para abajo\n- Hágame caso, ¡esta pendeja siempre le lleva la contraria a todo!", "Pepito le pregunta a su maestra:\n- Maestra, ¿me castigaría usted por algo que yo no hice?\n- No Pepito, ¡por supuesto que no!\n- Qué bien, porque no hice la tarea de hoy.", "Me robaron todas las sillas de mi casa,\nno saben cómo me siento ahora.", "- ¿Nivel de inglés?\n- Alto\n- Traduzca <<Memoria>>\n- Memory\n- Úselo en una oración\n- Una vez me aventé por la ventana y memory\n- ¡CONTRATADO!", "- Oye, ¿por qué te bañas con pintura azul?\n- Es que mi novia vive lejos\n- ¡¿Y eso que tiene que ver?!\n- Es que quiero estar azulado ;-;"]
+const quotes5 = ("- ¡Soldado López!\n- ¡Sí, mi capitán!\n- ¡No lo ví ayer en la prueba de camuflaje.\n- ¡Gracias, mi capitán",
+"- ¿Qué pasa si te corto una oreja?\n- Me quedo medio sordo.\n- ¿Y si te corto la otra?\n- Me quedo ciego.\n- ¿Por qué?\n- Porque se me caen los lentes",
+"¿Cuál es el colmo de un peluquero?\n¡Perder el bus por los pelos!",
+"- Ayer ví un letrero que hizo que me cagara en los pantalones\n- ¿Y qué decía?\n - «Baño cerrado»",
+"Llegan a una casa para el Censo y le preguntan:\n- ¿Su nombre?\n- Adan\n- ¿El de su esposa?\n- Eva\n- ¡Increíble! Por casualidad, ¿La serpiente también vive aquí?\n- Sí, un momento,\n  ¡¡SUEGRAAA, LA BUSCAN!!",
+"Cuando muera, pondré en mi tumba «WiFi Gratis»\nAsí vendrá gente a visitarme",
+"- Señor, su esposa cayó al río\n- Búsquenla río arriba\n- Pero si el río va para abajo\n- Hágame caso, ¡esta pendeja siempre le lleva la contraria a todo!",
+"Pepito le pregunta a su maestra:\n- Maestra, ¿me castigaría usted por algo que yo no hice?\n- No Pepito, ¡por supuesto que no!\n- Qué bien, porque no hice la tarea de hoy.",
+"Me robaron todas las sillas de mi casa,\nno saben cómo me siento ahora.",
+"- ¿Nivel de inglés?\n- Alto\n- Traduzca <<Memoria>>\n- Memory\n- Úselo en una oración\n- Una vez me aventé por la ventana y memory\n- ¡CONTRATADO!",
+"- Oye, ¿por qué te bañas con pintura azul?\n- Es que mi novia vive lejos\n- ¡¿Y eso que tiene que ver?!\n- Es que quiero estar azulado ;-;"
+)
 
 function randomQuote5() {
 	return quotes5[Math.floor(Math.random() * quotes5.length)];
@@ -62,7 +73,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[10] Mantenimimiento');
+  client.user.setGame('[11] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -191,28 +202,6 @@ client.on('message', message => {
       },
       "image": {
         "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "&zoom=15"
-      }
-    }
-    message.channel.send({ embed });
-  }
-});
-
-client.on('message', async message => {
-  if (message.content.startsWith(prefix + "usage")) {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const args2 = args.slice(1).join(" ")
-    const text = "Error: no encontrado";
-    if (args2 === "maps") text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
-    if (args2 === "kiss") text = "Uso: " + prefix + "kiss <usuario/texto>";
-    if (args2 === "pat") text = "Uso: " + prefix + "pat <usuario/texto>";
-    if (args2 === "visto") text = "Uso: " + prefix + "visto <usuario/texto>";
-    if (!args2) text = "Error desconocido ocurrido"
-    const embed = {
-      "title": "Uso del comando " + args2,
-      "description": text,
-      "color": 2335,
-      "footer": {
-        "text": "Las imágenes pueden estar sujetas a derechos de autor"
       }
     }
     message.channel.send({ embed });
