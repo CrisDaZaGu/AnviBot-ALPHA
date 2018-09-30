@@ -78,7 +78,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[11] Mantenimimiento');
+  client.user.setGame('Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
