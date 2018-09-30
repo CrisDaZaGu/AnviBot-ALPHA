@@ -240,7 +240,7 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)\n`hug`: Abraza a un usuario o cosa. (o a ti mismo)\n`kiss`: Besa a un usuario o cosa. (o a ti mismo)\n`pat`: Acaricia a un usuario o cosa. (o a ti mismo)\n`cat`: Obtén una imagen de un lindo gato (real)"
+        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)\n`hug`: Abraza a un usuario o cosa. (o a ti mismo)\n`kiss`: Besa a un usuario o cosa. (o a ti mismo)\n`pat`: Acaricia a un usuario o cosa. (o a ti mismo)"
       },
       {
         "name": "Comandos modificados",
