@@ -18,7 +18,7 @@ il.run();
 
 console.log(randomQuote());
 //from here down is different gif for command --kiss ------------------------------------------------------
-const quotes2 = ["https://i.imgur.com/9y34cfo.gif", "https://media.giphy.com/media/FqBTvSNjNzeZG/giphy.gif", "https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865", "https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif",]
+const quotes2 = ["Referencia", "Referencia"]
 
 function randomQuote2() {
 	return quotes2[Math.floor(Math.random() * quotes2.length)];
@@ -28,17 +28,6 @@ il.add(randomQuote2, []);
 il.run();
 
 console.log(randomQuote2());
-//from here down is different gif for command --pat ------------------------------------------------------
-const quotes3 = ["https://media1.tenor.com/images/68d981347bf6ee8c7d6b78f8a7fe3ccb/tenor.gif?itemid=5155410", "http://2.bp.blogspot.com/-X0ZDtsVYvVk/WvOwG3Y1BYI/AAAAAAAABiQ/lt6TDbpSyXMoIglTBQH-JonovXCgB2QjACK4BGAYYCw/s1600/anime-head-pat-gif-4.gif", "https://media1.tenor.com/images/bf646b7164b76efe82502993ee530c78/tenor.gif?itemid=7394758", "https://media1.tenor.com/images/1e92c03121c0bd6688d17eef8d275ea7/tenor.gif?itemid=9920853", "https://media1.tenor.com/images/c0bcaeaa785a6bdf1fae82ecac65d0cc/tenor.gif?itemid=7453915", "https://pa1.narvii.com/6475/d8ed9aa8d975550df2653714ee90fe7e5c526135_hq.gif", "https://78.media.tumblr.com/71d93048022df065a1d2af96ab71afa3/tumblr_olykrec0DB1qbvovho1_500.gif", "http://funnypictures2.fjcdn.com/funny_gifs/Anime+grill+headpats_5d0d3c_6068962.gif"]
-
-function randomQuote3() {
-	return quotes3[Math.floor(Math.random() * quotes3.length)];
-};
-il.add(randomQuote3, []);
-
-il.run();
-
-console.log(randomQuote3());
 //from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
 const quotes4 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
 
@@ -49,7 +38,17 @@ il.add(randomQuote4, []);
 
 il.run();
 
-console.log(randomQuote4());
+//from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
+const quotes8 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
+
+function randomQuote8() {
+	return quotes8[Math.floor(Math.random() * quotes8.length)];
+};
+il.add(randomQuote8, []);
+
+il.run();
+
+console.log(randomQuote8());
 //from here down is different gif for command --chiste ------------------------------------------------------
 const quotes5 = ["- ¡Soldado López!\n- ¡Sí, mi capitán!\n- ¡No lo ví ayer en la prueba de camuflaje.\n- ¡Gracias, mi capitán", "- ¿Qué pasa si te corto una oreja?\n- Me quedo medio sordo.\n- ¿Y si te corto la otra?\n- Me quedo ciego.\n- ¿Por qué?\n- Porque se me caen los lentes", "¿Cuál es el colmo de un peluquero?\n¡Perder el bus por los pelos!", "- Ayer ví un letrero que hizo que me cagara en los pantalones\n- ¿Y qué decía?\n - «Baño cerrado»", "Llegan a una casa para el Censo y le preguntan:\n- ¿Su nombre?\n- Adan\n- ¿El de su esposa?\n- Eva\n- ¡Increíble! Por casualidad, ¿La serpiente también vive aquí?\n- Sí, un momento,\n  ¡¡SUEGRAAA, LA BUSCAN!!", "Cuando muera, pondré en mi tumba «WiFi Gratis»\nAsí vendrá gente a visitarme", "- Señor, su esposa cayó al río\n- Búsquenla río arriba\n- Pero si el río va para abajo\n- Hágame caso, ¡esta pendeja siempre le lleva la contraria a todo!", "Pepito le pregunta a su maestra:\n- Maestra, ¿me castigaría usted por algo que yo no hice?\n- No Pepito, ¡por supuesto que no!\n- Qué bien, porque no hice la tarea de hoy.", "Me robaron todas las sillas de mi casa,\nno saben cómo me siento ahora.", "- ¿Nivel de inglés?\n- Alto\n- Traduzca <<Memoria>>\n- Memory\n- Úselo en una oración\n- Una vez me aventé por la ventana y memory\n- ¡CONTRATADO!", "- Oye, ¿por qué te bañas con pintura azul?\n- Es que mi novia vive lejos\n- ¡¿Y eso que tiene que ver?!\n- Es que quiero estar azulado ;-;"]
 
@@ -63,7 +62,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[6] Mantenimimiento');
+  client.user.setGame('[7] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -98,7 +97,7 @@ client.on("message", message => {
     message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "visto")) {
-    message.channel.send(randomQuote4());
+    message.channel.send(randomQuote8());
   }
 });
 
@@ -282,7 +281,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "cat")) {
-    const res = await got('https://api.thecatapi.com/v1/images/search?', {json: true})
+    const res = await got('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&order=random', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -355,7 +354,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "pat")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está besando a " + args2;
+    let text = "<@!" + message.author.id + "> está araciando a " + args2 + " <:pat:455391227785773066>";
     if(!args2) text = "Está bien, yo te acariciaré, <@!" + message.author.id + "> <:pat:455391227785773066>";
     const res = await got('https://nekos.life/api/pat', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
