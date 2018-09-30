@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta | [3]');
+  client.user.setGame(prefix + 'ayuda | AnviBot Beta | [4]');
   // client.user.setStatus('dnd')
 });
 
@@ -137,7 +137,7 @@ client.on('message', message => {
     var ss = today.getSeconds();
     const embed = {
       "title": "",
-      "description": "Visto " + randomQuote8() + " (" + hh + ":" + min + ":" + ss + " " + dd + "/" + mm + "/" + yyyy + ")",
+      "description": "Visto <:visto:461334819586965507> (" + hh + ":" + min + ":" + ss + " " + dd + "/" + mm + "/" + yyyy + ")",
       "color": 2335,
     }
     message.channel.send({ embed });
@@ -256,7 +256,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "`visto`: Solo envía un emote random del visto.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)\n`chistes`: Agregados más malos chistes (y arreglados los errores gramaticales)"
+        "value": "`visto`: Solo envía un emote del visto mas la fecha y hora.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)\n`chistes`: Agregados más malos chistes (y arreglados los errores gramaticales)"
       },
       {
         "name": "Comandos retirados",
