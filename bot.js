@@ -62,7 +62,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[8] Mantenimimiento');
+  client.user.setGame('[9] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -202,10 +202,10 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     const text = "Error: no encontrado";
-    if(args2 == maps) text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
-    if(args2 == kiss) text = "Uso: " + prefix + "kiss <usuario/texto>";
-    if(args2 == pat) text = "Uso: " + prefix + "pat <usuario/texto>";
-    if(args2 == visto) text = "Uso: " + prefix + "visto <usuario/texto>";
+    if(args2 === "maps") text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
+    if(args2 === "kiss") text = "Uso: " + prefix + "kiss <usuario/texto>";
+    if(args2 === "pat") text = "Uso: " + prefix + "pat <usuario/texto>";
+    if(args2 === "visto") text = "Uso: " + prefix + "visto <usuario/texto>";
     if(!args2) text = "Error desconocido ocurrido"
     const embed = {
       "title": "Uso del comando " + args2,
