@@ -39,7 +39,7 @@ il.add(randomQuote4, []);
 il.run();
 
 //from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
-const quotes8 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
+const quotes8 = [" <:visto:49181876175044608> ", " <:visto:461334819586965507> ", " <:Visto2:482049600602243072> "]
 
 function randomQuote8() {
 	return quotes8[Math.floor(Math.random() * quotes8.length)];
@@ -62,7 +62,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('[7] Mantenimimiento');
+  client.user.setGame('[8] Mantenimimiento');
   client.user.setStatus('dnd')
 });
 
@@ -123,7 +123,7 @@ client.on('message', message => {
       },
       {
         "name": "Imágenes",
-        "value": "`pat` (**¡MEJORADO!**), `hug` (**¡NUEVO!**), `kiss` (**¡MEJORADO!**), `neko` (**¡NUEVO!**), `cat` (**¡NUEVO!**)" 
+        "value": "`pat` (**¡MEJORADO!**), `hug` (**¡NUEVO!**), `kiss` (**¡MEJORADO!**), `neko` (**¡NUEVO!**)" 
       },
       {
         "name": "Diversión",
@@ -202,10 +202,10 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     const text = "Error: no encontrado";
-    if(args2 === maps) text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
-    if(args2 === kiss) text = "Uso: " + prefix + "kiss <usuario/texto>";
-    if(args2 === pat) text = "Uso: " + prefix + "pat <usuario/texto>";
-    if(args2 === visto) text = "Uso: " + prefix + "visto <usuario/texto>";
+    if(args2 == maps) text = "Uso: " + prefix + "maps <ciudad>,(departamento/provincia/estado),(país)";
+    if(args2 == kiss) text = "Uso: " + prefix + "kiss <usuario/texto>";
+    if(args2 == pat) text = "Uso: " + prefix + "pat <usuario/texto>";
+    if(args2 == visto) text = "Uso: " + prefix + "visto <usuario/texto>";
     if(!args2) text = "Error desconocido ocurrido"
     const embed = {
       "title": "Uso del comando " + args2,
@@ -272,27 +272,6 @@ client.on('message', async message => {
       },
       "image": {
         "url": res.body.neko
-      },
-    }
-
-    message.channel.send({ embed })
-  }
-});
-
-client.on('message', async message => {
-  if (message.content.startsWith(prefix + "cat")) {
-    const res = await got('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&order=random', {json: true})
-    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
-    
-    const embed = {
-      "title": "",
-      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos",
-      "color": 2335,
-      "footer": {
-        "text": "Powered by thecatapi"
-      },
-      "image": {
-        "url": res.body.url
       },
     }
 
