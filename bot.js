@@ -39,7 +39,7 @@ il.add(randomQuote4, []);
 il.run();
 
 //from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
-const quotes8 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
+const quotes8 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>", "<:VistoIG:453283456181600276>"]
 
 function randomQuote8() {
 	return quotes8[Math.floor(Math.random() * quotes8.length)];
@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta | [2]');
+  client.user.setGame(prefix + 'ayuda | AnviBot Beta | [3]');
   // client.user.setStatus('dnd')
 });
 
@@ -137,7 +137,7 @@ client.on('message', message => {
     var ss = today.getSeconds();
     const embed = {
       "title": "",
-      "description": "Visto " + randomQuote8() + "(" + hh + min + ss + " " + dd + "/" + mm + "/" + yyyy + ")",
+      "description": "Visto " + randomQuote8() + " (" + hh + ":" + min + ":" + ss + " " + dd + "/" + mm + "/" + yyyy + ")",
       "color": 2335,
     }
     message.channel.send({ embed });
