@@ -84,14 +84,14 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta | [4]');
+  client.user.setGame(prefix + 'ayuda | ¡Nueva versión 1.5.3! Vea los cambios con --changelog! | AnviBot Beta');
   // client.user.setStatus('dnd')
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "alpha_1.3.1(edit7)";
+  const version = "1.5.3";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -128,19 +128,8 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "visto")) {
-    const today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-    var hh = today.getHours();
-    var min = today.getMinutes();
-    var ss = today.getSeconds();
-    const embed = {
-      "title": "",
-      "description": "Visto <:visto:461334819586965507> (" + hh + ":" + min + ":" + ss + " " + dd + "/" + mm + "/" + yyyy + ")",
-      "color": 2335,
-    }
-    message.channel.send({ embed });
+    const visto = clients.emojis.get("461334819586965507")
+    message.channel.send(`Seen ${visto}`);
   }
 });
 
@@ -236,7 +225,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "alpha_1.4.5 (edit10)"
+    const version = "1.5.3"
     const embed = {
       "title": "",
       "author": {
