@@ -84,8 +84,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Nueva versión 1.5.3! Vea los cambios con --changelog! | AnviBot Beta');
-  // client.user.setStatus('dnd')
+  client.user.setGame('En mantenimiento | AnviBot Beta'); // Juego
+  client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -117,6 +117,15 @@ client.on("message", message => {
   if (message.content.startsWith(prefix + "say")) {
     let text = args.slice(0).join(" ");
     message.channel.send(text);
+  }
+});
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+
+  if(!args[1]) {message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")}
+  if (message.content.startsWith(prefix + "args")) {
+    message.channel.send(`Sí! Usaste ${args[1]} como tu primer argumento`)
   }
 });
 
