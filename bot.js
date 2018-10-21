@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | [2] | AnviBot Beta'); // Juego
+  client.user.setGame('En mantenimiento | [3] | AnviBot Beta'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -122,7 +122,7 @@ client.on("message", message => {
 
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
-  
+
   if (message.content.startsWith(prefix + "args")) {
   if(!args[1]) {
     message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")
@@ -209,6 +209,38 @@ client.on('message', message => {
       }
       message.channel.send({ embed });
     }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "conversor")) {
+    var args = message.content.substring(prefix.length).split(" ");
+    let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
+    if(!args[1]) text = "<@!" + message.author.id + ">, no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`";
+    if(!args[3]) text = "<@!" + message.author.id + ">, no especificaste la cantidad a convertir."
+    const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true})
+    const embed = {
+      "title": "[BETA] Conversor de moneda",
+      "description": text,
+      "color": 2335,
+      "fields": [
+        {
+          "name": "Moneda",
+          "value": `De ${args[1]} a ${args[2]}`
+        },
+        {
+          "name": "Última actualización",
+          "value": res.body.update
+        },
+        {
+          "name": "Conversión",
+          "value": `${args[1]} = ${args[3]} **-->** ${args[2]} = ${res.body.amount} (${res.dody.value})`
+        }],
+      "footer": {
+        "text": "Powered by conversor.today"
+      }
+    }
+    message.channel.send({ embed });
+  }
 });
 
 client.on('message', message => {
