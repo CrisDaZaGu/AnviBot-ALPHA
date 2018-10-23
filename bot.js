@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | [7] | AnviBot Beta'); // Juego
+  client.user.setGame('En mantenimiento | [8] | AnviBot Beta'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -145,7 +145,9 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "ayuda")) {
+    if (args[1] === "kiss") return message.channel.send("Uso: `kiss <mención>`")
     const embed = {
       "title": "",
       "author": {
