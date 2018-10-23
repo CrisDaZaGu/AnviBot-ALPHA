@@ -323,25 +323,6 @@ client.on('message', async message => {
   }
 });
 
-client.on('message', async message => {
-    const res = await got('https://nekos.life/api/lewd/neko', {json: true});  
-    if (message.content.startsWith(prefix + "lewd")) {
-      const embed = {
-        "title": "",
-        "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, owo",
-        "color": 2335,
-        "footer": {
-          "text": "Powered by nekos.life"
-        },
-        "image": {
-          "url": res.body.neko
-        },
-      }
-      if (mesage.channel.nsfw) return message.channel.send({ embed }, {code: "py"});
-    } else {
-    message.channel.send("Comando de uso en canales NSFW")
-  }
-});
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "hug")) {
