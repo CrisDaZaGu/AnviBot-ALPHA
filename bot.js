@@ -378,7 +378,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "baka")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = args2 + " es un BAKA BAKA BAKAAAAA!";
+    let text = message.mentions.members.first() + " es un BAKA BAKA BAKAAAAA!";
     if(!args2) text = "<@!" + message.author.id + "> debe ser un verdadero baka.";
     const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
