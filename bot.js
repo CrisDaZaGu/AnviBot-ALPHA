@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | [5.5] | AnviBot Beta'); // Juego
+  client.user.setGame('En mantenimiento | [6] | AnviBot Beta'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -324,20 +324,21 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "lewd")) {
     const res = await got('https://nekos.life/api/lewd/neko', {json: true});  
-    const embed = {
-      "title": "",
-      "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, owo",
-      "color": 2335,
-      "footer": {
-        "text": "Powered by nekos.life"
-      },
-      "image": {
-        "url": res.body.neko
-      },
-    }
-    if (mesage.channel.nsfw) return message.channel.send({ embed }, {code: "py"});
+    if (message.content.startsWith(prefix + "lewd")) {
+      const embed = {
+        "title": "",
+        "description": "<@!" + message.author.id + ">, aquí tienes unos lindos gatitos, owo",
+        "color": 2335,
+        "footer": {
+          "text": "Powered by nekos.life"
+        },
+        "image": {
+          "url": res.body.neko
+        },
+      }
+      if (mesage.channel.nsfw) return message.channel.send({ embed }, {code: "py"});
+    } else {
     message.channel.send("Comando de uso en canales NSFW")
   }
 });
