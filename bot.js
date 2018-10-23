@@ -378,8 +378,8 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "baka")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = message.mentions.members.first() + " es un BAKA BAKA BAKAAAAA!";
-    if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> debe ser un verdadero baka.";
+    let text = message.mentions.members.first() + " es un BAKA BAKA BAKAAAAA! <:tontotonto:427349831393083393>";
+    if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> debe ser un verdadero baka <:tontotonto:427349831393083393>";
     const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -406,6 +406,81 @@ client.on('message', async message => {
     let text = "<@!" + message.author.id + "> le dio una bofetada a " + message.mentions.members.first() + ", debió doler.";
     if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> se dió una bofetada...?";
     const res = await got('https://nekos.life/api/v2/img/slap', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "slap")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> se ve un poco presumido ante " + message.mentions.members.first() + ", jeje";
+    if(!message.mentions.members.first()) text = "<@!" + message.author.id + ">, se ve satisfecho de sí mism@...";
+    const res = await got('https://nekos.life/api/v2/img/smug', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "cat")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está alimentando a " + message.mentions.members.first() + " aww :heart:";
+    if(!message.mentions.members.first()) return message.channel.send("¡Menciona a una persona para alimentarla!")
+    const res = await got('https://nekos.life/api/v2/img/meow', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "feed")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "Gatos owo";
+    if(!message.mentions.members.first()) text = "Gatos owo";
+    const res = await got('https://nekos.life/api/v2/img/feed', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
