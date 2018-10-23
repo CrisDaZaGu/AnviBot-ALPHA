@@ -450,12 +450,12 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "cat")) {
+  if (message.content.startsWith(prefix + "feed")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está alimentando a " + message.mentions.members.first() + " aww :heart:";
-    if(!message.mentions.members.first()) return message.channel.send("¡Menciona a una persona para alimentarla!")
-    const res = await got('https://nekos.life/api/v2/img/meow', {json: true})
+    let text = "<@!" + message.author.id + "> está alimentando a " + message.mentions.members.first() + ", aww :heart:";
+    if(!message.mentions.members.first()) return message.channel.send("**¡Menciona a una persona para alimentarla!**")
+    const res = await got('https://nekos.life/api/v2/img/feed', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -475,12 +475,12 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "feed")) {
+  if (message.content.startsWith(prefix + "cat")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "Gatos owo";
     if(!message.mentions.members.first()) text = "Gatos owo";
-    const res = await got('https://nekos.life/api/v2/img/feed', {json: true})
+    const res = await got('https://nekos.life/api/v2/img/meow', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
