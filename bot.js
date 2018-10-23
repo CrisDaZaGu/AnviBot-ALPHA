@@ -217,7 +217,7 @@ client.on('message', async message => {
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
     if(!args[1]) text = "<@!" + message.author.id + ">, no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`";
     if(!args[3]) text = "<@!" + message.author.id + ">, no especificaste la cantidad a convertir."
-    const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true})
+    const res = await got('https://api.cambio.today/v1/quotes/' + args[1] + '/' + args[2] + '/json?quantity=' + args[3] + '&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj', {json: true})
     const embed = {
       "title": "[BETA] Conversor de moneda",
       "description": text,
