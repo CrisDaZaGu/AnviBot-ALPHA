@@ -400,6 +400,31 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
+  if (message.content.startsWith(prefix + "slap")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> le dio una bofetada a " + message.mentions.members.first() + ", debió doler.";
+    if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> se dió una bofetada...?";
+    const res = await got('https://nekos.life/api/v2/img/slap', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
   if (message.content.startsWith(prefix + "pat")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
