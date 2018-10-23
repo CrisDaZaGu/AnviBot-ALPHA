@@ -375,6 +375,31 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
+  if (message.content.startsWith(prefix + "baka")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = args2 + " es un BAKA BAKA BAKAAAAA!";
+    if(!args2) text = "<@!" + message.author.id + "> debe ser un verdadero baka.";
+    const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
   if (message.content.startsWith(prefix + "pat")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
