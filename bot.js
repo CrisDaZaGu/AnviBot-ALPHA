@@ -538,4 +538,26 @@ client.on('message', async message => {
   }
 });
 
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "test")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "canal nsfw";
+    if(!message.channel.nsfw) return message.channel.send("canal normal");
+    const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
 client.login(process.env.BOT_TOKEN);
