@@ -84,8 +84,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | [9] | AnviBot Beta'); // Juego
-  client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
+  client.user.setGame(prefix + 'ayuda | v1.7.4 | AnviBot Beta'); // Juego
+  // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -173,7 +173,7 @@ client.on('message', message => {
         "value": "`info`, `me`, `ayuda`"
       },
       {
-        "name": "Imágenes",
+        "name": "Imágenes SFW",
         "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`" 
       },
       {
@@ -229,8 +229,8 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "conversor")) {
     var args = message.content.substring(prefix.length).split(" ");
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
-    if(!args[1]) text = "<@!" + message.author.id + ">, no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`";
-    if(!args[3]) text = "<@!" + message.author.id + ">, no especificaste la cantidad a convertir."
+    if(!args[1]) return message.reply("<@!" + message.author.id + ">, no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[3]) return message.reply("<@!" + message.author.id + ">, no especificaste la cantidad a convertir.")
     const res = await got('https://api.cambio.today/v1/quotes/' + args[1] + '/' + args[2] + '/json?quantity=' + args[3] + '&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj', {json: true})
     const embed = {
       "title": "[BETA] Conversor de moneda",
@@ -539,12 +539,187 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
+  if (message.content.startsWith(prefix + "lewd")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/lewd/neko', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
   if (message.content.startsWith(prefix + "trap")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "¡It's a Trap!";
-    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW :underage:");
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     const res = await got('https://nekos.life/api/v2/img/trap', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "pussy")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/pussy', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "yuri")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/yuri', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "yuri")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/yuri', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "smallboobs")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/smallboobs', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "futanari")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/futanari', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "blowjob")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/blowjob', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
