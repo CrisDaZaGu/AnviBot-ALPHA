@@ -193,6 +193,39 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  if (message.content.startsWith(prefix + "nsfw")) {
+    const embed = {
+      "title": "NSFW Commands",
+      "author": {
+        "name": client.user.username,
+        "icon_url": client.user.avatarURL
+      },
+      "description": "Comandos de imágenes SFW/NSFW dentro de AnviBot.",
+      "color": 2335,
+      "fields": [{
+        "name": "Información",
+        "value": "`ayuda`"
+      },
+      {
+        "name": "Imágenes SFW",
+        "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`" 
+      },
+      {
+        "name": "Imágenes NSFW",
+        "value": "`lewd`, `trap`, `pussy`, `yuri`, `ero`, `smallboobls`, `futanari`, `blowjob`"
+      }],
+      "footer": {
+        "text": "Gracias por usar AnviBot!"
+      },
+    }
+    message.delete();
+    message.reply('Los comandos fueron enviados a tu DM');
+    message.author.send({ embed });
+  }
+});
+
+client.on('message', message => {
   if (message.content.startsWith(prefix + "chiste")) {
     const embed = {
       "title": "",
@@ -639,12 +672,12 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "yuri")) {
+  if (message.content.startsWith(prefix + "ero")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "...";
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
-    const res = await got('https://nekos.life/api/v2/img/yuri', {json: true})
+    const res = await got('https://nekos.life/api/v2/img/ero', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
