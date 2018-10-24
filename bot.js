@@ -91,7 +91,7 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.5.3";
+  const version = "1.7.4";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -147,22 +147,34 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "ayuda")) {
-    if (args[1] === "kiss") return message.channel.send("Uso: `kiss <mención>`")
+    if (args[1] === "kiss") return message.channel.send("Uso: `kiss (mención)`");
+    if (args[1] === "hug") return message.channel.send("Uso: `hug (mención)`");
+    if (args[1] === "slap") return message.channel.send("Uso: `slap (mención)`");
+    if (args[1] === "feed") return message.channel.send("Uso: `feed <mención (necesaria)>`");
+    if (args[1] === "pat") return message.channel.send("Uso: `pat (mención)`");
+    if (args[1] === "smug") return message.channel.send("Uso: `smug (mención)`");
+    if (args[1] === "chiste") return message.channel.send("Uso: `chiste`");
+    if (args[1] === "visto") return message.channel.send("Uso: `visto`");
+    if (args[1] === "args") return message.channel.send("Uso: `args (args)`");
+    if (args[1] === "say") return message.channel.send("Uso: `say (mensaje a decir)`");
+    if (args[1] === "sayd") return message.channel.send("Uso: `say (mensaje a decir)`");
+    if (args[1] === "8ball") return message.channel.send("Uso: `8ball (pregunta sí/no)`");
+    if (args[1] === "neko") return message.channel.send("Uso: `neko`");
     const embed = {
       "title": "",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "H-Hola, soy AnviBot... estos son mis comandos, mi prefijo es » `" + prefix + "`",
+      "description": "H-Hola, soy AnviBot... estos son mis comandos, mi prefijo es » `" + prefix + "`\nPuedes conseguir el uso de cada comando que conozco si lo colocas como argumento `help avatar`",
       "color": 2335,
       "fields": [{
         "name": "Información/Utilidad",
-        "value": "`info`, `me`"
+        "value": "`info`, `me`, `ayuda`"
       },
       {
         "name": "Imágenes",
-        "value": "`pat` (**¡MEJORADO!**), `hug` (**¡NUEVO!**), `kiss` (**¡MEJORADO!**), `neko` (**¡NUEVO!**)" 
+        "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`" 
       },
       {
         "name": "Diversión",
@@ -170,7 +182,7 @@ client.on('message', message => {
       },
       {
         "name": "Pronto",
-        "value": "\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "N/A\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -270,7 +282,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.5.3"
+    const version = "1.7.4"
     const embed = {
       "title": "",
       "author": {
@@ -286,15 +298,15 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`neko`: Obtén una imagen de un lindo gatito (anime)\n`hug`: Abraza a un usuario o cosa. (o a ti mismo)\n`kiss`: Besa a un usuario o cosa. (o a ti mismo)\n`pat`: Acaricia a un usuario o cosa. (o a ti mismo)"
+        "value": "`baka`, `slap`, `smug`, `feed`, `cat`"
       },
       {
         "name": "Comandos modificados",
-        "value": "`visto`: Solo envía un emote del visto mas la fecha y hora.\n`maps`: Ahora puedes localizar sitios específicos (No solo ciudades)\n`chistes`: Agregados más malos chistes (y arreglados los errores gramaticales)"
+        "value": " `ayuda`: Ahora puedes conseguir el uso de cada comando colocando el nombre de éste como argumento"
       },
       {
         "name": "Comandos retirados",
-        "value": "`comandos`: Comando retirado, use --ayuda."
+        "value": "`lewd`, `conv`"
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
@@ -427,7 +439,7 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "slap")) {
+  if (message.content.startsWith(prefix + "smug")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> se ve un poco presumido ante " + message.mentions.members.first() + ", jeje";
