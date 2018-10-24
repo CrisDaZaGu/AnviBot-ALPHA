@@ -553,6 +553,9 @@ client.on('message', async message => {
       "color": 2335,
       "footer": {
         "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
       }
     }
 
