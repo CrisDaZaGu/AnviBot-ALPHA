@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | [8] | AnviBot Beta'); // Juego
+  client.user.setGame('En mantenimiento | [9] | AnviBot Beta'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -539,12 +539,12 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "test")) {
+  if (message.content.startsWith(prefix + "trap")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "canal nsfw";
-    if(!message.channel.nsfw) return message.channel.send("canal normal");
-    const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
+    let text = "¡It's a Trap!";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW :underage:");
+    const res = await got('https://nekos.life/api/v2/img/trap', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
