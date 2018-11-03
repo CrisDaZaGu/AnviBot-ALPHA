@@ -84,8 +84,8 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | v1.7.4 | AnviBot Beta'); // Juego
-  // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
+  client.user.setGame('En mantenimiento | ' + prefix + 'ayuda | AnviBot Beta'); // Juego
+  client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -139,8 +139,15 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "visto")) {
-    const visto = clients.emojis.get("461334819586965507")
-    message.channel.send(`Seen ${visto}`);
+    const embed = {
+      "title": "",
+      "description": "Visto <:visto:461334819586965507>",
+      "color": 2335,
+      "footer": {
+        "text": new Date()
+      },
+    }
+    message.channel.send({ embed })
   }
 });
 
@@ -196,7 +203,7 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "nsfw")) {
     const embed = {
-      "title": "NSFW Commands",
+      "title": "(N)SFW Commands",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
