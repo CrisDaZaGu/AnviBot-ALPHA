@@ -143,9 +143,7 @@ client.on('message', message => {
       "title": "",
       "description": "Visto <:visto:461334819586965507>",
       "color": 2335,
-      "footer": {
-        "text": new Date()
-      },
+      "timestamp": new Date(),
     }
     message.channel.send({ embed })
   }
