@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento | ' + prefix + 'ayuda | AnviBot Beta'); // Juego
+  client.user.setGame('En mantenimiento [1] | ' + prefix + 'ayuda | AnviBot Beta'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -775,5 +775,45 @@ client.on('message', async message => {
     message.channel.send({ embed })
   }
 });
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "urban")) {
+    const urban = require('relevant-urban');
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ");
+
+    if(!args[1]) return message.channel.send("Especifica una palabra a buscar");
+
+    let res = await urban(args.join(' ')).catch(e => {
+      return message.channel.send("Palabra no encontrada.")
+    })
+
+    const embed = {
+      "title": "UrbanDictionary",
+      "description": "Resultados para tu búsqueda de: " + args2,
+      "color": 2335,
+      "fields": [
+      {
+        "name": "Definición",
+        "value": res.definition
+      },
+      {
+        "name": "Ejemplo",
+        "value": res.example
+      },
+      {
+        "name": "Autor",
+        "value": res.author
+      },
+      {
+        "name": "Votos",
+        "value": ":thumbsup: " + res.thumbsUp + " | :thumbsdown: " + res.thumbsDown
+      }],
+      "footer": {
+        "text": "Powered by UrbanDictionary"
+      },
+    }
+    message.channel.send({ embed })
+}});
 
 client.login(process.env.BOT_TOKEN);
