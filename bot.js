@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('En mantenimiento [1] | ' + prefix + 'ayuda | AnviBot Beta'); // Juego
+  client.user.setGame('Several Maintenance'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -101,7 +101,7 @@ client.on("message", message => {
     message.channel.send("**Estado del Bot:** Conectado\n**Fallos:** null\n**Creador:** ElBuenAnvita\n**Versión del Bot:** " + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
-    message.channel.send("```AnviBot Alpha Discord Bot```\nSi tienes dudas sobre el bot o quieres colaborar, puedes entrar con el siguiente enlace:\nhttps://discord.gg/PSFfWFp\n\n```Invita AnviBot a tu servidor de Discord```\nPuedes invitar al bot con el siguiente enlace:\n<https://discordapp.com/api/oauth2/authorize?client_id=419980531564806145&permissions=8&scope=bot&redirect_url=http://anvibot.blogspot.com/p/commands>\n\n**¡Gracias por usar AnviBot!**");
+    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/vqejH9n\n\n```Invita AnviBot a tu servidor de Discord```\nLINK_DESHABILITADO");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
     message.reply(randomQuote());
