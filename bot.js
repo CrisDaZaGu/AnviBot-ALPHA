@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Several Maintenance (4)'); // Juego
+  client.user.setGame('Several Maintenance (5)'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -270,28 +270,7 @@ client.on('message', async message => {
     if(!args[1]) return message.reply("no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`");
     if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
     const res = await got('https://api.cambio.today/v1/quotes/COP/USD/json?quantity=4000&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj', {json: true})
-    const embed = {
-      "title": "[BETA] Conversor de moneda",
-      "description": text,
-      "color": 2335,
-      "fields": [
-        {
-          "name": "Moneda",
-          "value": `De ${args[1]} a ${args[2]}`
-        },
-        {
-          "name": "Última actualización",
-          "value": res.body.update
-        },
-        {
-          "name": "Conversión",
-          "value": `${args[1]} = ${args[3]} **-->** ${args[2]} = ${res.result.amount} (${res.result.value})`
-        }],
-      "footer": {
-        "text": "Powered by conversor.today"
-      }
-    }
-    message.channel.send('Resulado: ' + res.body.value);
+    message.channel.send('Resultado: ' + res.body.result.amount);
   }
 });
 
