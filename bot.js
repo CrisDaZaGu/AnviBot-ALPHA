@@ -141,7 +141,7 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "visto")) {
     const embed = {
       "title": "",
-      "description": "Visto <:visto:461334819586965507>",
+      "description": "Visto <:Visto:486318438604734464>",
       "color": 2335,
       "timestamp": new Date(),
     }
@@ -171,7 +171,7 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "H-Hola, soy AnviBot... estos son mis comandos, mi prefijo es » `" + prefix + "`\nPuedes conseguir el uso de cada comando que conozco si lo colocas como argumento `help avatar`",
+      "description": "H-Hola, soy AnviBot... estos son los comandos que me sé, mi prefijo es » `" + prefix + "`\nPuedes conseguir el uso de cada comando que conozco si lo colocas como argumento `help avatar`",
       "color": 2335,
       "fields": [{
         "name": "Información/Utilidad",
@@ -267,9 +267,9 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "conversor")) {
     var args = message.content.substring(prefix.length).split(" ");
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
-    if(!args[1]) return message.reply("<@!" + message.author.id + ">, no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`");
-    if(!args[3]) return message.reply("<@!" + message.author.id + ">, no especificaste la cantidad a convertir.")
-    const res = await got('https://api.cambio.today/v1/quotes/' + args[1] + '/' + args[2] + '/json?quantity=' + args[3] + '&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj', {json: true})
+    if(!args[1]) return message.reply("no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
+    const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true})
     const embed = {
       "title": "[BETA] Conversor de moneda",
       "description": text,
