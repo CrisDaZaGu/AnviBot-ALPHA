@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Several Maintenance (2)'); // Juego
+  client.user.setGame('Several Maintenance (3)'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -269,7 +269,7 @@ client.on('message', async message => {
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
     if(!args[1]) return message.reply("no especificaste ningúna moneda. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>\n**Ejemplo:** `conversor EUR USD 5`");
     if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
-    const res = await got(`https://api.cambio.today/v1/quotes/COP/USD/json?quantity=4000&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true})
+    const res = await got('https://api.cambio.today/v1/quotes/COP/USD/json?quantity=4000&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj', {json: true})
     const embed = {
       "title": "[BETA] Conversor de moneda",
       "description": text,
@@ -285,7 +285,7 @@ client.on('message', async message => {
         },
         {
           "name": "Conversión",
-          "value": `${args[1]} = ${args[3]} **-->** ${args[2]} = ${res.body.amount} (${res.dody.value})`
+          "value": `${args[1]} = ${args[3]} **-->** ${args[2]} = ${res.result.amount} (${res.result.value})`
         }],
       "footer": {
         "text": "Powered by conversor.today"
