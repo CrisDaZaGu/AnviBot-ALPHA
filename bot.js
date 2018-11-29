@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Several Maintenance (3)'); // Juego
+  client.user.setGame('Several Maintenance (4)'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -291,7 +291,7 @@ client.on('message', async message => {
         "text": "Powered by conversor.today"
       }
     }
-    message.channel.send({ embed });
+    message.channel.send('Resulado: ' + res.body.value);
   }
 });
 
