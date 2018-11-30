@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta (7) | Pronto ¬¬ -> anvi.cf/bot/'); // Juego
+  client.user.setGame(prefix + 'ayuda | AnviBot Beta (8) | Pronto ¬¬ -> anvi.cf/bot/'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -207,13 +207,14 @@ client.on('message', message => {
     if (args[1] === "bust") enlace = `https://minotar.net/bust/${args[2]}.png`;
     if (args[1] === "skin") enlace = `https://minotar.net/skin/${args[2]}.png`;
     if (!args[1]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
+    if (!args[2]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
     const embed = {
       "title": "",
       "author": {
         "name": args[2],
         "icon_url": `https://minotar.net/avatar/${args[2]}.png`
       },
-      "description": `Resultados para ${args[2]}`,
+      "description": `Resultados para ${args[2]}\nSi aparece un Steve, significará que dicho nickname no está registrado o se cambió de nick.`,
       "color": 2335,
       "image": {
         "url": enlace
