@@ -84,7 +84,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta (6) | anvi.cf/bot/'); // Juego
+  client.user.setGame(prefix + 'ayuda | AnviBot Beta (7) | Pronto ¬¬ -> anvi.cf/bot/'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -152,19 +152,20 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "ayuda")) {
-    if (args[1] === "kiss") return message.channel.send("Uso: `kiss (mención)`");
-    if (args[1] === "hug") return message.channel.send("Uso: `hug (mención)`");
-    if (args[1] === "slap") return message.channel.send("Uso: `slap (mención)`");
-    if (args[1] === "feed") return message.channel.send("Uso: `feed <mención (necesaria)>`");
-    if (args[1] === "pat") return message.channel.send("Uso: `pat (mención)`");
-    if (args[1] === "smug") return message.channel.send("Uso: `smug (mención)`");
-    if (args[1] === "chiste") return message.channel.send("Uso: `chiste`");
-    if (args[1] === "visto") return message.channel.send("Uso: `visto`");
-    if (args[1] === "args") return message.channel.send("Uso: `args (args)`");
-    if (args[1] === "say") return message.channel.send("Uso: `say (mensaje a decir)`");
-    if (args[1] === "sayd") return message.channel.send("Uso: `say (mensaje a decir)`");
-    if (args[1] === "8ball") return message.channel.send("Uso: `8ball (pregunta sí/no)`");
-    if (args[1] === "neko") return message.channel.send("Uso: `neko`");
+    if (args[1] === "kiss") return message.channel.send("**Uso:** `kiss (mención)`");
+    if (args[1] === "hug") return message.channel.send("**Uso:** `hug (mención)`");
+    if (args[1] === "slap") return message.channel.send("**Uso:** `slap (mención)`");
+    if (args[1] === "feed") return message.channel.send("**Uso:** `feed <mención (necesaria)>`");
+    if (args[1] === "pat") return message.channel.send("Uso:** `pat (mención)`");
+    if (args[1] === "smug") return message.channel.send("Uso:** `smug (mención)`");
+    if (args[1] === "chiste") return message.channel.send("Uso:** `chiste`");
+    if (args[1] === "visto") return message.channel.send("Uso:** `visto`");
+    if (args[1] === "args") return message.channel.send("Uso:** `args (args)`");
+    if (args[1] === "say") return message.channel.send("Uso:** `say (mensaje a decir)`");
+    if (args[1] === "sayd") return message.channel.send("Uso:** `say (mensaje a decir)`");
+    if (args[1] === "8ball") return message.channel.send("Uso:** `8ball (pregunta sí/no)`");
+    if (args[1] === "neko") return message.channel.send("Uso:** `neko`");
+    if (args[1] === "mcskin") return message.channel.send("**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
     const embed = {
       "title": "",
       "author": {
@@ -175,11 +176,11 @@ client.on('message', message => {
       "color": 2335,
       "fields": [{
         "name": "Información/Utilidad",
-        "value": "`info`, `me`, `ayuda`"
+        "value": "`info`, `me`, `ayuda`, `conversor`, `mcskin`"
       },
       {
-        "name": "Imágenes SFW",
-        "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`" 
+        "name": "Imágenes",
+        "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`, `nsfw`" 
       },
       {
         "name": "Diversión",
@@ -197,35 +198,30 @@ client.on('message', message => {
   }
 });
 
-//client.on('message', message => {
-//  var args = message.content.substring(prefix.length).split(" ");
-//  if (message.content.startsWith(prefix + "mcskin")) {
-//    if (args[1] === "avatar") let enlace = `https://minotar.net/avatar/${args[2]}.png`;
-//    if (args[1] === "avatar") let texto_des = "el avatar de";
-//    if (args[1] === "helm") let enlace = `https://minotar.net/helm/${args[2]}.png`;
-//    if (args[1] === "helm") let texto_des = `el [[helm]] de`;
-//    if (args[1] === "cube") let enlace = `https://minotar.net/cube/${args[2]}.png`;
-//    if (args[1] === "cube") let texto_des = `la cabeza de`;
-//    if (args[1] === "bust") let enlace = `https://minotar.net/bust/${args[2]}.png`;
-//    if (args[1] === "bust") let texto_des = `el [[bust]] de`;
-//    if (args[1] === "skin") let enlace = `https://minotar.net/skin/${args[2]}.png`;
-//    if (args[1] === "skin") let texto_des = `el skin de`;
-//    if (!args[1]) let enlace = `https://minotar.net/helm/MHF_Steve.png`;
-//    const embed = {
-//      "title": "",
-//      "author": {
-//        "name": args[2],
-//        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
-//      },
-//      "description": `Resultados para ${texto_des} ${args[2]}`,
-//      "color": 2335,
-//      "image": {
-//        "url": enlace
-//      }
-//    }
-//    message.channel.send({ embed })
-//  }
-//});
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  if (message.content.startsWith(prefix + "mcskin")) {
+    if (args[1] === "avatar") enlace = `https://minotar.net/avatar/${args[2]}.png`;
+    if (args[1] === "helm") enlace = `https://minotar.net/helm/${args[2]}.png`;
+    if (args[1] === "cube") enlace = `https://minotar.net/cube/${args[2]}.png`;
+    if (args[1] === "bust") enlace = `https://minotar.net/bust/${args[2]}.png`;
+    if (args[1] === "skin") enlace = `https://minotar.net/skin/${args[2]}.png`;
+    if (!args[1]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
+    const embed = {
+      "title": "",
+      "author": {
+        "name": args[2],
+        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
+      },
+      "description": `Resultados para ${args[2]}`,
+      "color": 2335,
+      "image": {
+        "url": enlace
+      }
+    }
+    message.channel.send({ embed })
+  }
+});
 
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
