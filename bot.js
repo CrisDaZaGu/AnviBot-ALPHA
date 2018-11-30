@@ -71,7 +71,13 @@ const quotes5 = [
   "¿Celosa yo? JAJAJAJAJAJA.\N¿QUIÉN CARAJOS ES REXONA Y POR QUÉ NO TE ABANDONA?",
   "*Que sea lo que Dios quiera*\nYo entregando el exámen",
   "—¿Tiene pastillas para la flojera?\n—Sí.\n—¿Me pone una en la boca, por favor?",
-  "Había una vez un niño llamado «Tarea»\nUn día, la profesora dijo «¡Tarea para la casa!»\nY el niño se fue para su casa."
+  "Había una vez un niño llamado «Tarea»\nUn día, la profesora dijo «¡Tarea para la casa!»\nY el niño se fue para su casa.",
+  "¿Por qué la torre de pizza está inclinada?\nPorque tuvo más reflejos que las torres gemelas",
+  "—¡Señorita! ¡Eh, usted, la rubia!\n—¿Si, es a mí?\n—¡Le comunicamos que su avión viene demorado!.\n—Ay, qué lindo, ese es mi color favorito...",
+  "—¿Sabes que mi hermano anda en bicicleta desde los cuatro años?.\n—Mmm, pues ya debe estar lejos.",
+  "—Si mis besos fueran WiFi, ¿me los pedirías o me los robarías?\n—Usaría datos móviles...",
+  "—¿Por qué se suicidó el libro de matemáticas?\n—Porque tenía muchos problemas.",
+  "¿Por qué los diabéticos no pueden vengarse?\nPorque la venganza es dulce..."
 ]
 
 function randomQuote5() {
@@ -91,17 +97,17 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.7.8";
+  const version = "1.7.9";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
     message.channel.send("**Pong!** :ping_pong:");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send("**Estado del Bot:** Conectado\n**Fallos:** null\n**Creador:** ElBuenAnvita\n**Versión del Bot:** " + version);
+    message.channel.send("**Estado del Bot:** Funcionando, con errores.\n**Bugs detectados:** 2\n\n**Versión actual:** " + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
-    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/vqejH9n\n\n```Invita AnviBot a tu servidor de Discord```\nLINK_DESHABILITADO");
+    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
     message.reply(randomQuote());
@@ -127,7 +133,7 @@ client.on('message', message => {
   if(!args[1]) {
     message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")
   } else {
-    message.channel.send(`Sí! Usaste ${args[1]} como tu primer argumento`)
+    message.channel.send(`Usaste ${args[1]} como tu primer argumento`)
   }
 }});
 
@@ -156,15 +162,15 @@ client.on('message', message => {
     if (args[1] === "hug") return message.channel.send("**Uso:** `hug (mención)`");
     if (args[1] === "slap") return message.channel.send("**Uso:** `slap (mención)`");
     if (args[1] === "feed") return message.channel.send("**Uso:** `feed <mención (necesaria)>`");
-    if (args[1] === "pat") return message.channel.send("Uso:** `pat (mención)`");
-    if (args[1] === "smug") return message.channel.send("Uso:** `smug (mención)`");
-    if (args[1] === "chiste") return message.channel.send("Uso:** `chiste`");
-    if (args[1] === "visto") return message.channel.send("Uso:** `visto`");
-    if (args[1] === "args") return message.channel.send("Uso:** `args (args)`");
-    if (args[1] === "say") return message.channel.send("Uso:** `say (mensaje a decir)`");
-    if (args[1] === "sayd") return message.channel.send("Uso:** `say (mensaje a decir)`");
-    if (args[1] === "8ball") return message.channel.send("Uso:** `8ball (pregunta sí/no)`");
-    if (args[1] === "neko") return message.channel.send("Uso:** `neko`");
+    if (args[1] === "pat") return message.channel.send("**Uso:** `pat (mención)`");
+    if (args[1] === "smug") return message.channel.send("**Uso:** `smug (mención)`");
+    if (args[1] === "chiste") return message.channel.send("**Uso:** `chiste`");
+    if (args[1] === "visto") return message.channel.send("**Uso:** `visto`");
+    if (args[1] === "args") return message.channel.send("**Uso:** `args (args)`");
+    if (args[1] === "say") return message.channel.send("**Uso:** `say (mensaje a decir)`");
+    if (args[1] === "sayd") return message.channel.send("**Uso:** `say (mensaje a decir)`");
+    if (args[1] === "8ball") return message.channel.send("**Uso:** `8ball (pregunta sí/no)`");
+    if (args[1] === "neko") return message.channel.send("**Uso:** `neko`");
     if (args[1] === "mcskin") return message.channel.send("**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
     const embed = {
       "title": "",
@@ -252,7 +258,7 @@ client.on('message', message => {
       },
     }
     message.delete();
-    message.reply('Los comandos fueron enviados a tu DM');
+    message.channel.send(':information_source: **Los comandos fueron enviados a tu DM** :information_source:');
     message.author.send({ embed });
   }
 });
@@ -328,7 +334,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.7.8"
+    const version = "1.7.9"
     const embed = {
       "title": "",
       "author": {
@@ -348,7 +354,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": " `ayuda`: Ahora puedes conseguir el uso de cada comando colocando el nombre de éste como argumento"
+        "value": " `ayuda`: Ahora puedes conseguir el uso de cada comando colocando el nombre de éste como argumento\n`chiste`: Agregados nuevos chistes."
       },
       {
         "name": "Comandos retirados",
