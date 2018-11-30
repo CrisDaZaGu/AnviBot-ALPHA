@@ -84,14 +84,14 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame('Several Maintenance (6)'); // Juego
+  client.user.setGame(prefix + 'ayuda | AnviBot Beta (6) | anvi.cf/bot/'); // Juego
   client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.7.4";
+  const version = "1.7.8";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -199,6 +199,36 @@ client.on('message', message => {
 
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
+  if (message.content.startsWith(prefix + "mcskin")) {
+    if (args[1] === "avatar") let enlace = `https://minotar.net/avatar/${args[2]}.png`;
+    if (args[1] === "avatar") let texto_des = "el avatar de";
+    if (args[1] === "helm") let enlace = `https://minotar.net/helm/${args[2]}.png`;
+    if (args[1] === "helm") let texto_des = `el [[helm]] de`;
+    if (args[1] === "cube") let enlace = `https://minotar.net/cube/${args[2]}.png`;
+    if (args[1] === "cube") let texto_des = `la cabeza de`;
+    if (args[1] === "bust") let enlace = `https://minotar.net/bust/${args[2]}.png`;
+    if (args[1] === "bust") let texto_des = `el [[bust]] de`;
+    if (args[1] === "skin") let enlace = `https://minotar.net/skin/${args[2]}.png`;
+    if (args[1] === "skin") let texto_des = `el skin de`;
+    if (!args[1]) let enlace = `https://minotar.net/helm/MHF_Steve.png`;
+    const embed = {
+      "title": "",
+      "author": {
+        "name": args[2],
+        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
+      },
+      "description": `Resultados para ${texto_des} ${args[2]}`,
+      "color": 2335,
+      "image": {
+        "url": enlace
+      }
+    }
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "nsfw")) {
     const embed = {
       "title": "(N)SFW Commands",
@@ -295,13 +325,13 @@ client.on('message', message => {
         "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "&zoom=15"
       }
     }
-    message.channel.send({ embed });
+    message.channel.send(`Lo sentimos, este comando ya no está disponible.`);
   }
 });
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.7.4"
+    const version = "1.7.8"
     const embed = {
       "title": "",
       "author": {
@@ -317,7 +347,7 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`baka`, `slap`, `smug`, `feed`, `cat`"
+        "value": "`conversor`: Convierte monedas.\n`nsfw`: Envía a tu DM el listado de comandos de imágenes NSFW de AnviBot\n`mcskin <arg>`: Ahora puedes sacar imágenes de tu hermosa skin de Minecraft (o... la de tus amigos)"
       },
       {
         "name": "Comandos modificados",
@@ -325,7 +355,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos retirados",
-        "value": "`lewd`, `conv`"
+        "value": "`maps`: Comando descontinuado, infuncional."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
