@@ -197,35 +197,35 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
-  var args = message.content.substring(prefix.length).split(" ");
-  if (message.content.startsWith(prefix + "mcskin")) {
-    if (args[1] === "avatar") let enlace = `https://minotar.net/avatar/${args[2]}.png`;
-    if (args[1] === "avatar") let texto_des = "el avatar de";
-    if (args[1] === "helm") let enlace = `https://minotar.net/helm/${args[2]}.png`;
-    if (args[1] === "helm") let texto_des = `el [[helm]] de`;
-    if (args[1] === "cube") let enlace = `https://minotar.net/cube/${args[2]}.png`;
-    if (args[1] === "cube") let texto_des = `la cabeza de`;
-    if (args[1] === "bust") let enlace = `https://minotar.net/bust/${args[2]}.png`;
-    if (args[1] === "bust") let texto_des = `el [[bust]] de`;
-    if (args[1] === "skin") let enlace = `https://minotar.net/skin/${args[2]}.png`;
-    if (args[1] === "skin") let texto_des = `el skin de`;
-    if (!args[1]) let enlace = `https://minotar.net/helm/MHF_Steve.png`;
-    const embed = {
-      "title": "",
-      "author": {
-        "name": args[2],
-        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
-      },
-      "description": `Resultados para ${texto_des} ${args[2]}`,
-      "color": 2335,
-      "image": {
-        "url": enlace
-      }
-    }
-    message.channel.send({ embed })
-  }
-});
+//client.on('message', message => {
+//  var args = message.content.substring(prefix.length).split(" ");
+//  if (message.content.startsWith(prefix + "mcskin")) {
+//    if (args[1] === "avatar") let enlace = `https://minotar.net/avatar/${args[2]}.png`;
+//    if (args[1] === "avatar") let texto_des = "el avatar de";
+//    if (args[1] === "helm") let enlace = `https://minotar.net/helm/${args[2]}.png`;
+//    if (args[1] === "helm") let texto_des = `el [[helm]] de`;
+//    if (args[1] === "cube") let enlace = `https://minotar.net/cube/${args[2]}.png`;
+//    if (args[1] === "cube") let texto_des = `la cabeza de`;
+//    if (args[1] === "bust") let enlace = `https://minotar.net/bust/${args[2]}.png`;
+//    if (args[1] === "bust") let texto_des = `el [[bust]] de`;
+//    if (args[1] === "skin") let enlace = `https://minotar.net/skin/${args[2]}.png`;
+//    if (args[1] === "skin") let texto_des = `el skin de`;
+//    if (!args[1]) let enlace = `https://minotar.net/helm/MHF_Steve.png`;
+//    const embed = {
+//      "title": "",
+//      "author": {
+//        "name": args[2],
+//        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
+//      },
+//      "description": `Resultados para ${texto_des} ${args[2]}`,
+//      "color": 2335,
+//      "image": {
+//        "url": enlace
+//      }
+//    }
+//    message.channel.send({ embed })
+//  }
+//});
 
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
