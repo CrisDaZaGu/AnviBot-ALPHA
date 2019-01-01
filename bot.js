@@ -90,7 +90,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (11)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (12)'); // Juego
   // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -139,7 +139,17 @@ client.on('message', message => {
 
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
-  let text = args.slice(0).join(" ");
+
+  if (message.content.startsWith(prefix + "mention")) {
+    if(!args[1]||!args[2]||!message.mention.members.first()) return message.channel.send("Necesitas mencionar a dos personas.");
+    
+    message.channel.send(`primera_persona_mencionada: ${message.mention.members.firts()}\nultima_persona_mencionada: ${message.mention.members.last()}`)
+  }
+});
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  let text = args.slice(1).join(" ");
 
   if (message.content.startsWith(prefix + "announcement")) {
     if(message.author.id == "331641970910953473") {
@@ -159,7 +169,7 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "visto")) {
     const embed = {
       "title": "",
-      "description": "Visto <:Visto:486318438604734464>",
+      "description": "Visto <:visto:518634205710647296>",
       "color": 2335,
       "timestamp": new Date(),
     }
