@@ -97,7 +97,7 @@ client.on('ready', () => {
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.8.0";
+  const version = "1.8.1";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -140,10 +140,14 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
-  if (message.content.startsWith(prefix + "testmention")) {
-    if(!args[1]||!args[2]||!message.mention.members.first()) return message.channel.send("Necesitas mencionar a dos personas.");
+  if (message.content.startsWith(prefix + "feo")) {
+    if(!args[1]||!message.mention.members.first()) return message.channel.send("Necesitas mencionar a UNA persona.");
+
+    function porcentajeFeo() {
+      return Math.floor(Math.random() * 100);
+    };
     
-    message.channel.send(`primera_persona_mencionada: ${message.mention.members.first()}\nultima_persona_mencionada: ${message.mention.members.last()}`)
+    message.channel.send(`Mmm... le mido lo feo a ${message.mention.members.first()} en ${porcentajeFeo()}%`)
   }
 });
 
@@ -356,7 +360,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.8.0"
+    const version = "1.8.1"
     const embed = {
       "title": "",
       "author": {
@@ -372,15 +376,15 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`conversor`: Convierte monedas.\n`nsfw`: Envía a tu DM el listado de comandos de imágenes NSFW de AnviBot\n`mcskin <arg>`: Ahora puedes sacar imágenes de tu hermosa skin de Minecraft (o... la de tus amigos)"
+        "value": "`feo`: Calcula lo feo que es un usuario. (¡Aquí se pierden amistades, señores!)"
       },
       {
         "name": "Comandos modificados",
-        "value": " `ayuda`: Ahora puedes conseguir el uso de cada comando colocando el nombre de éste como argumento\n`chiste`: Agregados nuevos chistes."
+        "value": "Ninguno por ahora."
       },
       {
         "name": "Comandos retirados",
-        "value": "`maps`: Comando descontinuado, infuncional."
+        "value": "Ninguno por ahora."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
