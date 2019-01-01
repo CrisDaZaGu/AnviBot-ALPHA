@@ -1,2 +1,2 @@
 # AnviBot-ALPHA
-A simle bot project
+Un simple proyecto de un bot de Discord en español. Nada más, nada menos.
