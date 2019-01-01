@@ -140,7 +140,7 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
-  if (message.content.startsWith(prefix + "mention")) {
+  if (message.content.startsWith(prefix + "testmention")) {
     if(!args[1]||!args[2]||!message.mention.members.first()) return message.channel.send("Necesitas mencionar a dos personas.");
     
     message.channel.send(`primera_persona_mencionada: ${message.mention.members.firts()}\nultima_persona_mencionada: ${message.mention.members.last()}`)
