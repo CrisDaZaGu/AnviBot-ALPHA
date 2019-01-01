@@ -147,7 +147,7 @@ client.on('message', message => {
       return Math.floor(Math.random() * 100);
     };
     
-    message.channel.send('Mmm... le mido lo feo a' + message.mentions.members.first() + 'en ' + Math.floor(Math.random() * 100) + '%')
+    message.channel.send('Mmm... le mido lo feo a' + message.mentions.members.first() + ' en **' + Math.floor(Math.random() * 100) + '%**')
   }
 });
 
