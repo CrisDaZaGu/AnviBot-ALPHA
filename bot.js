@@ -141,13 +141,13 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "feo")) {
-    if(!args[1]||!message.mention.members.first()) return message.channel.send("Necesitas mencionar a UNA persona.");
+    if(!message.mention.members.first()) return message.channel.send("Necesitas mencionar a UNA persona.");
 
     function porcentajeFeo() {
       return Math.floor(Math.random() * 100);
     };
     
-    message.channel.send(`Mmm... le mido lo feo a ${message.mention.members.first()} en ${porcentajeFeo()}%`)
+    message.channel.send('Mmm... le mido lo feo a' + message.mention.members.first() + 'en ' + Math.floor(Math.random() * 100) + '%')
   }
 });
 
