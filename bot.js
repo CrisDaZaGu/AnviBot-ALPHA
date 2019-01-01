@@ -90,7 +90,7 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot Beta (9) | Pronto ¬¬ -> anvi.cf/bot/'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (10)'); // Juego
   // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
@@ -135,6 +135,18 @@ client.on('message', message => {
   } else {
     message.channel.send(`Usaste ${args[1]} como tu primer argumento`)
   }
+}});
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  let text = args.slice(0).join(" ");
+
+  if (message.content.startsWith(prefix + "announcement")) {
+    if(message.author.id == "331641970910953473") {
+      client.channels.get("517788035597729802").send("**ANUNCIO_test**\n\n" + text)
+    } else {
+      message.channel.send("No cuentas con permisos, lo siento.")
+    }
 }});
 
 client.on('message', message => {
