@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (15)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (16)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase3"
-const veces_commit = "15"
+const version = "1.8.2_prerelase4"
+const veces_commit = "16"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -113,7 +113,8 @@ client.on("message", message => {
     message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
-    message.reply(randomQuote());
+    let pregunta = args.slice(0).join(" ");
+    message.channel.send(`<@!${message.author.id}> a tu pregunta "_${pregunta}_" 🔮 **${randomQuote()}**`);
   } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
