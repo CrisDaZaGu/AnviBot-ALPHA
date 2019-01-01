@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
-const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "Mmm... ahora ando descansando, prueba después"]
+const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "¿Me crees adivino o qué? <:02monka:518638316065783828>"]
 const request = require('snekfetch');
 const got = require('got');
 const clientneko = require('nekos.life');
@@ -90,21 +90,24 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (12)'); // Juego
-  // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (13)'); // Juego
+  // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
+// inicio información global. vvvv
+const errores_detectados = '2'
+const version = "1.8.2_prerelase1"
 
+// fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.8.1";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
     message.channel.send("**Pong!** :ping_pong:");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send("**Estado del Bot:** Funcionando, con errores.\n**Bugs detectados:** 2\n\n**Versión actual:** " + version);
+    message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ` + version);
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
@@ -143,11 +146,11 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "feo")) {
     if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a UNA persona.");
 
-    function porcentajeFeo() {
-      return Math.floor(Math.random() * 100);
-    };
+    //function porcentajeFeo() {
+    //  return Math.floor(Math.random() * 100);
+    //};
     
-    message.channel.send('Mmm... le mido lo feo a' + message.mentions.members.first() + ' en **' + Math.floor(Math.random() * 100) + '%**')
+    message.channel.send('Mmm... le mido lo feo a ' + message.mentions.members.first() + ' en **' + Math.floor(Math.random() * 100) + '%**')
   }
 });
 
@@ -157,7 +160,7 @@ client.on('message', message => {
 
   if (message.content.startsWith(prefix + "announcement")) {
     if(message.author.id == "331641970910953473") {
-      client.channels.get("517856035399008256").send("**Anuncio**\n( @everyone )\n\n" + text)
+      client.channels.get("517856035399008256").send(":loudspeaker: **Anuncio** :loudspeaker:\n( @everyone )\n\n" + text)
     } else {
       message.channel.send("No cuentas con permisos, lo siento.")
     }
@@ -184,20 +187,20 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "ayuda")) {
-    if (args[1] === "kiss") return message.channel.send("**Uso:** `kiss (mención)`");
-    if (args[1] === "hug") return message.channel.send("**Uso:** `hug (mención)`");
-    if (args[1] === "slap") return message.channel.send("**Uso:** `slap (mención)`");
-    if (args[1] === "feed") return message.channel.send("**Uso:** `feed <mención (necesaria)>`");
-    if (args[1] === "pat") return message.channel.send("**Uso:** `pat (mención)`");
-    if (args[1] === "smug") return message.channel.send("**Uso:** `smug (mención)`");
-    if (args[1] === "chiste") return message.channel.send("**Uso:** `chiste`");
-    if (args[1] === "visto") return message.channel.send("**Uso:** `visto`");
-    if (args[1] === "args") return message.channel.send("**Uso:** `args (args)`");
-    if (args[1] === "say") return message.channel.send("**Uso:** `say (mensaje a decir)`");
-    if (args[1] === "sayd") return message.channel.send("**Uso:** `say (mensaje a decir)`");
-    if (args[1] === "8ball") return message.channel.send("**Uso:** `8ball (pregunta sí/no)`");
-    if (args[1] === "neko") return message.channel.send("**Uso:** `neko`");
-    if (args[1] === "mcskin") return message.channel.send("**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
+    if (args[1] === "kiss") return message.channel.send("Besa a un usuario mencionándolo.\n**Uso:** `kiss (mención)`");
+    if (args[1] === "hug") return message.channel.send("Abraza a un usuario mencionándolo.\n**Uso:** `hug (mención)`");
+    if (args[1] === "slap") return message.channel.send("Bofetea a un usuario mencionándolo\n**Uso:** `slap (mención)`");
+    if (args[1] === "feed") return message.channel.send("Alimenta a un usuario mencionándolo\n**Uso:** `feed <mención (necesaria)>`");
+    if (args[1] === "pat") return message.channel.send("Acaricia a un usuario mencionándolo\n**Uso:** `pat (mención)`");
+    if (args[1] === "smug") return message.channel.send("Sentite (¿creído?) ante alguien ¬u¬\n**Uso:** `smug (mención)`");
+    if (args[1] === "chiste") return message.channel.send("AnviBot te contará unos chistes (malos, por cierto.)\n**Uso:** `chiste`");
+    if (args[1] === "visto") return message.channel.send('Manda un mensaje de "visto"\n**Uso:** `visto`');
+    if (args[1] === "args") return message.channel.send("[[tmp]]Comando temporal, no te servirá pa' na\n**Uso:** `args (args)`");
+    if (args[1] === "say") return message.channel.send("Haz que el bot diga cosas.\n**Uso:** `say (mensaje a decir)`");
+    if (args[1] === "sayd") return message.channel.send("Haz que el bot diga cosas (¡e incluso te borre el mensaje! (bueno, puede ser que no))\n**Uso:** `say (mensaje a decir)`");
+    if (args[1] === "8ball") return message.channel.send("Haz preguntas cerradas al bot, capaz será tu bola mágica\n**Uso:** `8ball (pregunta sí/no)`");
+    if (args[1] === "neko") return message.channel.send("Si te gustan los gatos _2D_, este es tu comando.\n**Uso:** `neko`");
+    if (args[1] === "mcskin") return message.channel.send("Si te sientes OR-GU-LLO-SO de tu skin de Minecraft, puedes usar este comando para verla (o ver la skin de los demás, claro está)\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
     const embed = {
       "title": "",
       "author": {
@@ -360,7 +363,6 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.8.1"
     const embed = {
       "title": "",
       "author": {
@@ -442,7 +444,7 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "kiss")) {
+  if (message.content.startsWith(prefix + "kiss"||"beso")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está besando a " + args2;
