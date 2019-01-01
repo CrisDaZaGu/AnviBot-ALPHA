@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (14)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (15)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase2"
-const veces_commit = "14"
+const version = "1.8.2_prerelase3"
+const veces_commit = "15"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -445,7 +445,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   const comando = ['kiss', 'beso'];
-  if (message.content.startsWith(prefix + "kiss"||prefix + "beso")) {
+  if (message.content.startsWith(prefix + "kiss")||message.content.startsWith(prefix + "beso")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está besando a " + args2;
