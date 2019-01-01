@@ -90,14 +90,14 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (10)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (11)'); // Juego
   // client.user.setStatus('dnd') // Status de No molestar para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  const version = "1.7.9";
+  const version = "1.8.0";
   if (!message.content.startsWith(prefix)) return;
   
   if (message.content.startsWith(prefix + "ping")) {
@@ -143,7 +143,7 @@ client.on('message', message => {
 
   if (message.content.startsWith(prefix + "announcement")) {
     if(message.author.id == "331641970910953473") {
-      client.channels.get("517788035597729802").send("**ANUNCIO_test**\n\n" + text)
+      client.channels.get("517856035399008256").send("**Anuncio**\n( @everyone )\n\n" + text)
     } else {
       message.channel.send("No cuentas con permisos, lo siento.")
     }
@@ -346,7 +346,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    const version = "1.7.9"
+    const version = "1.8.0"
     const embed = {
       "title": "",
       "author": {
