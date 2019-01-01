@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "__";
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
-const quotes = ["Sí", "No", "No sé", "Buena pregunta, pero no sé la respuesta", "Nunca.", "Definitivamente sí", "Definitivamente no", "No pasará", "50/50", "No responderé eso", "¿Me crees adivino o qué? <:02monka:518638316065783828>"]
+const quotes = ["Decididamente sí", "Decididamente no", "No veo algo bueno en esta bola mágica, ¿eh?", "No cuentes con ello.", "Cuenta con ello.", "A mí se me hace que sí, ¿eh?", "No lo creo.", "Muy dudoso.", "Probablemente", "Tengo una bola mágica, pero no hago milagros. <:02monka:518638316065783828>"]
 const request = require('snekfetch');
 const got = require('got');
 const clientneko = require('nekos.life');
@@ -73,7 +73,7 @@ const quotes5 = [
   "—¿Tiene pastillas para la flojera?\n—Sí.\n—¿Me pone una en la boca, por favor?",
   "Había una vez un niño llamado «Tarea»\nUn día, la profesora dijo «¡Tarea para la casa!»\nY el niño se fue para su casa.",
   "¿Por qué la torre de pizza está inclinada?\nPorque tuvo más reflejos que las torres gemelas",
-  "—¡Señorita! ¡Eh, usted, la rubia!\n—¿Si, es a mí?\n—¡Le comunicamos que su avión viene demorado!.\n—Ay, qué lindo, ese es mi color favorito...",
+  "—¡Señorita! ¡Eh, usted, la rubia!\n—¿Si, es a mí?\n—¡Le comunicamos que su avión viene demorado!\n—Ay, qué lindo, ese es mi color favorito...",
   "—¿Sabes que mi hermano anda en bicicleta desde los cuatro años?.\n—Mmm, pues ya debe estar lejos.",
   "—Si mis besos fueran WiFi, ¿me los pedirías o me los robarías?\n—Usaría datos móviles...",
   "—¿Por qué se suicidó el libro de matemáticas?\n—Porque tenía muchos problemas.",
@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (16)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (17)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase4"
-const veces_commit = "16"
+const version = "1.8.2_prerelase5"
+const veces_commit = "17"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -113,8 +113,9 @@ client.on("message", message => {
     message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
+    if(!args[1]) return message.channel.send('Oye, pregunta algo, ya estoy preparando mi bola mágica 🔮.');
     let pregunta = args.slice(0).join(" ");
-    message.channel.send(`<@!${message.author.id}> a tu pregunta "_${pregunta}_" 🔮 **${randomQuote()}**`);
+    message.channel.send(`<@!${message.author.id}> a tu pregunta «_${pregunta}_» 🔮 **${randomQuote()}**`);
   } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
