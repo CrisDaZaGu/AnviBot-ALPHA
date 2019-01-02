@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (23)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (24)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
-const errores_detectados = '2'
-const version = "1.8.2_prerelase11"
-const veces_commit = "23"
+const errores_detectados = '3'
+const version = "1.8.2_prerelase12"
+const veces_commit = "24"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -149,7 +149,8 @@ client.on('message', message => {
   if(!message.mentions.members.first()) {
     message.channel.send("Necesitas mencionar a un usuario")
   } else {
-    message.channel.send(`${message.mentions.members.first().avatarURL}`)
+    var mentioneduser = message.mentions.members.first();
+    message.channel.send(`${mentioneduser.avatarURL}`)
   }
 }});
 
