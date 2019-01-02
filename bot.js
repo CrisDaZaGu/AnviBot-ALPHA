@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (19)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (20)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase7"
-const veces_commit = "19"
+const version = "1.8.2_prerelase8"
+const veces_commit = "20"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -107,7 +107,7 @@ client.on("message", message => {
     message.channel.send("**Pong!** :ping_pong:");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ${version}\n**Numero mágico (¡hala!): ${veces_commit}`);
+    message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ${version}\n**Numero mágico (¡hala!):** ${veces_commit}`);
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
@@ -142,7 +142,7 @@ client.on('message', message => {
   }
 }});
 
-client.on('message', async message => {
+client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "feo")) {
@@ -151,18 +151,18 @@ client.on('message', async message => {
     function porcentajeFeo() {
       return Math.floor(Math.random() * 100);
     };
-    if(porcentajeFeo() == "0") texto = "[██████.....] \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
-    if(porcentajeFeo() >= "1" && porcentajeFeo() <= "10") texto = "[█..........] \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
-    if(porcentajeFeo() >= "11" && porcentajeFeo() <= "20") texto = "[██.........] \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
-    if(porcentajeFeo() >= "21" && porcentajeFeo() <= "30") texto = "[███........] \n**¡Te has salvado! Conseguiste un porcentaje bajo.**";
-    if(porcentajeFeo() >= "31" && porcentajeFeo() <= "40") texto = "[████.......] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
-    if(porcentajeFeo() >= "41" && porcentajeFeo() <= "50") texto = "[█████......] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
-    if(porcentajeFeo() >= "51" && porcentajeFeo() <= "60") texto = "[██████.....] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
-    if(porcentajeFeo() >= "61" && porcentajeFeo() <= "70") texto = "[███████....] \n**Uf... <:02monka:518638316065783828>**";
-    if(porcentajeFeo() >= "71" && porcentajeFeo() <= "80") texto = "[████████...] \n**Tengo miedo. ¡Tengo miedo! <:02monka:518638316065783828>**";
-    if(porcentajeFeo() >= "81" && porcentajeFeo() <= "91") texto = "[█████████..] \n**Yo de ti no seguiría intentándolo al llegar a este número <:02monka:518638316065783828>**";
-    if(porcentajeFeo() >= "91" && porcentajeFeo() <= "99") texto = "[██████████.] \n**Por poco y llegas al cien, jaja. _Sigue intentado_**";
-    if(porcentajeFeo() == "100") texto = "[███████████] \n**Lamentamos informarle que usted consiguió el 100% de fealdad.**";
+    if(porcentajeFeo() == "0") texto = "`[██████.....]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
+    if(porcentajeFeo() >= "1" && porcentajeFeo() <= "10") texto = "`[█..........]` \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
+    if(porcentajeFeo() >= "11" && porcentajeFeo() <= "20") texto = "`[██.........]` \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
+    if(porcentajeFeo() >= "21" && porcentajeFeo() <= "30") texto = "`[███........]` \n**¡Te has salvado! Conseguiste un porcentaje bajo.**";
+    if(porcentajeFeo() >= "31" && porcentajeFeo() <= "40") texto = "`[████.......]` \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() >= "41" && porcentajeFeo() <= "50") texto = "`[█████......]` \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() >= "51" && porcentajeFeo() <= "60") texto = "`[██████.....]` \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() >= "61" && porcentajeFeo() <= "70") texto = "`[███████....]` \n**Uf... <:02monka:518638316065783828>**";
+    if(porcentajeFeo() >= "71" && porcentajeFeo() <= "80") texto = "`[████████...]` \n**Tengo miedo. ¡Tengo miedo! <:02monka:518638316065783828>**";
+    if(porcentajeFeo() >= "81" && porcentajeFeo() <= "91") texto = "`[█████████..]` \n**Yo de ti no seguiría intentándolo al llegar a este número <:02monka:518638316065783828>**";
+    if(porcentajeFeo() >= "91" && porcentajeFeo() <= "99") texto = "`[██████████.]` \n**Por poco y llegas al cien, jaja. _Sigue intentado_**";
+    if(porcentajeFeo() == "100") texto = "`[███████████]` \n**Lamentamos informarle que usted consiguió el 100% de fealdad.**";
     message.channel.send('**' + porcentajeFeo() + '%** ' + texto)
   }
 });
