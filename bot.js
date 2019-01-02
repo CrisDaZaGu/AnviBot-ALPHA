@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (21)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (22)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase9"
-const veces_commit = "21"
+const version = "1.8.2_prerelase10"
+const veces_commit = "22"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -142,6 +142,18 @@ client.on('message', message => {
   }
 }});
 
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+
+  if (message.content.startsWith(prefix + "test")) {
+  if(!message.mentions.members.first()) {
+    message.channel.send("Necesitas mencionar a un usuario")
+  } else {
+    const membermentioned = message.mentions.members.first()
+    message.channel.send(`${membermentioned.avatarURL}`)
+  }
+}});
+
 client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
@@ -149,7 +161,7 @@ client.on('message', async message => {
     if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a una persona.");
 
     const porcentajeFeo = Math.floor(Math.random() * 100);
-    if(porcentajeFeo == "0") texto = "`[██████.....]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
+    if(porcentajeFeo == "0") texto = "`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
     if(porcentajeFeo >= "1" && porcentajeFeo <= "10") texto = "`[█..........]` \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
     if(porcentajeFeo >= "11" && porcentajeFeo <= "20") texto = "`[██.........]` \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
     if(porcentajeFeo >= "21" && porcentajeFeo <= "30") texto = "`[███........]` \n**¡Te has salvado! Conseguiste un porcentaje bajo.**";
@@ -393,7 +405,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "Ninguno por ahora."
+        "value": "`feo`:"
       },
       {
         "name": "Comandos retirados",
