@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (18)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (19)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase6"
-const veces_commit = "18"
+const version = "1.8.2_prerelase7"
+const veces_commit = "19"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -107,7 +107,7 @@ client.on("message", message => {
     message.channel.send("**Pong!** :ping_pong:");
   } else
   if (message.content.startsWith(prefix + "info")) {
-    message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ` + version);
+    message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ${version}\n**Numero mágico (¡hala!): ${veces_commit}`);
   } else
   if (message.content.startsWith(prefix + "invite")) {
     message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
@@ -163,7 +163,7 @@ client.on('message', async message => {
     if(porcentajeFeo() >= "81" && porcentajeFeo() <= "91") texto = "[█████████..] \n**Yo de ti no seguiría intentándolo al llegar a este número <:02monka:518638316065783828>**";
     if(porcentajeFeo() >= "91" && porcentajeFeo() <= "99") texto = "[██████████.] \n**Por poco y llegas al cien, jaja. _Sigue intentado_**";
     if(porcentajeFeo() == "100") texto = "[███████████] \n**Lamentamos informarle que usted consiguió el 100% de fealdad.**";
-    message.channel.send(porcentajeFeo() + '%** \n' + texto)
+    message.channel.send('**' + porcentajeFeo() + '%** ' + texto)
   }
 });
 
