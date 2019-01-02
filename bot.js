@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (17)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (18)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase5"
-const veces_commit = "17"
+const version = "1.8.2_prerelase6"
+const veces_commit = "18"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -142,17 +142,28 @@ client.on('message', message => {
   }
 }});
 
-client.on('message', message => {
+client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "feo")) {
-    if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a UNA persona.");
+    if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a una persona.");
 
-    //function porcentajeFeo() {
-    //  return Math.floor(Math.random() * 100);
-    //};
-    
-    message.channel.send('Mmm... le mido lo feo a ' + message.mentions.members.first() + ' en **' + Math.floor(Math.random() * 100) + '%**')
+    function porcentajeFeo() {
+      return Math.floor(Math.random() * 100);
+    };
+    if(porcentajeFeo() == "0") texto = "[██████.....] \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
+    if(porcentajeFeo() == "1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9"||"10") texto = "[█..........] \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
+    if(porcentajeFeo() == "11"||"12"||"13"||"14"||"15"||"16"||"17"||"18"||"19"||"20") texto = "[██.........] \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
+    if(porcentajeFeo() == "21"||"22"||"23"||"24"||"25"||"26"||"27"||"28"||"29"||"30") texto = "[███........] \n**¡Te has salvado! Conseguiste un porcentaje bajo.**";
+    if(porcentajeFeo() == "31"||"32"||"33"||"34"||"35"||"36"||"37"||"38"||"39"||"40") texto = "[████.......] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() == "41"||"42"||"43"||"44"||"45"||"46"||"47"||"48"||"49"||"50") texto = "[█████......] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() == "51"||"52"||"53"||"54"||"55"||"56"||"57"||"58"||"59"||"60") texto = "[██████.....] \n**Usted no es ni tan feo(a), ni tan guapo(a).**";
+    if(porcentajeFeo() == "61"||"62"||"63"||"64"||"65"||"66"||"67"||"68"||"69"||"70") texto = "[███████....] \n**Uf... <:02monka:518638316065783828>**";
+    if(porcentajeFeo() == "71"||"72"||"73"||"74"||"75"||"76"||"77"||"78"||"79"||"80") texto = "[████████...] \n**Tengo miedo. ¡Tengo miedo! <:02monka:518638316065783828>**";
+    if(porcentajeFeo() == "81"||"82"||"83"||"84"||"85"||"86"||"87"||"88"||"89"||"90") texto = "[█████████..] \n**Yo de ti no seguiría intentándolo al llegar a este número <:02monka:518638316065783828>**";
+    if(porcentajeFeo() == "91"||"92"||"93"||"94"||"95"||"96"||"97"||"98"||"99") texto = "[██████████.] \n**Por poco y llegas al cien, jaja. _Sigue intentado_**";
+    if(porcentajeFeo() == "100") texto = "[███████████] \n**Lamentamos informarle que usted consiguió el 100% de fealdad.**";
+    message.channel.send(porcentajeFeo() + '%** \n' + texto)
   }
 });
 
