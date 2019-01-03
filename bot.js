@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (28)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (29)'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
-const errores_detectados = '5'
-const version = "1.8.2_prerelase15"
-const veces_commit = "28"
+const errores_detectados = '2'
+const version = "1.8.2_prerelase16"
+const veces_commit = "29"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -110,7 +110,7 @@ client.on("message", message => {
     message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ${version}\n**Numero mágico (¡hala!):** ${veces_commit}`);
   } else
   if (message.content.startsWith(prefix + "invite")) {
-    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\nTEMP_LINK_DESHABILITADO");
+    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\n<https://discordapp.com/oauth2/authorize?client_id=427578215394050049&permissions=117824&scope=bot&redirect_url=http://anvi.cf/bot/comandos>");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
     if(!args[1]) return message.channel.send('Oye, pregunta algo, ya estoy preparando mi bola mágica 🔮.');
@@ -119,11 +119,6 @@ client.on("message", message => {
   } else
   if (message.content.startsWith(prefix + "roll")) {
     message.channel.send('Tu número aleatorio es ' + randomQuote4());
-  } else
-  if (message.content.startsWith(prefix + "sayd")) {
-    let text = args.slice(0).join(" ");
-    message.delete();
-    message.channel.send(text);
   } else
   if (message.content.startsWith(prefix + "say")) {
     let text = args.slice(0).join(" ");
@@ -145,14 +140,15 @@ client.on('message', message => {
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
-  if (message.content.startsWith(prefix + "test")) {
+  if (message.content.startsWith(prefix + "avatar")) {
   if(!message.mentions.members.first()) {
-    message.channel.send("Necesitas mencionar a un usuario")
+    message.reply("este es tu avatar.");
+    message.channel.sendFile(message.author.avatarURL)
   } else {
     var mentioneduser = message.mentions.users.first();
     const attachment = mentioneduser.avatarURL;
-    message.channel.sendFile(attachment, 'avatar.jpg');
-    message.channel.send('Ola.')
+    message.channel.sendFile(attachment);
+    message.channel.send('Este es el avatar de ' + message.mentions.members.first() + ".")
   }
 }});
 
@@ -163,6 +159,8 @@ client.on('message', async message => {
     if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a una persona.");
 
     const porcentajeFeo = Math.floor(Math.random() * 100);
+    var mentioneduser = message.mentions.users.first();
+    const attachment = mentioneduser.avatarURL; 
     if(porcentajeFeo == "0") texto = "`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
     if(porcentajeFeo >= "1" && porcentajeFeo <= "10") texto = "`[█..........]` \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
     if(porcentajeFeo >= "11" && porcentajeFeo <= "20") texto = "`[██.........]` \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
@@ -175,7 +173,8 @@ client.on('message', async message => {
     if(porcentajeFeo >= "81" && porcentajeFeo <= "91") texto = "`[█████████..]` \n**Yo de ti no seguiría intentándolo al llegar a este número <:02monka:518638316065783828>**";
     if(porcentajeFeo >= "91" && porcentajeFeo <= "99") texto = "`[██████████.]` \n**Por poco y llegas al cien, jaja. _Sigue intentado_**";
     if(porcentajeFeo == "100") texto = "`[███████████]` \n**Lamentamos informarle que usted consiguió el 100% de fealdad.**";
-    message.channel.send('**' + porcentajeFeo + '%** ' + texto)
+    message.channel.send('**' + porcentajeFeo + '%** ' + texto);
+    message.channel.sendFile(attachment, 'feo.jpg');
   }
 });
 
@@ -288,7 +287,7 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "nsfw")) {
     const embed = {
-      "title": "(N)SFW Commands",
+      "title": "Comandos NSFW",
       "author": {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
@@ -308,7 +307,7 @@ client.on('message', message => {
         "value": "`lewd`, `trap`, `pussy`, `yuri`, `ero`, `smallboobls`, `futanari`, `blowjob`"
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot!"
+        "text": "¡Gracias por usar AnviBot!"
       },
     }
     message.delete();
@@ -336,20 +335,6 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "avatar")) {
-      const embed = {
-        "title": "",
-        "description": "Este eres tú, <@!" + message.author.id + ">, que wap@ estás.",
-        "color": 2335,
-        "image": {
-          "url": message.author.avatarURL
-        }
-      }
-      message.channel.send({ embed });
-    }
-});
-
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "conversor")) {
     var args = message.content.substring(prefix.length).split(" ");
@@ -358,8 +343,29 @@ client.on('message', async message => {
     if(!args[2]) return message.reply("no especificaste ningúna moneda a convertir. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
     if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
     const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true});
-    if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`)
-    message.channel.send('Resultado: ' + res.body.result.amount);
+    if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
+    const embed = {
+      "title": "Resultado de conversión de monedas",
+      "description": "Última actualización: " + res.body.result.updated,
+      "color": 2335,
+      "fields": [
+      {
+        "name": "Valor por unidad",
+        "value": `[${res.body.result.source}] (1.0) → (${res.body.result.value}) [${res.body.result.target}]`
+      },
+      {
+        "name": "Valor por especificación",
+        "value": `[${res.body.result.source}] (${res.body.quantity}) → (**${res.body.result.amount}**) [${res.body.result.target}]`
+      },
+      {
+        "name": "Resultado final",
+        "value": `**${res.body.result.amount}**`
+      }],
+      "footer": {
+        "text": "Powered by cambio.today"
+      },
+    }
+    message.channel.send({ embed });
   }
 });
 
@@ -407,14 +413,14 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "`feo`:"
+        "value": "`feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.\n`avatar`: Ya no se usa RichEmbed.\n`avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.\n`conversor`: Ahora el comando usa RichEmbed.\n`invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución."
       },
       {
         "name": "Comandos retirados",
-        "value": "Ninguno por ahora."
+        "value": "`sayd`: Comando retirado debido a error. (No se elimina el mensaje enviado.) (Use `say`)"
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
+        "text": "Gracias por usar AnviBot | Creado por ElBuenAnvita"
       },
     }
     message.channel.send({ embed })
