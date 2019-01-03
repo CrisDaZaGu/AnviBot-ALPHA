@@ -90,13 +90,13 @@ il.run();
 console.log(randomQuote5());
 
 client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta (29)'); // Juego
+  client.user.setGame(prefix + 'ayuda | ¡Felices fiestas! | AnviBot Beta'); // Juego
   // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2_prerelase16"
-const veces_commit = "29"
+const version = "1.8.2"
+const veces_commit = "0"
 // fin de información global. ^^^^
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -110,7 +110,7 @@ client.on("message", message => {
     message.channel.send(`**Estado del Bot:** En funcionamiento.\n**Errores detectados:** ${errores_detectados}\n**Versión actual:** ${version}\n**Numero mágico (¡hala!):** ${veces_commit}`);
   } else
   if (message.content.startsWith(prefix + "invite")) {
-    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\n<https://discordapp.com/oauth2/authorize?client_id=427578215394050049&permissions=117824&scope=bot&redirect_url=http://anvi.cf/bot/comandos>");
+    message.channel.send("```AnviBot Discord Bot```\nhttps://discord.gg/JRvV4mX\n\n```Invita AnviBot a tu servidor de Discord```\n¡Échele ojo! Puede marcar y desmarcar permisos para una mejor experiencia de uso.\n**Recuerde: AnviBot no es un bot de moderación y por ende, no necesita permisos de administrador.**\n<https://discordapp.com/oauth2/authorize?client_id=427578215394050049&permissions=117824&scope=bot&redirect_url=http://anvi.cf/bot/comandos>");
   } else
   if (message.content.startsWith(prefix + "8ball")) {
     if(!args[1]) return message.channel.send('Oye, pregunta algo, ya estoy preparando mi bola mágica 🔮.');
@@ -339,8 +339,8 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "conversor")) {
     var args = message.content.substring(prefix.length).split(" ");
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
-    if(!args[1]) return message.reply("no especificaste ningúna moneda origen. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
-    if(!args[2]) return message.reply("no especificaste ningúna moneda a convertir. \n**Uso correcto:** `conversor <MONEDA ORIGEN> <MONEDA A CONVERTIR> <Cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[1]) return message.reply("no especificaste ningúna moneda origen. \n**Uso correcto:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[2]) return message.reply("no especificaste ningúna moneda a convertir. \n**Uso correcto:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
     if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
     const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true});
     if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
@@ -355,7 +355,7 @@ client.on('message', async message => {
       },
       {
         "name": "Valor por especificación",
-        "value": `[${res.body.result.source}] (${res.body.quantity}) → (**${res.body.result.amount}**) [${res.body.result.target}]`
+        "value": `[${res.body.result.source}] (${res.body.result.quantity}) → (**${res.body.result.amount}**) [${res.body.result.target}]`
       },
       {
         "name": "Resultado final",
@@ -413,7 +413,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "`feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.\n`avatar`: Ya no se usa RichEmbed.\n`avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.\n`conversor`: Ahora el comando usa RichEmbed.\n`invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución."
+        "value": "`feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.\n`avatar`: Ya no se usa RichEmbed.\n`avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.\n`conversor`: Ahora el comando usa RichEmbed.\n`invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución.\n`8ball`: Comando rediseñado con estilo al AnthBot.\n`ayuda`: Ahora puedes conseguir la información y uso de un comando en específico colocándolo como argumento."
       },
       {
         "name": "Comandos retirados",
@@ -656,7 +656,7 @@ client.on('message', async message => {
     const args2 = args.slice(1).join(" ")
     let text = "...";
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
-    const res = await got('https://nekos.life/api/lewd/neko', {json: true})
+    const res = await got('https://nekos.life/api/v2/lewd/neko', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
