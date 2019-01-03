@@ -151,7 +151,8 @@ client.on('message', message => {
   } else {
     var mentioneduser = message.mentions.users.first();
     const attachment = mentioneduser.avatarURL;
-    message.channel.sendFile(attachment, 'avatar.jpg', `Avatar de ${message.mentions.members.first()}`)
+    message.channel.sendFile(attachment, 'avatar.jpg');
+    message.channel.send('Ola.')
   }
 }});
 
