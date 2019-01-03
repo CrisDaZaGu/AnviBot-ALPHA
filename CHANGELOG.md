@@ -5,11 +5,17 @@ Versión: 1.8.2
 
 ## Comandos modificados:
 `feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.
+
 `avatar`: Ya no se usa RichEmbed.
+
 `avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.
+
 `conversor`: Ahora el comando usa RichEmbed.
+
 `invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución.
+
 `8ball`: Comando rediseñado con estilo al AnthBot.
+
 `ayuda`: Ahora puedes conseguir la información y uso de un comando en específico colocándolo como argumento.
 
 ## Comandos retirados:
