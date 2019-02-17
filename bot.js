@@ -90,9 +90,9 @@ il.run();
 console.log(randomQuote5());
 
 // inicio información global. vvvv
-const errores_detectados = '2'
-const version = "1.8.3_prerelase8"
-const veces_commit = "8"
+const errores_detectados = '1'
+const version = "1.8.3_prerelase9"
+const veces_commit = "9"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -191,12 +191,12 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "broadcast")) {
     if(message.author.id == "331641970910953473" && args[1]) {
       client.channels.get("517856035399008256").send(":loudspeaker: **Anuncio** :loudspeaker:\n( Prueba )\n\n" + text)
-    } else {
+    } else if (args[1]) {
       message.channel.send("**Error:** No cuentas con permisos para usar este comando. **Uso:** `bc|broadcast|announcement <anuncio>")
     };
     if(!args[1]) {
       message.channel.send("**Error:** Faltan parámetros.\n**Uso:** `bc|broadcast|announcement <anuncio>`")
-    }
+    };
 }});
 
 client.on('message', message => {
