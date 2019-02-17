@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.3_prerelase1"
-const veces_commit = "1"
+const version = "1.8.3_prerelase2"
+const veces_commit = "2"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -252,7 +252,7 @@ client.on('message', message => {
         "value": "N/A\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot! | Creado por ElBuenAnvita"
+        "text": "¡Gracias por usar AnviBot!"
       },
     }
     message.channel.send({ embed })
@@ -269,8 +269,8 @@ client.on('message', message => {
     if (args[1] === "skin") enlace = `https://minotar.net/skin/${args[2]}.png`;
     if (args[1] === "body") enlace = `https://minotar.net/body/${args[2]}/200.png`;
     if (args[1] === "armor") enlace = `https://minotar.net/armor/body/${args[2]}/200.png`;
-    if (!args[1]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
-    if (!args[2]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
+    if (!args[1]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin|avatar|armor> <uuid/nickname>`');
+    if (!args[2]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin|avatar|armor> <uuid/nickname>`');
     const embed = {
       "title": "",
       "author": {
@@ -283,7 +283,7 @@ client.on('message', message => {
         "url": enlace
       },
       "footer": {
-        "text": "Si aparece un Steve, significará que dicho nickname no está registrado. | Powered by minotar.net"
+        "text": "Steve = No premium | Powered by minotar.net"
       }
     }
     message.channel.send({ embed })
@@ -864,7 +864,7 @@ client.on('message', async message => {
 
     if(!args[1]) return message.channel.send("Especifica una palabra a buscar");
 
-    let res = await got(`http://api.urbandictionary.com/v0/define?term=${args[1]}`, {json: true})
+    let res = await got(`http://api.urbandictionary.com/v0/define?term=${args[1]}`, {json: true});
 
     const embed = {
       "title": "UrbanDictionary",
@@ -891,7 +891,7 @@ client.on('message', async message => {
         "text": "Powered by UrbanDictionary"
       },
     }
-    message.channel.send({ embed })
+    message.channel.send('resultado: ' + res.list.definition)
 }});
 
 client.login(process.env.BOT_TOKEN);
