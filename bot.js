@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.3_prerelase3"
-const veces_commit = "3"
+const version = "1.8.3_prerelase4"
+const veces_commit = "4"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -158,16 +158,16 @@ client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "feo")) {
-    if(!message.mentions.members.first()) return message.channel.send("Necesitas mencionar a una persona.");
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a una persona.\n**Uso:** `feo <@mención>`");
 
     const porcentajeFeo = Math.floor(Math.random() * 100);
     var mentioneduser = message.mentions.users.first();
     const attachment = mentioneduser.avatarURL; 
     if(mentioneduser.id === '331641970910953473') {
-      return {
-        porcentajeFeo : '0'
-      }
+      return message.channel.send("`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**");
+      return message.channel.sendFile(attachment, 'feo.jpg');
     };
+    if(mentioneduser.id === '427578215394050049') return message.channel.send('**Error:** Ocurrió un error.\n**Uso:** `feo <@mención>`')
     if(porcentajeFeo == "0") texto = "`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
     if(porcentajeFeo >= "1" && porcentajeFeo <= "10") texto = "`[█..........]` \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
     if(porcentajeFeo >= "11" && porcentajeFeo <= "20") texto = "`[██.........]` \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
@@ -232,6 +232,7 @@ client.on('message', message => {
     if (args[1] === "8ball") return message.channel.send("Haz preguntas cerradas al bot, capaz será tu bola mágica\n**Uso:** `8ball (pregunta sí/no)`");
     if (args[1] === "neko") return message.channel.send("Si te gustan los gatos _2D_, este es tu comando.\n**Uso:** `neko`");
     if (args[1] === "mcskin") return message.channel.send("Si te sientes OR-GU-LLO-SO de tu skin de Minecraft, puedes usar este comando para verla (o ver la skin de los demás, claro está)\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
+    if (args[1] === "feo") return message.channel.send("Mide la fealdad de una persona con este comando.\n**Uso:** `feo <@mención>`");
     const embed = {
       "title": "",
       "author": {
@@ -250,7 +251,7 @@ client.on('message', message => {
       },
       {
         "name": "Diversión",
-        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`"
+        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`, `feo`"
       },
       {
         "name": "Pronto",
@@ -425,7 +426,7 @@ client.on('message', message => {
       },
       {
         "name": "Comandos modificados",
-        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor."
+        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%."
       },
       {
         "name": "Comandos retirados",
@@ -541,7 +542,7 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> le dio una bofetada a " + message.mentions.members.first() + ", debió doler.";
-    if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> se dió una bofetada...?";
+    if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> ¿se dió una bofetada...?";
     const res = await got('https://nekos.life/api/v2/img/slap', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -591,7 +592,7 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está alimentando a " + message.mentions.members.first() + ", aww :heart:";
-    if(!message.mentions.members.first()) return message.channel.send("**¡Menciona a una persona para alimentarla!**")
+    if(!message.mentions.members.first()) return message.channel.send("**¡Menciona a una persona para alimentarla >u<!**")
     const res = await got('https://nekos.life/api/v2/img/feed', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
