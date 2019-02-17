@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.3_prerelase4"
-const veces_commit = "4"
+const version = "1.8.3_prerelase5"
+const veces_commit = "5"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -164,8 +164,7 @@ client.on('message', async message => {
     var mentioneduser = message.mentions.users.first();
     const attachment = mentioneduser.avatarURL; 
     if(mentioneduser.id === '331641970910953473') {
-      return message.channel.send("`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**");
-      return message.channel.sendFile(attachment, 'feo.jpg');
+      return message.channel.send("`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**") && message.channel.sendFile(attachment, 'feo.jpg');
     };
     if(mentioneduser.id === '427578215394050049') return message.channel.send('**Error:** Ocurrió un error.\n**Uso:** `feo <@mención>`')
     if(porcentajeFeo == "0") texto = "`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
