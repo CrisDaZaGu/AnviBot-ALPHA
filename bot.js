@@ -89,15 +89,17 @@ il.run();
 
 console.log(randomQuote5());
 
-client.on('ready', () => {
-  client.user.setGame(prefix + 'ayuda | AnviBot is no longer under active development | AnviBot Beta'); // Juego
-  // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
-});
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.2"
-const veces_commit = "0"
+const version = "1.8.3_prerelase1"
+const veces_commit = "1"
 // fin de información global. ^^^^
+
+client.on('ready', () => {
+  client.user.setGame(`${prefix}ayuda | AnviBot is no longer under active development | AnviBot Beta (${veces_commit})`); // Juego
+  client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
+});
+
 client.on("message", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
@@ -265,18 +267,23 @@ client.on('message', message => {
     if (args[1] === "cube") enlace = `https://minotar.net/cube/${args[2]}.png`;
     if (args[1] === "bust") enlace = `https://minotar.net/bust/${args[2]}.png`;
     if (args[1] === "skin") enlace = `https://minotar.net/skin/${args[2]}.png`;
+    if (args[1] === "body") enlace = `https://minotar.net/body/${args[2]}/200.png`;
+    if (args[1] === "armor") enlace = `https://minotar.net/armor/body/${args[2]}/200.png`;
     if (!args[1]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
     if (!args[2]) return message.channel.send('**Error:** Faltan parámetros.\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>`');
     const embed = {
       "title": "",
       "author": {
         "name": args[2],
-        "icon_url": `https://minotar.net/avatar/${args[2]}.png`
+        "icon_url": `https://minotar.net/helm/${args[2]}.png`
       },
-      "description": `Resultados para ${args[2]}\nSi aparece un Steve, significará que dicho nickname no está registrado o se cambió de nick.`,
+      "description": `Resultados para ${args[2]}`,
       "color": 2335,
       "image": {
         "url": enlace
+      },
+      "footer": {
+        "text": "Si aparece un Steve, significará que dicho nickname no está registrado. | Powered by minotar.net"
       }
     }
     message.channel.send({ embed })
@@ -339,14 +346,14 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "conversor")) {
     var args = message.content.substring(prefix.length).split(" ");
     let text = "<@!" + message.author.id + ">, aquí tienes los resultados de tu conversión";
-    if(!args[1]) return message.reply("no especificaste ningúna moneda origen. \n**Uso correcto:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
-    if(!args[2]) return message.reply("no especificaste ningúna moneda a convertir. \n**Uso correcto:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
-    if(!args[3]) return message.reply("no especificaste la cantidad a convertir.")
+    if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna moneda origen. \n**Uso:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[2]) return message.channel.send("**Error:** No especificaste ningúna moneda a convertir. \n**Uso:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`");
+    if(!args[3]) return message.channel.send("**Error:** No especificaste la cantidad a convertir. \n**Uso:** `conversor <moneda origen> <moneda a convertir> <cantidad (sólo número)>`\n**Ejemplo:** `conversor EUR USD 5`")
     const res = await got(`https://api.cambio.today/v1/quotes/${args[1]}/${args[2]}/json?quantity=${args[3]}&key=290|OztDtH8ycuxHYj9U~_pdMn^0aa_ruSXj`, {json: true});
     if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
     const embed = {
       "title": "Resultado de conversión de monedas",
-      "description": "Última actualización: " + res.body.result.updated,
+      "description": "Última actualización: `" + res.body.result.updated + "`",
       "color": 2335,
       "fields": [
       {
@@ -409,18 +416,18 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`feo`: Calcula lo feo que es un usuario. (¡Aquí se pierden amistades, señores!)"
+        "value": "Ninguno"
       },
       {
         "name": "Comandos modificados",
-        "value": "`feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.\n`avatar`: Ya no se usa RichEmbed.\n`avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.\n`conversor`: Ahora el comando usa RichEmbed.\n`invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución.\n`8ball`: Comando rediseñado con estilo al AnthBot.\n`ayuda`: Ahora puedes conseguir la información y uso de un comando en específico colocándolo como argumento."
+        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor."
       },
       {
         "name": "Comandos retirados",
-        "value": "`sayd`: Comando retirado debido a error. (No se elimina el mensaje enviado.) (Use `say`)"
+        "value": "Ninguno"
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot | Creado por ElBuenAnvita"
+        "text": "Gracias por usar AnviBot"
       },
     }
     message.channel.send({ embed })
@@ -475,7 +482,6 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  const comando = ['kiss', 'beso'];
   if (message.content.startsWith(prefix + "kiss")||message.content.startsWith(prefix + "beso")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
@@ -779,7 +785,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "smallboobs")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "...";
+    let text = "Para gustos hay colores";
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     const res = await got('https://nekos.life/api/v2/img/smallboobs', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
@@ -804,7 +810,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "futanari")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "...";
+    let text = "Para gustos hay colores";
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     const res = await got('https://nekos.life/api/v2/img/futanari', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
@@ -858,9 +864,7 @@ client.on('message', async message => {
 
     if(!args[1]) return message.channel.send("Especifica una palabra a buscar");
 
-    let res = await urban(args.join(' ')).catch(e => {
-      return message.channel.send("Palabra no encontrada.")
-    })
+    let res = await got(`http://api.urbandictionary.com/v0/define?term=${args[1]}`, {json: true})
 
     const embed = {
       "title": "UrbanDictionary",
@@ -869,15 +873,15 @@ client.on('message', async message => {
       "fields": [
       {
         "name": "Definición",
-        "value": res.definition
+        "value": res.list.definition
       },
       {
         "name": "Ejemplo",
-        "value": res.example
+        "value": res.list.example
       },
       {
         "name": "Autor",
-        "value": res.author
+        "value": res.list.author
       },
       {
         "name": "Votos",
