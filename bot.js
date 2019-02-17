@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '2'
-const version = "1.8.3_prerelase2"
-const veces_commit = "2"
+const version = "1.8.3_prerelase3"
+const veces_commit = "3"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -163,6 +163,7 @@ client.on('message', async message => {
     const porcentajeFeo = Math.floor(Math.random() * 100);
     var mentioneduser = message.mentions.users.first();
     const attachment = mentioneduser.avatarURL; 
+    if(mentioneduser.id === '331641970910953473') porcentajeFeo = '0';
     if(porcentajeFeo == "0") texto = "`[...........]` \n**0% fealdad = 100% belleza. ¡Eres la persona menos fea! (ya hasta el creador del bot te envidia owo) o/**";
     if(porcentajeFeo >= "1" && porcentajeFeo <= "10") texto = "`[█..........]` \n**¡Te has salvado! Conseguiste un porcentaje muy, pero muy bajo.**";
     if(porcentajeFeo >= "11" && porcentajeFeo <= "20") texto = "`[██.........]` \n**¡Te has salvado! Conseguiste un porcentaje muy bajo.**";
