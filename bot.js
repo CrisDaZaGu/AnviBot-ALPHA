@@ -236,8 +236,11 @@ client.on('message', message => {
   if (message.content(prefix + "f")) {
     var args = message.content.substring(prefix.length).split(" "); 
     const payrespectfor = args.slice(0).join(" ");
-    if(!args[1]) paydesc = `**${message.author.username}** ha pagado sus respetos.`;
-    if(args[1]) paydesc = `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`;
+    if(args[1]) {
+      var paydesc = `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`;
+    } else {
+      var paydesc = `**${message.author.username}** ha pagado sus respetos.`;
+    };
     const embed = {
         "title": "",
         "description": paydesc,
