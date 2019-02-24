@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '1'
-const version = "1.8.3_prerelase11"
-const veces_commit = "11"
+const version = "1.8.3_prerelase11.5"
+const veces_commit = "11.5"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -231,7 +231,8 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
+// Nuevamente, deshabilitado por error. vvv
+/* client.on('message', message => {
   if (message.content(prefix + "f")) {
     var args = message.content.substring(prefix.length).split(" "); 
     const payrespectfor = args.slice(0).join(" ");
@@ -250,7 +251,7 @@ client.on('message', message => {
     }
     message.channel.send({ embed })
   }
-});
+}); */
 
 
 client.on('message', message => {
