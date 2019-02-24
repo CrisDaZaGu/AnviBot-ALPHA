@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '1'
-const version = "1.8.3_prerelase10"
-const veces_commit = "10"
+const version = "1.8.3_prerelase10.5"
+const veces_commit = "10.5"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -143,13 +143,13 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "avatar")) {
-  if(!message.mentions.members.first()) {
+  if(!message.mentions.members.first() && !args[1]) {
     const embed = {
       "title": `Avatar de ${message.author.username}`,
       "description": `(Enlace directo)[${message.author.avatarURL}]`,
       "color": 2335,
       "image": {
-        "url": res.body.neko
+        "url": message.author.avatarURL
       }
     };
     message.channel.send({ embed });
@@ -160,7 +160,7 @@ client.on('message', message => {
       "description": `(Enlace directo)[${mentioneduser.avatarURL}]`,
       "color": 2335,
       "image": {
-        "url": res.body.neko
+        "url": mentioneduser.avatarURL
       }
     };
     message.channel.send({ embed });
