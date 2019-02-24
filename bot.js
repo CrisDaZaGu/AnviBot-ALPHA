@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '1'
-const version = "1.8.3_prerelase10.5"
-const veces_commit = "10.5"
+const version = "1.8.3_prerelase11"
+const veces_commit = "11"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -139,7 +139,8 @@ client.on('message', message => {
   }
 }});
 
-client.on('message', message => {
+// DESHABILITADO POR ERROR vvv
+/* client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "avatar")) {
@@ -165,7 +166,7 @@ client.on('message', message => {
     };
     message.channel.send({ embed });
   }
-}});
+}}); */
 
 client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
@@ -460,15 +461,15 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`f`: Paga respetos"
+        "value": "`f`: _Press F to pay respects_"
       },
       {
         "name": "Comandos modificados",
-        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%.\n`avatar`: Corregido error que enviaba archivo '.pngsize2048'. Ahora envía un RichEmbed, como lo hacía antes."
+        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%."
       },
       {
         "name": "Comandos retirados",
-        "value": "Ninguno"
+        "value": "`avatar`: Deshabilitado temporalmente."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot"
