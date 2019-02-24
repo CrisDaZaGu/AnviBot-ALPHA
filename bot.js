@@ -97,7 +97,7 @@ const veces_commit = "11.7"
 
 client.on('ready', () => {
   client.user.setGame(`${prefix}ayuda | AnviBot is no longer under active development | AnviBot Beta (${veces_commit})`); // Juego
-  client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
+  client.user.setStatus('offline') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -232,7 +232,7 @@ client.on('message', message => {
 });
 
 // Nuevamente, deshabilitado por error. vvv
-client.on('message', message => {
+/* client.on('message', message => {
   if (message.content(prefix + "f")) {
     var args = message.content.substring(prefix.length).split(" "); 
     const payrespectfor = args.slice(0).join(" ");
@@ -248,7 +248,7 @@ client.on('message', message => {
       };
     message.channel.send({ embed })
   }
-});
+}); */
 
 
 client.on('message', message => {
