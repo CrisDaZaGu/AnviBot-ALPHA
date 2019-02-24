@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '1'
-const version = "1.8.3_prerelase9"
-const veces_commit = "9"
+const version = "1.8.3_prerelase10"
+const veces_commit = "10"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -144,13 +144,26 @@ client.on('message', message => {
 
   if (message.content.startsWith(prefix + "avatar")) {
   if(!message.mentions.members.first()) {
-    message.reply("este es tu avatar.");
-    message.channel.sendFile(message.author.avatarURL)
+    const embed = {
+      "title": `Avatar de ${message.author.username}`,
+      "description": `(Enlace directo)[${message.author.avatarURL}]`,
+      "color": 2335,
+      "image": {
+        "url": res.body.neko
+      }
+    };
+    message.channel.send({ embed });
   } else {
     var mentioneduser = message.mentions.users.first();
-    const attachment = mentioneduser.avatarURL;
-    message.channel.sendFile(attachment);
-    message.channel.send('Este es el avatar de ' + message.mentions.members.first() + ".")
+    const embed = {
+      "title": `Avatar de ${mentioneduser.username}`,
+      "description": `(Enlace directo)[${mentioneduser.avatarURL}]`,
+      "color": 2335,
+      "image": {
+        "url": res.body.neko
+      }
+    };
+    message.channel.send({ embed });
   }
 }});
 
@@ -218,6 +231,28 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if (message.content(prefix + "f")) {
+    var args = message.content.substring(prefix.length).split(" "); 
+    const payrespectfor = args.slice(0).join(" ");
+    if(!args[1]) {
+      const embed = {
+        "title": "",
+        "description": `**${message.author.username}** ha pagado sus respetos.`,
+        "color": 2335,
+      }
+    } else {
+      const embed = {
+        "title": "",
+        "description": `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`,
+        "color": 2335,
+      }
+    }
+    message.channel.send({ embed })
+  }
+});
+
+
+client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   if (message.content.startsWith(prefix + "ayuda")) {
     if (args[1] === "kiss") return message.channel.send("Besa a un usuario mencionándolo.\n**Uso:** `kiss (mención)`");
@@ -235,6 +270,7 @@ client.on('message', message => {
     if (args[1] === "neko") return message.channel.send("Si te gustan los gatos _2D_, este es tu comando.\n**Uso:** `neko`");
     if (args[1] === "mcskin") return message.channel.send("Si te sientes OR-GU-LLO-SO de tu skin de Minecraft, puedes usar este comando para verla (o ver la skin de los demás, claro está)\n**Uso:** `mcskin <avatar|helm|cube|bust|skin> <uuid/nickname>");
     if (args[1] === "feo") return message.channel.send("Mide la fealdad de una persona con este comando.\n**Uso:** `feo <@mención>`");
+    if (args[1] === "f") return message.channel.send("Mide la fealdad de una persona con este comando.\n**Uso:** `feo <@mención>`");
     const embed = {
       "title": "",
       "author": {
@@ -424,11 +460,11 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "Ninguno"
+        "value": "`f`: Paga respetos"
       },
       {
         "name": "Comandos modificados",
-        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%."
+        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%.\n`avatar`: Corregido error que enviaba archivo '.pngsize2048'. Ahora envía un RichEmbed, como lo hacía antes."
       },
       {
         "name": "Comandos retirados",
