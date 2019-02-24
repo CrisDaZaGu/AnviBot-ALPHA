@@ -91,8 +91,8 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = '1'
-const version = "1.8.3_prerelase11.5"
-const veces_commit = "11.5"
+const version = "1.8.3_prerelase11.7"
+const veces_commit = "11.7"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
@@ -232,26 +232,20 @@ client.on('message', message => {
 });
 
 // Nuevamente, deshabilitado por error. vvv
-/* client.on('message', message => {
+client.on('message', message => {
   if (message.content(prefix + "f")) {
     var args = message.content.substring(prefix.length).split(" "); 
     const payrespectfor = args.slice(0).join(" ");
-    if(!args[1]) {
-      const embed = {
+    if(!args[1]) paydesc = `**${message.author.username}** ha pagado sus respetos.`;
+    if(args[1]) paydesc = `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`;
+    const embed = {
         "title": "",
-        "description": `**${message.author.username}** ha pagado sus respetos.`,
+        "description": paydesc,
         "color": 2335,
-      }
-    } else {
-      const embed = {
-        "title": "",
-        "description": `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`,
-        "color": 2335,
-      }
-    }
+      };
     message.channel.send({ embed })
   }
-}); */
+});
 
 
 client.on('message', message => {
