@@ -90,14 +90,14 @@ il.run();
 console.log(randomQuote5());
 
 // inicio información global. vvvv
-const errores_detectados = '1'
-const version = "1.8.3_prerelase11.7"
-const veces_commit = "11.7"
+const errores_detectados = 'Unknown'
+const version = "1.8.4"
+const veces_commit = "0"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
-  client.user.setGame(`${prefix}ayuda | AnviBot is no longer under active development | AnviBot Beta (${veces_commit})`); // Juego
-  client.user.setStatus('offline') // Status de "No molestar" para cuando el bot esté en mantenimiento
+  client.user.setGame(`AnviBot dejará de prestar sus servicios a partir del 09/03/19 | anvi.cf/bot/fin-servicio/ | ${prefix}ayuda`); // Juego
+  //client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -204,7 +204,7 @@ client.on('message', message => {
 
   if (message.content.startsWith(prefix + "broadcast")) {
     if(message.author.id == "331641970910953473" && args[1]) {
-      client.channels.get("517856035399008256").send(":loudspeaker: **Anuncio** :loudspeaker:\n( Prueba )\n\n" + text)
+      client.channels.get("517856035399008256").send(":loudspeaker: **Anuncio** :loudspeaker:\n( @everyone )\n\n" + text)
     } else if (args[1]) {
       message.channel.send("**Error:** No cuentas con permisos para usar este comando. **Uso:** `bc|broadcast|announcement <anuncio>")
     };
@@ -459,7 +459,7 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`f`: _Press F to pay respects_"
+        "value": "Ninguno"
       },
       {
         "name": "Comandos modificados",
@@ -467,7 +467,11 @@ client.on('message', message => {
       },
       {
         "name": "Comandos retirados",
-        "value": "`avatar`: Deshabilitado temporalmente."
+        "value": "`avatar`: Comando deshabilitado por frecuentes errores en la ejecución del mismo."
+      },
+      {
+        "name": "Fin del servicio",
+        "value": "AnviBot y nuvnuv dejará de prestar sus servicios a partir de este 09/03 a las 11:59 GMT-5 (HORA ESTÁNDAR DE COLOMBIA)\nPara más información, (consúlte este enlace)[anvi.cf/bot/fin-servicio/]."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot"
@@ -899,7 +903,7 @@ client.on('message', async message => {
   }
 });
 
-client.on('message', async message => {
+/* client.on('message', async message => {
   if (message.content.startsWith(prefix + "urban")) {
     const urban = require('relevant-urban');
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -935,6 +939,6 @@ client.on('message', async message => {
       },
     }
     message.channel.send('resultado: ' + res.list.definition)
-}});
+}}); */
 
 client.login(process.env.BOT_TOKEN);
