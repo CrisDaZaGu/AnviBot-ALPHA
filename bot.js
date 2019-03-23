@@ -233,7 +233,7 @@ client.on('message', message => {
 
 // Nuevamente, deshabilitado por error. vvv
 client.on('message', message => {
-  if (message.content(prefix + "f")) {
+  if (message.content(prefix + "payrespects")) {
     var args = message.content.substring(prefix.length).split(" "); 
     const args2 = args.slice(1).join(" ");
     if(!args[1]) {
