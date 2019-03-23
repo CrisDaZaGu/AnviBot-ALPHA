@@ -91,12 +91,12 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.4"
+const version = "1.8.5_prerelase-1.1"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
-  client.user.setGame(`AnviBot dejará de prestar sus servicios a partir del 09/03/19 | anvi.cf/bot/fin-servicio/ | ${prefix}ayuda`); // Juego
+  client.user.setGame(` ${prefix}ayuda | AnviBot | anvi.cf/bot/`); // Juego
   //client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
@@ -232,23 +232,26 @@ client.on('message', message => {
 });
 
 // Nuevamente, deshabilitado por error. vvv
-/* client.on('message', message => {
+client.on('message', message => {
   if (message.content(prefix + "f")) {
     var args = message.content.substring(prefix.length).split(" "); 
-    const payrespectfor = args.slice(0).join(" ");
-    if(args[1]) {
-      var paydesc = `**${message.author.username}** ha pagado sus respetos por ${payrespectfor}`;
-    } else {
-      var paydesc = `**${message.author.username}** ha pagado sus respetos.`;
-    };
-    const embed = {
+    const args2 = args.slice(1).join(" ");
+    if(!args[1]) {
+      const embed = {
         "title": "",
-        "description": paydesc,
+        "description": `**${message.author.username}** ha pagado sus respetos.`,
         "color": 2335,
       };
+    } else {
+      const embed = {
+        "title": "",
+        "description": `**${message.author.username}** ha pagado sus respetos por ${args2}`,
+        "color": 2335,
+      };
+    };
     message.channel.send({ embed })
   }
-}); */
+});
 
 
 client.on('message', message => {
