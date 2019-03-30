@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.7.1"
+const version = "1.8.5_prerelase-1.7.2"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -236,13 +236,11 @@ client.on('message', message => {
   if (message.content === prefix + "payrespects") {
     var args = message.content.substring(prefix.length).split(" "); 
     const args2 = args.slice(1).join(" ");
-    if(!args[1]) {
-      const embed = {
-        "title": "",
-        "description": `**${message.author.username}** ha pagado sus respetos.`,
-        "color": 2335,
-      };
-    }
+    const embed = {
+      "title": "",
+      "description": `**${message.author.username}** ha pagado sus respetos.`,
+      "color": 2335,
+    };
     message.channel.send({ embed })
   }
 });
