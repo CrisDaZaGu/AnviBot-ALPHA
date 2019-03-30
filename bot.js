@@ -91,13 +91,13 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.1"
+const version = "1.8.5_prerelase-1.6"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
 client.on('ready', () => {
-  client.user.setGame(` ${prefix}ayuda | AnviBot | anvi.cf/bot/`); // Juego
-  //client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
+  client.user.setGame(`En pruebas | ${prefix}ayuda | AnviBot | anvi.cf/bot/`); // Juego
+  client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -943,5 +943,22 @@ client.on('message', async message => {
     }
     message.channel.send('resultado: ' + res.list.definition)
 }}); */
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  let text = args.slice(1).join(" ");
+
+  if (message.content.startsWith(prefix + "fetchmessage")) {
+    let channel // <-- your pre-filled channel variable
+    channel.fetchMessages({ limit: 1 }).then(messages => {
+      let lastMessage = messages.first();
+      if (!lastMessage.author.bot) {
+    // Si el ultimo mensaje no fue un autor
+  }
+})
+.catch(message.reply('ocurrio un error'));
+}
+message.channel.send('claro, aquí tienes tu id' + lastMessage)
+});
 
 client.login(process.env.BOT_TOKEN);
