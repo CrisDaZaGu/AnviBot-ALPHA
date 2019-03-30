@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.7.8"
+const version = "1.8.5_prerelase-1.7.9"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -198,6 +198,15 @@ client.on('message', async message => {
   }
 });
 
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "rip")) {
+    var args = message.content.split(/ +/g); 
+    const args2 = args.slice(1).join(" ");
+    const attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}&top3=${args2}`; 
+    message.channel.sendFile(attachment, 'rip.jpg');
+  }
+});
+
 client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   let text = args.slice(1).join(" ");
@@ -231,10 +240,10 @@ client.on('message', message => {
   }
 });
 
-// Nuevamente, deshabilitado por error. vvv
+// habilitado nuevamente, slice 1 no contendrá al mismo comando-
 client.on('message', message => {
   var args = message.content.split(/ +/g); 
-  const args2 = args.slice(0).join(" ");
+  const args2 = args.slice(1).join(" ");
 
   if (args[0] === `${prefix}f`) {
     if(args[1]) {
