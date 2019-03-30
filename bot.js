@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.7.9"
+const version = "1.8.5_prerelase-1.8.0"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -201,8 +201,10 @@ client.on('message', async message => {
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "rip")) {
     var args = message.content.split(/ +/g); 
-    const args2 = args.slice(1).join(" ");
-    const attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}&top3=${args2}`; 
+    const args2 = args.slice(2).join(" ");
+    const attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}&top3=${args2}`;
+    if(!args[1]) return attachment = `http://www.tombstonebuilder.com/generate.php?top2=RIP&top3=${message.author.username}`;
+    if(!args[2]) return attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}`;
     message.channel.sendFile(attachment, 'rip.jpg');
   }
 });
