@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.7"
+const version = "1.8.5_prerelase-1.7.1"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -232,8 +232,8 @@ client.on('message', message => {
 });
 
 // Nuevamente, deshabilitado por error. vvv
-/* client.on('message', message => {
-  if (message.content(prefix + "payrespects")) {
+client.on('message', message => {
+  if (message.content === prefix + "payrespects") {
     var args = message.content.substring(prefix.length).split(" "); 
     const args2 = args.slice(1).join(" ");
     if(!args[1]) {
@@ -242,16 +242,10 @@ client.on('message', message => {
         "description": `**${message.author.username}** ha pagado sus respetos.`,
         "color": 2335,
       };
-    } else {
-      const embed = {
-        "title": "",
-        "description": `**${message.author.username}** ha pagado sus respetos por ${args2}`,
-        "color": 2335,
-      };
-    };
+    }
     message.channel.send({ embed })
   }
-}); */
+});
 
 
 client.on('message', message => {
@@ -944,7 +938,8 @@ client.on('message', async message => {
     message.channel.send('resultado: ' + res.list.definition)
 }}); */
 
-client.on('message', message => {
+// eliminado por error continuo
+/* client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
   let text = args.slice(1).join(" ");
 
@@ -959,6 +954,6 @@ client.on('message', message => {
 .catch(message.reply('ocurrio un error'));
 }
 message.channel.send('claro, aquí tienes tu id ' + lastMessage)
-});
+}); */
 
 client.login(process.env.BOT_TOKEN);
