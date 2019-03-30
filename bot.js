@@ -203,8 +203,8 @@ client.on('message', async message => {
     var args = message.content.split(/ +/g); 
     const args2 = args.slice(2).join(" ");
     const attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}&top3=${args2}`;
-    if(!args[1]) return attachment = `http://www.tombstonebuilder.com/generate.php?top2=RIP&top3=${message.author.username}`;
-    if(!args[2]) return attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}`;
+    if(!args[1]) attachment = `http://www.tombstonebuilder.com/generate.php?top2=RIP&top3=${message.author.username}`;
+    if(!args[2]) attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}`;
     message.channel.sendFile(attachment, 'rip.jpg');
   }
 });
