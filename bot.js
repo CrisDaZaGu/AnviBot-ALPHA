@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.7.3"
+const version = "1.8.5_prerelase-1.7.4"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -236,7 +236,7 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" "); 
   const args2 = args.slice(1).join(" ");
 
-  if (args[0] === prefix + "f") {
+  if (args[1] === prefix + "f") {
     const embed = {
       "title": "",
       "description": `**${message.author.username}** ha pagado sus respetos.`,
