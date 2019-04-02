@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.0"
+const version = "1.8.5_prerelase-1.8.2"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -199,12 +199,11 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "rip")) {
+  if (message.content.startsWith(prefix + "rip")||message.content.startsWith(prefix + "tsb")||message.content.startsWith(prefix + "tombstone")) {
     var args = message.content.split(/ +/g); 
     const args2 = args.slice(2).join(" ");
     const attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}&top3=${args2}`;
-    if(!args[1]) attachment = `http://www.tombstonebuilder.com/generate.php?top2=RIP&top3=${message.author.username}`;
-    if(!args[2]) attachment = `http://www.tombstonebuilder.com/generate.php?top2=${args[1]}`;
+    // if(!args[1]) attachment = `http://www.tombstonebuilder.com/generate.php?top2=RIP&top3=${message.author.username}`; //no responsive
     message.channel.sendFile(attachment, 'rip.jpg');
   }
 });
@@ -973,5 +972,27 @@ client.on('message', async message => {
 }
 message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 }); */
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "fetchgenius")) {
+    var args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ");
+    if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
+    const res = await got(`https://api.genius.com/?q=${args2}&access_token=${GENIUS_ACCESS_TOKEN}`, {json: true});
+    if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado una canción! :(`);
+    const embed = {
+      "title": `${res.body.response.hits[0].result.title_with_featured}`,
+      "description": `By ${res.body.response.hits[0].result.primary_artist.name}`,
+      "color": 2335,
+      "thumbnail": {
+        "url": `${res.body.response.hits[0].result.header_image_thumbnail_url}`,
+      },
+      "footer": {
+        "text": "Powered by Genius"
+      },
+    }
+    message.channel.send({ embed });
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
