@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // inicio información global. vvvv
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.2"
+const version = "1.8.5_prerelase-1.8.3"
 const veces_commit = "0"
 // fin de información global. ^^^^
 
@@ -978,7 +978,7 @@ client.on('message', async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
-    const res = await got(`https://api.genius.com/?q=${args2}&access_token=${GENIUS_ACCESS_TOKEN}`, {json: true});
+    const res = (await got(`https://api.genius.com/?q=${args2}&access_token=${GENIUS_ACCESS_TOKEN}`, { json: true }));
     if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado una canción! :(`);
     const embed = {
       "title": `${res.body.response.hits[0].result.title_with_featured}`,
@@ -991,7 +991,8 @@ client.on('message', async message => {
         "text": "Powered by Genius"
       },
     }
-    message.channel.send({ embed });
+    // message.channel.send({ embed }); //por ahora no.
+    message.channel.send(`song: ${res.body.response.hits[0].result.title_with_featured}`);
   }
 });
 
