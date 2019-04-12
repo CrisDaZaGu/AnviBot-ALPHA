@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.5"
+const version = "1.8.5_prerelase-1.8.6"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -973,7 +973,7 @@ client.on('message', async message => {
 message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 }); */
 
-client.on('message', async message => {
+/* client.on('message', async message => {
   if (message.content.startsWith(prefix + "fetchgenius")) {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
@@ -999,6 +999,13 @@ client.on('message', async message => {
     }
     // message.channel.send({ embed }); //testeando ahora con variables y token generica...
     message.channel.send('song: ' + res.body.response.hits[0].result.title_with_featured); //para testeos_2
+  }
+});
+*/
+
+client.on('messageUpdate', (oldMessage, newMessage) => {
+  if(newMessage.content === "ew"){
+    message.channel.send('Ow, parece que lo cambiaste a "ew", ¡ew!');
   }
 });
 
