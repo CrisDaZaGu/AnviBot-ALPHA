@@ -89,11 +89,11 @@ il.run();
 
 console.log(randomQuote5());
 
-// inicio información global. vvvv
+// v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.3"
-const veces_commit = "0"
-// fin de información global. ^^^^
+const version = "1.8.5_prerelase-1.8.4"
+const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
+// ^ FIN INFORMACIÓN GLOBAL ^
 
 client.on('ready', () => {
   client.user.setGame(`En pruebas - ${version} | ${prefix}ayuda | AnviBot | anvi.cf/bot/`); // Juego
@@ -978,21 +978,27 @@ client.on('message', async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
-    const res = (await got(`https://api.genius.com/?q=${args2}&access_token=${GENIUS_ACCESS_TOKEN}`, { json: true }));
+    const res = await got(`https://api.genius.com/?q=${args2}&access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk`, { json: true });
     if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado una canción! :(`);
+    if(res.body) return message.channel.send('there was an unk error');
+
+    var nombre_w_ft = res.body.response.hits[0].result.title_with_featured;
+    var artist = res.body.response.hits[0].result.primary_artist.name;
+    var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url;
+
     const embed = {
-      "title": `${res.body.response.hits[0].result.title_with_featured}`,
-      "description": `By ${res.body.response.hits[0].result.primary_artist.name}`,
+      "title": nombre_w_ft,
+      "description": "By " + artist,
       "color": 2335,
       "thumbnail": {
-        "url": `${res.body.response.hits[0].result.header_image_thumbnail_url}`,
+        "url": imagen_thumb,
       },
       "footer": {
         "text": "Powered by Genius"
       },
     }
-    // message.channel.send({ embed }); //por ahora no.
-    message.channel.send(`song: ${res.body.response.hits[0].result.title_with_featured}`);
+    message.channel.send({ embed }); //testeando ahora con variables y token generica...
+    // message.channel.send('song: ' + res.body.response.hits[0].result.title_with_featured);
   }
 });
 
