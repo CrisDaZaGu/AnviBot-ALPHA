@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.4"
+const version = "1.8.5_prerelase-1.8.5"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -997,8 +997,8 @@ client.on('message', async message => {
         "text": "Powered by Genius"
       },
     }
-    message.channel.send({ embed }); //testeando ahora con variables y token generica...
-    // message.channel.send('song: ' + res.body.response.hits[0].result.title_with_featured);
+    // message.channel.send({ embed }); //testeando ahora con variables y token generica...
+    message.channel.send('song: ' + res.body.response.hits[0].result.title_with_featured); //para testeos_2
   }
 });
 
