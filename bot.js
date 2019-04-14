@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.9.1"
+const version = "1.8.5_prerelase-1.9.2"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -415,8 +415,8 @@ client.on('message', async message => {
       "fields": [
       {
         "name": "Información",
-        "value": `Estás tratando de convertir ${res.body.result.source} → ${res.body.result.target}`
-      },
+        "value": `Estás tratando de convertir ${res.body.result.source} (1) → ${res.body.result.target} (${res.body.result.value})`
+      }, /*
       {
         "name": `Unidad en ${res.body.result.source}`,
         "value": `1`,
@@ -426,7 +426,7 @@ client.on('message', async message => {
         "name": `Unidad en ${res.body.result.target}`,
         "value": `${res.body.result.value}`,
         "inline": true
-      },
+      }, */
       {
         "name": `${res.body.result.source}`,
         "value": `${res.body.result.quantity}`,
