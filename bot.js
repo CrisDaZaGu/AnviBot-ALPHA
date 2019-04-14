@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.6"
+const version = "1.8.5_prerelase-1.8.7"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1003,10 +1003,11 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 });
 */
 
-client.on('messageUpdate', (oldMessage, newMessage) => {
-  if(newMessage.content === "ew"){
-    message.channel.send('Ow, parece que lo cambiaste a "ew", ¡ew!');
-  }
+// Deshabilitado, no parece andar en 1.11.1+ vvvv
+client.on('messageUpdate', (anterior, nuevo) => {
+  if(nuevo.content == ":visto:"){
+    message.channel.send('<:visto:518634205710647296>');
+  } else return;
 });
 
 client.login(process.env.BOT_TOKEN);
