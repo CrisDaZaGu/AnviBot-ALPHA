@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.8.9"
+const version = "1.8.5_prerelase-1.9"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1003,9 +1003,9 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 });
 */
 
-// Deshabilitado, no parece andar en 1.11.1+ vvvv
+// Deshabilitado, chequear la documentación de messageUpdate, anvi. vvvv
 client.on('messageUpdate', (anterior, nuevo) => {
-  if(nuevo.content.includes == ":visto:"){
+  if(nuevo.content.includes(":visto:")){
     nuevo.channel.send('<:visto:518634205710647296>');
   } else return;
 });
