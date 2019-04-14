@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.9"
+const version = "1.8.5_prerelase-1.9.1"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -306,7 +306,7 @@ client.on('message', message => {
       },
       {
         "name": "Pronto",
-        "value": "N/A\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvibot.blogspot.com/p/commands)"
+        "value": "N/A\n\nPuedes entrar a la página oficial de comandos haciendo [click aquí](http://anvi.cf/bot/)"
       }],
       "footer": {
         "text": "¡Gracias por usar AnviBot!"
@@ -414,16 +414,28 @@ client.on('message', async message => {
       "color": 2335,
       "fields": [
       {
-        "name": "Valor por unidad",
-        "value": `[${res.body.result.source}] (1.0) → (${res.body.result.value}) [${res.body.result.target}]`
+        "name": "Información",
+        "value": `Estás tratando de convertir ${res.body.result.source} → ${res.body.result.target}`
       },
       {
-        "name": "Valor por especificación",
-        "value": `[${res.body.result.source}] (${res.body.result.quantity}) → (**${res.body.result.amount}**) [${res.body.result.target}]`
+        "name": `Unidad en ${res.body.result.source}`,
+        "value": `1`,
+        "inline": true
       },
       {
-        "name": "Resultado final",
-        "value": `**${res.body.result.amount}**`
+        "name": `Unidad en ${res.body.result.target}`,
+        "value": `${res.body.result.value}`,
+        "inline": true
+      },
+      {
+        "name": `${res.body.result.source}`,
+        "value": `${res.body.result.quantity}`,
+        "inline": true
+      },
+      {
+        "name": `${res.body.result.target}`,
+        "value": `**${res.body.result.amount}**`,
+        "inline": true
       }],
       "footer": {
         "text": "Powered by cambio.today"
@@ -462,9 +474,10 @@ client.on('message', message => {
       "title": "",
       "author": {
         "name": client.user.username,
-        "icon_url": client.user.avatarURL
+        "icon_url": client.user.avatarURL,
+        "url": "http://anvi.cf/bot/"
       },
-      "description": "__**Listado del registro de cambios**__",
+      "description": "[Listado del registro de cambios](http://anvi.cf/bot/changelog/)",
       "color": 2335,
       "fields": [
       {
@@ -473,19 +486,19 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "Ninguno"
+        "value": "`f (reason)`: Paga tus respetos (por algo).\n`rip (contenido)`: Crea una lápida en base a lo que coloques como argumentos\n"
       },
       {
         "name": "Comandos modificados",
-        "value": "`mcskin`: Ahora puedes consultar tu body o tu body con armor.\n`feo`: Ahora no puedes mencionar al mismo bot.\n`feo`: El resultado al mencionar el creador del bot será siempre 0%."
+        "value": '`visto`: El comando quedó como siempre. Sin embargo, ahora si editas el mensaje y colocas un ":visto:" o ":seen:", tu mensaje será reaccionado con el emoji de <:visto:518634205710647296>.\n`conversor`: Interfaz ahora usa inline en el RichEmbed.'
       },
       {
         "name": "Comandos retirados",
         "value": "`avatar`: Comando deshabilitado por frecuentes errores en la ejecución del mismo."
       },
       {
-        "name": "Fin del servicio",
-        "value": "AnviBot y nuvnuv dejará de prestar sus servicios a partir de este 09/03 a las 11:59 GMT-5 (HORA ESTÁNDAR DE COLOMBIA)\nPara más información, (consúlte este enlace)[anvi.cf/bot/fin-servicio/]."
+        "name": "¡Nueva página web! ¡Wiiiii~!",
+        "value": "Puedes ingresar haciendo clic [aquí](http://anvi.cf/bot/)."
       }],
       "footer": {
         "text": "Gracias por usar AnviBot"
@@ -1003,10 +1016,11 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 });
 */
 
-// Deshabilitado, chequear la documentación de messageUpdate, anvi. vvvv
+// Testeado con nuevo.channel.send('visto')
+
 client.on('messageUpdate', (anterior, nuevo) => {
-  if(nuevo.content.includes(":visto:")){
-    nuevo.channel.send('<:visto:518634205710647296>');
+  if(nuevo.content.includes(":visto:")||nuevo.content.includes(":seen:")||nuevo.content.includes("visteado")){
+    nuevo.react('<:visto:518634205710647296>');
   } else return;
 });
 
