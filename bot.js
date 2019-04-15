@@ -91,7 +91,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.9.2"
+const version = "1.8.5_prerelase-1.9.3"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1020,7 +1020,7 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 
 client.on('messageUpdate', (anterior, nuevo) => {
   if(nuevo.content.includes(":visto:")||nuevo.content.includes(":seen:")||nuevo.content.includes("visteado")){
-    nuevo.react('<:visto:518634205710647296>');
+    nuevo.react('518634205710647296'); // usa id, idiota.
   } else return;
 });
 
