@@ -8,6 +8,7 @@ const request = require('snekfetch');
 const got = require('got');
 const clientneko = require('nekos.life');
 const neko = new clientneko();
+const cheerio = require("cheerio");
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -91,7 +92,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-1.9.3"
+const version = "1.8.5_prerelase-2"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -442,6 +443,68 @@ client.on('message', async message => {
       },
     }
     message.channel.send({ embed });
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "randomanime")) {
+    const obtener = await got("https://www.crunchyroll.com/random/anime")
+    let $ = cheerio.load(obtener.body);
+    const serie_titulo = $('a.text-link > span').text().trim();
+    const enlace_serie = $('h1.ellipsis > a.text-link').attr('href');
+    const nombre_ep1 = $('#showmedia_about_name').text().trim();
+    const publisher = $('span > a.text-link').text().trim();
+    const publisher_link = $('span > a.text-link').attr('href');
+    const link = $('link[rel="canonical"]').attr('href');
+    const relased_on = $('div > span').eq(20).text().trim();
+
+    const obtener_serie = await got(enlace_serie)
+    let a = cheerio.load(obtener_serie.body)
+
+    const desc_serie = a('meta[property="og:description"]').attr('content')
+    const url_serie_poster = a('img[itemprop="image"]').attr('src');
+
+    //console.log(`Serie: ${serie_titulo}`);
+    //console.log(`Enlace: ${enlace_serie}`);
+    //console.log(`Episodio 1: ${nombre_ep1}`);
+    //console.log(`Publisher: ${publisher} - https://www.crunchyroll.com${publisher_link}`);
+    //console.log(`Poster (full): ${url_serie_poster}`)
+    //console.log(`Descripción de la serie: ${desc_serie}`);
+    //console.log(`Relased on: ${relased_on}`);
+    //console.log(`enlace_ep1: ${link}`);
+
+    if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
+    const embed = {
+      "title": `${serie_titulo}`,
+      "description": `${desc_serie}`,
+      "url": `${enlace}`,
+      "color": 0,
+      "timestamp": new Date(),
+      "footer": {
+        "text": `Requested by ${message.author.username}`
+      },
+      "thumbnail": {
+        "url": `${url_serie_poster}`
+      },
+      "author": {
+        "name": "Crunchyroll",
+        "url": "https://www.crunchyroll.com",
+        "icon_url": "https://www.crunchyroll.com/favicons/favicon-32x32.png"
+      },
+      "fields": [
+        {
+          "name": "Publisher :pencil:",
+          "value": `[${publisher}](https://www.crunchyroll.com${publisher_link})`,
+          "inline": true
+        },
+        {
+          "name": "Relased on",
+          "value": `${relased_on}`,
+          "inline": true
+        }
+      ]
+    };
+    message.channel.send("Aquí están tus resultados para: Random Anime", { embed });
   }
 });
 

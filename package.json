@@ -14,6 +14,7 @@
     "oxford-dictionary": "1.4.1",
     "nekos.life": "1.1.4",
     "got": "9.2.2",
-    "relevant-urban": "2.0.0"
+    "relevant-urban": "2.0.0",
+    "cheerio": "^0.22.0"
   }
 }
