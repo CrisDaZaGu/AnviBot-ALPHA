@@ -1,14 +1,15 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const prefix = "__";
+const client = new Discord.Client(); // Creador del cliente de Discord.
+const prefix = "__"; // Prefijo
 const InfiniteLoop = require('infinite-loop');
 const il = new InfiniteLoop;
 const quotes = ["Decididamente sí", "Decididamente no", "No veo algo bueno en esta bola mágica, ¿eh?", "No cuentes con ello.", "Cuenta con ello.", "A mí se me hace que sí, ¿eh?", "No lo creo.", "Muy dudoso.", "Probablemente", "Tengo una bola mágica, pero no hago milagros. <:02monka:518638316065783828>"]
 const request = require('snekfetch');
-const got = require('got');
-const clientneko = require('nekos.life');
-const neko = new clientneko();
-const cheerio = require("cheerio");
+const got = require('got'); // Para HTTP requests.
+/* const clientneko = require('nekos.life');
+const neko = new clientneko(); */ // No será usado. Nunca lo fue.
+const axios = require('axios'); // Busca como got.
+const cheerio = require("cheerio"); // Busca como jQuery en JS.
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -92,7 +93,7 @@ console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-2"
+const version = "1.8.5_prerelase-3"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -426,7 +427,7 @@ client.on('message', async message => {
       {
         "name": `Unidad en ${res.body.result.target}`,
         "value": `${res.body.result.value}`,
-        "inline": true
+        "inline": true //Unidad deprecada
       }, */
       {
         "name": `${res.body.result.source}`,
@@ -448,8 +449,8 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "randomanime")) {
-    const obtener = await got("https://www.crunchyroll.com/random/anime")
-    let $ = cheerio.load(obtener.body);
+    const response = await axios.get("https://www.crunchyroll.com/random/anime")
+    let $ = cheerio.load(response.data);
     const serie_titulo = $('a.text-link > span').text().trim();
     const enlace_serie = $('h1.ellipsis > a.text-link').attr('href');
     const nombre_ep1 = $('#showmedia_about_name').text().trim();
@@ -464,6 +465,9 @@ client.on('message', async message => {
     const desc_serie = a('meta[property="og:description"]').attr('content')
     const url_serie_poster = a('img[itemprop="image"]').attr('src');
 
+    /* Testing para RunKit, funciona perfectamente,
+    no entiendo si el got o el cheerio no anda bien */
+
     //console.log(`Serie: ${serie_titulo}`);
     //console.log(`Enlace: ${enlace_serie}`);
     //console.log(`Episodio 1: ${nombre_ep1}`);
@@ -473,12 +477,12 @@ client.on('message', async message => {
     //console.log(`Relased on: ${relased_on}`);
     //console.log(`enlace_ep1: ${link}`);
 
-    if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
+    // if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
     const embed = {
       "title": `${serie_titulo}`,
       "description": `${desc_serie}`,
       "url": `${enlace}`,
-      "color": 0,
+      "color": 2335,
       "timestamp": new Date(),
       "footer": {
         "text": `Requested by ${message.author.username}`
@@ -504,12 +508,13 @@ client.on('message', async message => {
         }
       ]
     };
-    message.channel.send("Aquí están tus resultados para: Random Anime", { embed });
+    message.channel.send({ embed });
   }
 });
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "maps")) {
+    /*
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     const args3 = args.slice(2).join(" ")
@@ -527,6 +532,7 @@ client.on('message', message => {
         "url": "https://maps.google.com.au/maps/api/staticmap?size=640x640&maptype=roadmap&center=" + args2 + "&zoom=15"
       }
     }
+    */
     message.channel.send(`Lo sentimos, este comando ya no está disponible.`);
   }
 });
