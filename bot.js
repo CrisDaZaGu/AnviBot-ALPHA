@@ -18,7 +18,7 @@ il.add(randomQuote, []);
 
 il.run();
 
-console.log(randomQuote());
+// console.log(randomQuote());
 //from here down is different gif for command --kiss ------------------------------------------------------
 const quotes2 = ["Referencia", "Referencia"]
 
@@ -29,7 +29,7 @@ il.add(randomQuote2, []);
 
 il.run();
 
-console.log(randomQuote2());
+// console.log(randomQuote2());
 //from here down is different QUOTES FOR :VISTO: ------------------------------------------------------
 const quotes4 = ["<:visto:49181876175044608>", "<:visto:461334819586965507>", "<:Visto2:482049600602243072>"]
 
@@ -50,7 +50,7 @@ il.add(randomQuote8, []);
 
 il.run();
 
-console.log(randomQuote8());
+// console.log(randomQuote8());
 // Chistes v
 const quotes5 = [
   "—¡Soldado López!\n—¡Sí, mi capitán!\n—¡No lo ví ayer en la prueba de camuflaje!\n—¡Gracias, mi capitán!",
@@ -89,11 +89,11 @@ il.add(randomQuote5, []);
 
 il.run();
 
-console.log(randomQuote5());
+// console.log(randomQuote5());
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-3"
+const version = "1.8.5_prerelase-4"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -449,8 +449,8 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "randomanime")) {
-    const response = await axios.get("https://www.crunchyroll.com/random/anime")
-    let $ = cheerio.load(response.data);
+    const res = await axios.get("https://www.crunchyroll.com/random/anime")
+    let $ = cheerio.load(res.data);
     const serie_titulo = $('a.text-link > span').text().trim();
     const enlace_serie = $('h1.ellipsis > a.text-link').attr('href');
     const nombre_ep1 = $('#showmedia_about_name').text().trim();
@@ -459,8 +459,8 @@ client.on('message', async message => {
     const link = $('link[rel="canonical"]').attr('href');
     const relased_on = $('div > span').eq(20).text().trim();
 
-    const obtener_serie = await got(enlace_serie)
-    let a = cheerio.load(obtener_serie.body)
+    const obtener_serie = await axios.get(enlace_serie)
+    let a = cheerio.load(obtener_serie.data)
 
     const desc_serie = a('meta[property="og:description"]').attr('content')
     const url_serie_poster = a('img[itemprop="image"]').attr('src');
@@ -468,14 +468,14 @@ client.on('message', async message => {
     /* Testing para RunKit, funciona perfectamente,
     no entiendo si el got o el cheerio no anda bien */
 
-    //console.log(`Serie: ${serie_titulo}`);
-    //console.log(`Enlace: ${enlace_serie}`);
-    //console.log(`Episodio 1: ${nombre_ep1}`);
-    //console.log(`Publisher: ${publisher} - https://www.crunchyroll.com${publisher_link}`);
-    //console.log(`Poster (full): ${url_serie_poster}`)
-    //console.log(`Descripción de la serie: ${desc_serie}`);
-    //console.log(`Relased on: ${relased_on}`);
-    //console.log(`enlace_ep1: ${link}`);
+    /* console.log(`Serie: ${serie_titulo}`);
+    console.log(`Enlace: ${enlace_serie}`);
+    console.log(`Episodio 1: ${nombre_ep1}`);
+    console.log(`Publisher: ${publisher} - https://www.crunchyroll.com${publisher_link}`);
+    console.log(`Poster (full): ${url_serie_poster}`)
+    console.log(`Descripción de la serie: ${desc_serie}`);
+    console.log(`Relased on: ${relased_on}`);
+    console.log(`enlace_ep1: ${link}`); */
 
     // if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
     const embed = {
@@ -1092,5 +1092,6 @@ client.on('messageUpdate', (anterior, nuevo) => {
     nuevo.react('518634205710647296'); // usa id, idiota.
   } else return;
 });
+
 
 client.login(process.env.BOT_TOKEN);
