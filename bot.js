@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-4"
+const version = "1.8.5_prerelase-4.1"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -481,7 +481,7 @@ client.on('message', async message => {
     const embed = {
       "title": `${serie_titulo}`,
       "description": `${desc_serie}`,
-      "url": `${enlace}`,
+      "url": `${enlace_serie}`,
       "color": 2335,
       "timestamp": new Date(),
       "footer": {
