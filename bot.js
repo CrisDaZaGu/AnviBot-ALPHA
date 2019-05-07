@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5_prerelase-4.1"
+const version = "1.8.5"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -502,7 +502,7 @@ client.on('message', async message => {
           "inline": true
         },
         {
-          "name": "Relased on",
+          "name": "Relased on :alarm_clock:",
           "value": `${relased_on}`,
           "inline": true
         }
@@ -555,22 +555,22 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`f (reason)`: Paga tus respetos (por algo).\n`rip (contenido)`: Crea una lápida en base a lo que coloques como argumentos\n"
+        "value": "`randomanime`: Busca un anime aleatorio en la base de datos de Crunchyroll. Puedes acceder al vínculo del primer Episodio en el enlace.\n**NOTA**: El comando devolverá la información netamentene en inglés, y estamos trabajando para mejorar eso.\n**NOTA 2**: La aparición de un anime dentro de la base de datos no implica que esté disponible en su región. AnviBot no es responsable de ello."
       },
       {
         "name": "Comandos modificados",
-        "value": '`visto`: El comando quedó como siempre. Sin embargo, ahora si editas el mensaje y colocas un ":visto:" o ":seen:", tu mensaje será reaccionado con el emoji de <:visto:518634205710647296>.\n`conversor`: Interfaz ahora usa inline en el RichEmbed.'
+        "value": 'Ninguno, por ahora.'
       },
       {
         "name": "Comandos retirados",
-        "value": "`avatar`: Comando deshabilitado por frecuentes errores en la ejecución del mismo."
+        "value": "Ninguno, por ahora."
       },
       {
-        "name": "¡Nueva página web! ¡Wiiiii~!",
+        "name": "¡Nueva página web! ¡Wiiiii~!:heart:",
         "value": "Puedes ingresar haciendo clic [aquí](http://anvi.cf/bot/)."
       }],
       "footer": {
-        "text": "Gracias por usar AnviBot"
+        "text": "¡Gracias por usar AnviBot!"
       },
     }
     message.channel.send({ embed })
@@ -1092,6 +1092,8 @@ client.on('messageUpdate', (anterior, nuevo) => {
     nuevo.react('518634205710647296'); // usa id, idiota.
   } else return;
 });
+
+
 
 
 client.login(process.env.BOT_TOKEN);

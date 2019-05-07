@@ -1,22 +1,14 @@
 # Registro de cambios
-Versión: 1.8.2
+Versión: 1.8.5
 ## Nuevos comandos:
-`feo`: Calcula lo feo que es un usuario. (¡Aquí se pierden amistades, señores!)"
+`randomanime`: Busca un anime aleatorio en la base de datos de Crunchyroll. Puedes acceder al vínculo del primer Episodio en el enlace.
+
+**NOTA**: El comando devolverá la información netamentene en inglés, y estamos trabajando para mejorar eso.
+
+**NOTA 2**: La aparición de un anime dentro de la base de datos no implica que esté disponible en su región. AnviBot no es responsable de ello.
 
 ## Comandos modificados:
-`feo`: Ahora envía el avatar del usuario mencionado y un mensaje de acuerdo con el porcentaje calculado.
-
-`avatar`: Ya no se usa RichEmbed.
-
-`avatar`: Ahora se puede mencionar a un usuario para poder sacar su avatar.
-
-`conversor`: Ahora el comando usa RichEmbed.
-
-`invite`: El enlace de invitación fue puesto dentro del comando, sin embargo, el bot NO será publico hasta el 5/01/2019 por precaución.
-
-`8ball`: Comando rediseñado con estilo al AnthBot.
-
-`ayuda`: Ahora puedes conseguir la información y uso de un comando en específico colocándolo como argumento.
+Ninguno, por ahora.
 
 ## Comandos retirados:
-`sayd`: Comando retirado debido a error. (No se elimina el mensaje enviado.) (Use `say`)
+Ninguno, por ahora.
