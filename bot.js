@@ -98,8 +98,8 @@ const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Us
 // ^ FIN INFORMACIÓN GLOBAL ^
 
 client.on('ready', () => {
-  client.user.setGame(`En pruebas - ${version} | ${prefix}ayuda | AnviBot | anvi.cf/bot/`); // Juego
-  client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
+  client.user.setGame(`${prefix}ayuda | AnviBot - ${version} | anvi.cf/bot/`); // Juego
+  // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
