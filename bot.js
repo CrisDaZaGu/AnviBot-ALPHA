@@ -93,13 +93,13 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.5"
+const version = "1.8.6-prerelase1"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
 client.on('ready', () => {
-  client.user.setGame(`${prefix}ayuda | AnviBot - ${version} | anvi.cf/bot/`); // Juego
-  // client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
+  client.user.setGame(`En mantenimiento | ${prefix}ayuda | AnviBot - v${version} | anvi.cf/bot/`); // Juego
+  client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
 client.on("message", message => {
@@ -296,7 +296,7 @@ client.on('message', message => {
       "color": 2335,
       "fields": [{
         "name": "Información/Utilidad",
-        "value": "`info`, `me`, `ayuda`, `conversor`, `mcskin`"
+        "value": "`info`, `me`, `ayuda`, `conversor`, `mcskin`, `randomanime`"
       },
       {
         "name": "Imágenes",
@@ -304,7 +304,7 @@ client.on('message', message => {
       },
       {
         "name": "Diversión",
-        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`, `feo`"
+        "value": "`8ball`, `roll`, `chiste`, `say`, `sayd`, `visto`, `feo`, `f`"
       },
       {
         "name": "Pronto",
@@ -511,6 +511,31 @@ client.on('message', async message => {
     message.channel.send({ embed });
   }
 });
+
+client.on('message', async message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  if (message.content.startsWith(prefix + "meme")||message.content.startsWith(prefix + "memes")) {
+    if (args[1] == "--elbutanero") {
+      const res = await axios.get("https://www.elbutanero.com/random");
+      let $ = cheerio.load(res.data);
+      const url_meme = $('img.single-media').attr('src');
+      const views = $('p.home-view-count').text().trim();
+      const likes = $('p.home-like-count > span').text().trim();
+      const embed = {
+        "title": ``,
+        "description": `:thumbsup: ${likes} | :eye: ${views}`,
+        "color": 2335,
+        "footer": {
+          "text": `Powered by elbutanero.com`
+        },
+        "image": {
+          "url": `${url_meme}`
+        }
+      };
+      return message.channel.send({ embed });
+    } else return message.channel.send("**Error:** Faltan parámetros.\n**Uso:** `meme|memes <--elbutanero>"); // <-- colocar "else if" si anvi coloca otra api o su propia json. cya
+}});
+
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "maps")) {
