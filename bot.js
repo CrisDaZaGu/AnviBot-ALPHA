@@ -93,44 +93,9 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase2"
+const version = "1.8.6-prerelase3"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
-
-const embed_changelog = {
-  "title": "",
-  "author": {
-    "name": client.user.username,
-    "icon_url": client.user.avatarURL,
-    "url": "http://anvi.cf/bot/"
-  },
-  "description": "[Listado del registro de cambios](http://anvi.cf/bot/changelog/)",
-  "color": 2335,
-  "fields": [
-  {
-    "name": "Versión actual del Bot",
-    "value": version
-  },
-  {
-    "name": "Nuevos comandos",
-    "value": "`randomanime`: Busca un anime aleatorio en la base de datos de Crunchyroll. Puedes acceder al vínculo del primer Episodio en el enlace.\n**NOTA**: El comando devolverá la información netamentene en inglés, y estamos trabajando para mejorar eso.\n**NOTA 2**: La aparición de un anime dentro de la base de datos no implica que esté disponible en su región. AnviBot no es responsable de ello.\n`meme`: Consigue una imagen graciosa en base a APIs o JSONs propios."
-  },
-  {
-    "name": "Comandos modificados",
-    "value": 'Ninguno, por ahora.'
-  },
-  {
-    "name": "Comandos retirados",
-    "value": "`me`: Comando eliminado por desuso"
-  },
-  {
-    "name": "¡Nueva página web! ¡Wiiiii~!:heart:",
-    "value": "Puedes ingresar haciendo clic [aquí](http://anvi.cf/bot/)."
-  }],
-  "footer": {
-    "text": "¡Gracias por usar AnviBot!"
-  },
-}
 
 client.on('ready', () => {
   client.user.setGame(`En mantenimiento | ${prefix}ayuda | AnviBot - v${version} | anvi.cf/bot/`); // Juego
@@ -259,7 +224,7 @@ client.on('message', message => {
       message.channel.send("**Error:** Faltan parámetros.\n**Uso:** `bc|broadcast|announcement <anuncio>`")
     };
 }});
-
+/*
 client.on('message', message => {
   if (message.content.startsWith(prefix + "bcnv")) {
     if(message.author.id == "331641970910953473") {
@@ -269,6 +234,7 @@ client.on('message', message => {
       message.channel.send("**Error:** No cuentas con permisos para usar este comando. **Uso:** ")
     };
 }});
+*/
 /*
 client.on('message', message => {
     if (message.content.startsWith(prefix + "me")) {
@@ -609,7 +575,41 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + "changelog")) {
-    message.channel.send({ embed_changelog })
+    const embed = {
+      "title": "",
+      "author": {
+        "name": client.user.username,
+        "icon_url": client.user.avatarURL,
+        "url": "http://anvi.cf/bot/"
+      },
+      "description": "[Listado del registro de cambios](http://anvi.cf/bot/changelog/)",
+      "color": 2335,
+      "fields": [
+      {
+        "name": "Versión actual del Bot",
+        "value": version
+      },
+      {
+        "name": "Nuevos comandos",
+        "value": "`randomanime`: Busca un anime aleatorio en la base de datos de Crunchyroll. Puedes acceder al vínculo del primer Episodio en el enlace.\n**NOTA**: El comando devolverá la información netamentene en inglés, y estamos trabajando para mejorar eso.\n**NOTA 2**: La aparición de un anime dentro de la base de datos no implica que esté disponible en su región. AnviBot no es responsable de ello.\n`meme`: Consigue una imagen graciosa en base a APIs o JSONs propios.\nPor ahora sólo tenemos la API de elbutanero.com"
+      },
+      {
+        "name": "Comandos modificados",
+        "value": 'Ninguno, por ahora.'
+      },
+      {
+        "name": "Comandos retirados",
+        "value": "`me`: Comando eliminado por desuso"
+      },
+      {
+        "name": "¡Nueva página web! ¡Wiiiii~!:heart:",
+        "value": "Puedes ingresar haciendo clic [aquí](http://anvi.cf/bot/)."
+      }],
+      "footer": {
+        "text": "¡Gracias por usar AnviBot!"
+      },
+    }
+    message.channel.send({ embed })
   }
 });
 
