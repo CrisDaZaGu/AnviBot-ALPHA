@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase5"
+const version = "1.8.6-prerelase6"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1101,10 +1101,10 @@ client.on('message', async message => {
     // if(!res.body) return message.channel.send('there was an unk error');
 
     var nombre_w_ft = res.body.response.hits[0].result.title_with_featured;
-    /* var artist = res.body.response.hits[0].result.primary_artist.name;
-    var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url; */
+    var artist = res.body.response.hits[0].result.primary_artist.name;
+    var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url;
 
-    /* const embed = {
+    const embed = {
       "title": nombre_w_ft,
       "description": "By " + artist,
       "color": 2335,
@@ -1114,9 +1114,9 @@ client.on('message', async message => {
       "footer": {
         "text": "Powered by Genius"
       },
-    } */
-    // message.channel.send({ embed }); //testeando ahora con variables y token generica...
-    message.channel.send('song: ' + nombre_w_ft); //para testeos_2
+    }
+    message.channel.send({ embed }); //testeando ahora con variables y token generica...
+    // message.channel.send('song: ' + nombre_w_ft); //para testeos_2
   }
 });
 
