@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase4"
+const version = "1.8.6-prerelase5"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1096,7 +1096,7 @@ client.on('message', async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
-    const res = await got(`https://api.genius.com/?q=${args[1]}&access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk`, { json: true });
+    const res = await got(`https://api.genius.com/search?access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk&q=${args[1]}`, { json: true });
     if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado la canción! :(`);
     // if(!res.body) return message.channel.send('there was an unk error');
 
