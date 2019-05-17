@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase3"
+const version = "1.8.6-prerelase4"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1091,20 +1091,20 @@ client.on('message', async message => {
 message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 }); */
 
-/* client.on('message', async message => {
+client.on('message', async message => {
   if (message.content.startsWith(prefix + "fetchgenius")) {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
-    const res = await got(`https://api.genius.com/?q=${args2}&access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk`, { json: true });
-    if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado una canción! :(`);
-    if(res.body) return message.channel.send('there was an unk error');
+    const res = await got(`https://api.genius.com/?q=${args[1]}&access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk`, { json: true });
+    if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado la canción! :(`);
+    // if(!res.body) return message.channel.send('there was an unk error');
 
     var nombre_w_ft = res.body.response.hits[0].result.title_with_featured;
-    var artist = res.body.response.hits[0].result.primary_artist.name;
-    var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url;
+    /* var artist = res.body.response.hits[0].result.primary_artist.name;
+    var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url; */
 
-    const embed = {
+    /* const embed = {
       "title": nombre_w_ft,
       "description": "By " + artist,
       "color": 2335,
@@ -1114,12 +1114,11 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
       "footer": {
         "text": "Powered by Genius"
       },
-    }
+    } */
     // message.channel.send({ embed }); //testeando ahora con variables y token generica...
-    message.channel.send('song: ' + res.body.response.hits[0].result.title_with_featured); //para testeos_2
+    message.channel.send('song: ' + nombre_w_ft); //para testeos_2
   }
 });
-*/
 
 // Testeado con nuevo.channel.send('visto')
 
@@ -1129,7 +1128,10 @@ client.on('messageUpdate', (anterior, nuevo) => {
   } else return;
 });
 
-
-
+client.on('message', async message => {
+  if(message.content.includes(":visto:")||message.content.includes(':Visto:')||message.content.includes(":seen:")||message.content.includes("visteado")){
+    message.react('518634205710647296'); // usa id, idiota.
+  } else return;
+});
 
 client.login(process.env.BOT_TOKEN);
