@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase7"
+const version = "1.8.6-prerelase8"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1118,7 +1118,7 @@ message.channel.send('claro, aquí tienes tu id ' + lastMessage)
 }); */
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "fetchgenius")) {
+  if (message.content.startsWith(prefix + "lyrics")) {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
@@ -1136,7 +1136,7 @@ client.on('message', async message => {
     const lyrics = $('div > div.lyrics').text().trim();
 
     const embed = {
-      "title": artist + nombre_w_ft,
+      "title": `${artist} - ${nombre_w_ft}`,
       "description": lyrics,
       "color": 2335,
       "thumbnail": {
@@ -1164,5 +1164,18 @@ client.on('message', async message => {
     message.react('518634205710647296'); // usa id, idiota.
   } else return;
 });
+
+client.on('message', message => {
+  var args = message.content.substring(prefix.length).split(" ");
+  const args2 = args.slice(1).join(" ");
+
+  if (message.content.startsWith(prefix + "corregir")) {
+  if(!args[1]) {
+    message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")
+  } else {
+    var remplazado = args2.split(' ').join('+')
+    message.channel.send(`Usaste ${remplazado} como tu argumento para URI`)
+  }
+}});
 
 client.login(process.env.BOT_TOKEN);
