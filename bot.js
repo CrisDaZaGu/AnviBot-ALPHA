@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase6"
+const version = "1.8.6-prerelase7"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1035,8 +1035,34 @@ client.on('message', async message => {
   }
 });
 
-/* client.on('message', async message => {
-  if (message.content.startsWith(prefix + "urban")) {
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "r34")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    if(!args[1]) return message.channel.send('Coloca un tag a buscar en r34.')
+    const res = await got(`https://r34-json-api.herokuapp.com/posts?tags=${args[1]}`, {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": "",
+      "color": 2335,
+      "footer": {
+        "text": "Powered by rule34.xxx"
+      },
+      "image": {
+        "url": res.body[1].file_url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "urban")||message.content.startsWith(prefix + "ud")||message.content.startsWith(prefix + "urbandictionary")) {
     const urban = require('relevant-urban');
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
@@ -1047,31 +1073,31 @@ client.on('message', async message => {
 
     const embed = {
       "title": "UrbanDictionary",
-      "description": "Resultados para tu búsqueda de: " + args2,
+      "description": "Resultados para tu búsqueda de: " + args[1],
       "color": 2335,
       "fields": [
       {
         "name": "Definición",
-        "value": res.list.definition
+        "value": res.body.list[0].definition
       },
       {
         "name": "Ejemplo",
-        "value": res.list.example
+        "value": res.body.list[0].example
       },
       {
         "name": "Autor",
-        "value": res.list.author
+        "value": res.body.list[0].author
       },
       {
         "name": "Votos",
-        "value": ":thumbsup: " + res.thumbsUp + " | :thumbsdown: " + res.thumbsDown
+        "value": ":thumbsup: " + res.body.list[0].thumbs_up + " | :thumbsdown: " + res.body.list[0].thumbs_down
       }],
       "footer": {
         "text": "Powered by UrbanDictionary"
       },
     }
-    message.channel.send('resultado: ' + res.list.definition)
-}}); */
+    message.channel.send({ embed })
+}});
 
 // eliminado por error continuo
 /* client.on('message', message => {
@@ -1103,10 +1129,15 @@ client.on('message', async message => {
     var nombre_w_ft = res.body.response.hits[0].result.title_with_featured;
     var artist = res.body.response.hits[0].result.primary_artist.name;
     var imagen_thumb = res.body.response.hits[0].result.header_image_thumbnail_url;
+    var url = res.body.response.hits[0].result.url;
+    
+    const ress = await axios.get(url);
+    let $ = cheerio.load(ress.data);
+    const lyrics = $('div > div.lyrics').text().trim();
 
     const embed = {
-      "title": nombre_w_ft,
-      "description": "By " + artist,
+      "title": artist + nombre_w_ft,
+      "description": lyrics,
       "color": 2335,
       "thumbnail": {
         "url": imagen_thumb,
