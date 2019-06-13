@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase8"
+const version = "1.8.6-prerelase9"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1063,7 +1063,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "urban")||message.content.startsWith(prefix + "ud")||message.content.startsWith(prefix + "urbandictionary")) {
-    const urban = require('relevant-urban');
+    // const urban = require('relevant-urban');
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
 
@@ -1122,7 +1122,8 @@ client.on('message', async message => {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
     if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
-    const res = await got(`https://api.genius.com/search?access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk&q=${args[1]}`, { json: true });
+    var remplazado = args2.split(' ').join('+');
+    const res = await got(`https://api.genius.com/search?access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk&q=${remplazado}`, { json: true });
     if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado la canción! :(`);
     // if(!res.body) return message.channel.send('there was an unk error');
 
@@ -1135,19 +1136,39 @@ client.on('message', async message => {
     let $ = cheerio.load(ress.data);
     const lyrics = $('div > div.lyrics').text().trim();
 
-    const embed = {
-      "title": `${artist} - ${nombre_w_ft}`,
-      "description": lyrics,
-      "color": 2335,
-      "thumbnail": {
-        "url": imagen_thumb,
-      },
-      "footer": {
-        "text": "Powered by Genius"
-      },
-    }
-    message.channel.send({ embed }); //testeando ahora con variables y token generica...
-    // message.channel.send('song: ' + nombre_w_ft); //para testeos_2
+    if(lyrics.length < 2048)  {
+      const embed = {
+        "title": `${artist} - ${nombre_w_ft}`,
+        "description": lyrics,
+        "color": 2335,
+        "thumbnail": {
+          "url": imagen_thumb,
+        },
+        "footer": {
+          "text": "Powered by Genius"
+        },
+      }
+      message.channel.send({ embed }); //testeando ahora con variables y token generica...
+    } else if(lyrics.length > 2048 && lyrics.length < 2048*2) {
+      const mainembed = {
+        "title": `${artist} - ${nombre_w_ft}`,
+        "description": lyrics.substring(0, 2048),
+        "color": 2335,
+        "thumbnail": {
+          "url": imagen_thumb,
+        }
+      };
+      const secembed = {
+        "title": ``,
+        "description": lyrics.substring(2048, 2048*2),
+        "color": 2335,
+        "footer": {
+          "text": "Powered by Genius"
+        },
+      };
+      message.channel.send({ mainembed }); //envia la primera parte de la letra
+      message.channel.send({ secembed }); //envia la segunda parte de la letra
+    } else return message.channel.send("Lo sentimos, la letra es demasiado larga."); //mensaje de error por si es demasiado larga o otro error ocurre.
   }
 });
 
@@ -1173,7 +1194,7 @@ client.on('message', message => {
   if(!args[1]) {
     message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")
   } else {
-    var remplazado = args2.split(' ').join('+')
+    var remplazado = args2.split(' ').join('+');
     message.channel.send(`Usaste ${remplazado} como tu argumento para URI`)
   }
 }});
