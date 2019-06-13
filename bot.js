@@ -1166,8 +1166,7 @@ client.on('message', async message => {
           "text": "Powered by Genius"
         },
       };
-      message.channel.send({ mainembed }); //envia la primera parte de la letra
-      message.channel.send({ secembed }); //envia la segunda parte de la letra
+      message.channel.send({ mainembed }) && message.channel.send({ secembed });
     } else return message.channel.send("Lo sentimos, la letra es demasiado larga."); //mensaje de error por si es demasiado larga o otro error ocurre.
   }
 });
