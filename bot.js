@@ -136,6 +136,8 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "args")) {
   if(!args[1]) { // Si no tiene 1 argumento necesario para sacar el último index, no manda nada.
     message.channel.send("Requieres de 3 argumentos para el buen uso de este comando.")
+  } else if(args.pop() === "tardes") {
+    message.channel.send(`USASTE TARDES, SÍÍÍÍÍÍ`);
   } else {
     message.channel.send(`Usaste ${args.pop()} como tu último argumento`); // Enviar último argumento (hasta donde sé -1 es el último argumento.)
   }
@@ -1150,7 +1152,7 @@ client.on('message', async message => {
       }
       message.channel.send({ embed }); //testeando ahora con variables y token generica...
     } else if(lyrics.length > 2048 && lyrics.length < 2048*2) {
-      if(args.pop() == "--1"||!args.pop()) letra_por_parte = lyrics.substring(0, 2048);
+      if(args.pop() == "--1"||args.pop() !== "") letra_por_parte = lyrics.substring(0, 2048);
       if(args.pop() == "--2") letra_por_parte = lyrics.substring(2048, 2048*2);
       if(args.pop() == "--3") letra_por_parte = lyrics.substring(2048*2, 2048*3);
       if(args.pop() == "--4") letra_por_parte = lyrics.substring(2048*3, 2048*4);
@@ -1169,7 +1171,7 @@ client.on('message', async message => {
         }
       };
       message.channel.send({ embed });
-    } else return message.channel.send("**Error:** La letra es demasiado larga."); // Mensaje de error por si es demasiado larga o otro error ocurre.
+    } else return message.channel.send("**Error:** La letra es demasiado larga o no se ha encontrado una canción."); // Mensaje de error por si es demasiado larga o otro error ocurre.
   }
 });
 
