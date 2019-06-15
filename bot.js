@@ -1136,7 +1136,7 @@ client.on('message', async message => {
     let $ = cheerio.load(ress.data);
     const lyrics = $('div > div.lyrics').text().trim();
 
-    if(lyrics.length < 2048)  {
+    if(lyrics.length < 2048) { // En caso de que la letra no sea más larga que el límite de carácteres...
       const embed = {
         "title": `${artist} - ${nombre_w_ft}`,
         "description": lyrics,
@@ -1150,13 +1150,13 @@ client.on('message', async message => {
       }
       message.channel.send({ embed }); //testeando ahora con variables y token generica...
     } else if(lyrics.length > 2048 && lyrics.length < 2048*2) {
-      if(args[-1] == "--1"||!args[-1]) letra_por_parte = lyrics.substring(0, 2048);
-      if(args[-1] == "--2") letra_por_parte = lyrics.substring(2048, 2048*2);
-      if(args[-1] == "--3") letra_por_parte = lyrics.substring(2048*2, 2048*3);
-      if(args[-1] == "--4") letra_por_parte = lyrics.substring(2048*3, 2048*4);
-      if(args[-1] == "--5") letra_por_parte = lyrics.substring(2048*4, 2048*5);
+      if(args.pop() == "--1"||!args.pop()) letra_por_parte = lyrics.substring(0, 2048);
+      if(args.pop() == "--2") letra_por_parte = lyrics.substring(2048, 2048*2);
+      if(args.pop() == "--3") letra_por_parte = lyrics.substring(2048*2, 2048*3);
+      if(args.pop() == "--4") letra_por_parte = lyrics.substring(2048*3, 2048*4);
+      if(args.pop() == "--5") letra_por_parte = lyrics.substring(2048*4, 2048*5);
 
-      if(letra_por_parte = '') return message.channel.send("**Error:** No hay más páginas");
+      if(letra_por_parte = '') return message.channel.send("**Error:** No hay más páginas"); // Si retorna a nada, no hay más páginas entonces.
       const embed = {
         "title": `${artist} - ${nombre_w_ft}`,
         "description": letra_por_parte,
@@ -1165,11 +1165,11 @@ client.on('message', async message => {
           "url": imagen_thumb,
         },
         "footer": {
-          "text": "Multiple pages | Powered by Genius"
+          "text": "Multiple pages | Powered by Genius" // No consigo conseguir cuantos páginas hay en total y en cuál se encuentra.
         }
       };
       message.channel.send({ embed });
-    } else return message.channel.send("Lo sentimos, la letra es demasiado larga."); //mensaje de error por si es demasiado larga o otro error ocurre.
+    } else return message.channel.send("**Error:** La letra es demasiado larga."); // Mensaje de error por si es demasiado larga o otro error ocurre.
   }
 });
 
