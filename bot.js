@@ -136,8 +136,8 @@ client.on('message', message => {
   if (message.content.startsWith(prefix + "args")) {
   if(!args[1]) { // Si no tiene 1 argumento necesario para sacar el último index, no manda nada.
     message.channel.send("Requieres de 3 argumentos para el buen uso de este comando.")
-  } else if(args.pop() === "tardes") {
-    message.channel.send(`USASTE TARDES, SÍÍÍÍÍÍ`);
+  } else if(args.pop().startsWith("--")) {
+    message.channel.send("Efectivamente, inicia con `--`.");
   } else {
     message.channel.send(`Usaste ${args.pop()} como tu último argumento`); // Enviar último argumento (hasta donde sé -1 es el último argumento.)
   }
