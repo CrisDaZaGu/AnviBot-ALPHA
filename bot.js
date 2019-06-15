@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase9"
+const version = "1.8.6-prerelase10"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -134,10 +134,10 @@ client.on('message', message => {
   var args = message.content.substring(prefix.length).split(" ");
 
   if (message.content.startsWith(prefix + "args")) {
-  if(!args[1]) {
-    message.channel.send("Requieres de 2 argumentos para el buen uso de este comando.")
+  if(!args[1]) { // Si no tiene 1 argumento necesario para sacar el último index, no manda nada.
+    message.channel.send("Requieres de 3 argumentos para el buen uso de este comando.")
   } else {
-    message.channel.send(`Usaste ${args[1]} como tu primer argumento`)
+    message.channel.send(`Usaste ${args[-1]} como tu último argumento`); // Enviar último argumento (hasta donde sé -1 es el último argumento.)
   }
 }});
 
@@ -1145,26 +1145,28 @@ client.on('message', async message => {
           "url": imagen_thumb,
         },
         "footer": {
-          "text": "Powered by Genius"
+          "text": "Page 1/1 | Powered by Genius"
         },
       }
       message.channel.send({ embed }); //testeando ahora con variables y token generica...
     } else if(lyrics.length > 2048 && lyrics.length < 2048*2) {
-      const mainembed = {
+      if(args[-1] == "--1"||!args[-1]) letra_por_parte = lyrics.substring(0, 2048);
+      if(args[-1] == "--2") letra_por_parte = lyrics.substring(2048, 2048*2);
+      if(args[-1] == "--3") letra_por_parte = lyrics.substring(2048*2, 2048*3);
+      if(args[-1] == "--4") letra_por_parte = lyrics.substring(2048*3, 2048*4);
+      if(args[-1] == "--5") letra_por_parte = lyrics.substring(2048*4, 2048*5);
+
+      if(letra_por_parte = '') return message.channel.send("**Error:** No hay más páginas");
+      const embed = {
         "title": `${artist} - ${nombre_w_ft}`,
-        "description": lyrics.substring(0, 2048),
+        "description": letra_por_parte,
         "color": 2335,
         "thumbnail": {
           "url": imagen_thumb,
-        }
-      };
-      const secembed = {
-        "title": ``,
-        "description": lyrics.substring(2048, 2048*2),
-        "color": 2335,
-        "footer": {
-          "text": "Powered by Genius"
         },
+        "footer": {
+          "text": "Multiple pages | Powered by Genius"
+        }
       };
       message.channel.send({ mainembed }) && message.channel.send({ secembed });
     } else return message.channel.send("Lo sentimos, la letra es demasiado larga."); //mensaje de error por si es demasiado larga o otro error ocurre.
