@@ -137,7 +137,7 @@ client.on('message', message => {
   if(!args[1]) { // Si no tiene 1 argumento necesario para sacar el último index, no manda nada.
     message.channel.send("Requieres de 3 argumentos para el buen uso de este comando.")
   } else {
-    message.channel.send(`Usaste ${args[-1]} como tu último argumento`); // Enviar último argumento (hasta donde sé -1 es el último argumento.)
+    message.channel.send(`Usaste ${args.pop()} como tu último argumento`); // Enviar último argumento (hasta donde sé -1 es el último argumento.)
   }
 }});
 
@@ -1168,7 +1168,7 @@ client.on('message', async message => {
           "text": "Multiple pages | Powered by Genius"
         }
       };
-      message.channel.send({ mainembed }) && message.channel.send({ secembed });
+      message.channel.send({ embed });
     } else return message.channel.send("Lo sentimos, la letra es demasiado larga."); //mensaje de error por si es demasiado larga o otro error ocurre.
   }
 });
