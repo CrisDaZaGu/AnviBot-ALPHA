@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.6-prerelase10"
+const version = "1.8.7-beta1"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -175,7 +175,7 @@ client.on('message', message => {
 client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
 
-  if (message.content.startsWith(prefix + "feo")) {
+  if (message.content.startsWith(prefix + "feo")||message.content.startsWith(prefix + "fea")) {
     if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a una persona.\n**Uso:** `feo <@mención>`");
 
     const porcentajeFeo = Math.floor(Math.random() * 100);
@@ -371,19 +371,15 @@ client.on('message', message => {
         "name": client.user.username,
         "icon_url": client.user.avatarURL
       },
-      "description": "Comandos de imágenes SFW/NSFW dentro de AnviBot.",
+      "description": "Comandos de imágenes NSFW dentro de AnviBot.",
       "color": 2335,
       "fields": [{
         "name": "Información",
         "value": "`ayuda`"
       },
       {
-        "name": "Imágenes SFW",
-        "value": "`pat`, `hug`, `kiss`, `neko`, `smug`, `cat`, `baka`, `slap`, `feed`" 
-      },
-      {
         "name": "Imágenes NSFW",
-        "value": "`lewd`, `trap`, `pussy`, `yuri`, `ero`, `smallboobls`, `futanari`, `blowjob`"
+        "value": "`lewd`, `trap`, `pussy`, `yuri`, `ero`, `smallboobls`, `futanari`, `blowjob <mención>`, `cum`, `mmmpatas`"
       }],
       "footer": {
         "text": "¡Gracias por usar AnviBot!"
@@ -460,6 +456,8 @@ client.on('message', async message => {
   }
 });
 
+/*
+
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "randomanime")) {
     const res = await axios.get("https://www.crunchyroll.com/random/anime")
@@ -484,13 +482,14 @@ client.on('message', async message => {
     /* console.log(`Serie: ${serie_titulo}`);
     console.log(`Enlace: ${enlace_serie}`);
     console.log(`Episodio 1: ${nombre_ep1}`);
-    console.log(`Publisher: ${publisher} - https://www.crunchyroll.com${publisher_link}`);
-    console.log(`Poster (full): ${url_serie_poster}`)
-    console.log(`Descripción de la serie: ${desc_serie}`);
+    console.log(`Publisher: ${publisher} - https://www.crunchyroll.com${publisher_link}`); */
+    // console.log(`Poster (full): ${url_serie_poster}`)
+    /* console.log(`Descripción de la serie: ${desc_serie}`);
     console.log(`Relased on: ${relased_on}`);
     console.log(`enlace_ep1: ${link}`); */
 
     // if(!res.body.result.updated) return message.reply(`has puesto una moneda inexistente: "${res.body.result.source}" y/o "${res.body.result.target}", revisa bien tu ortografía e intenta nuevamente.`);
+    /*
     const embed = {
       "title": `${serie_titulo}`,
       "description": `${desc_serie}`,
@@ -524,6 +523,7 @@ client.on('message', async message => {
     message.channel.send({ embed });
   }
 });
+*/
 
 client.on('message', async message => {
   var args = message.content.substring(prefix.length).split(" ");
@@ -593,15 +593,15 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`randomanime`: Busca un anime aleatorio en la base de datos de Crunchyroll. Puedes acceder al vínculo del primer Episodio en el enlace.\n**NOTA**: El comando devolverá la información netamentene en inglés, y estamos trabajando para mejorar eso.\n**NOTA 2**: La aparición de un anime dentro de la base de datos no implica que esté disponible en su región. AnviBot no es responsable de ello.\n`meme`: Consigue una imagen graciosa en base a APIs o JSONs propios.\nPor ahora sólo tenemos la API de elbutanero.com"
+        "value": "`patas`: Mmm... patas.\n`poke`: Menciona a un usuario para fastidiarlo -n-\n`cuddle`: Mima a un usuario con este comando nwn\n`tickle`: Hazle cosquillas a un usaurio con este comando >u<"
       },
       {
         "name": "Comandos modificados",
-        "value": 'Ninguno, por ahora.'
+        "value": '`neko`: Funcional neuvamente\n`hug`: Ahora necesitas mención para poder abrazar.\n`kiss`: Ahora necesitas mención para poder besar.\n`baka`: Se cambiaron argumentos por menciones para señalar que alguien es _baka_.\n`smug`: Se corrigió un error de traducción; ahora es entendible.\n`smug`: Ahora no puedes mencionar a un usuario con este comando.\n`nsfw`: Se agregaron nuevos comandos NSFW.\n`feo`: Ahora también puedes acceder a este comando ejecutando de `fea`\n`lyrics`: Se mostrará únicamente los primeros 2048 carácteres de la canción; porque es el límite de carácteres que permite Discord por Rich Embed.'
       },
       {
         "name": "Comandos retirados",
-        "value": "`me`: Comando eliminado por desuso"
+        "value": "`randomanime`: Comando temporalmente deshabilitado por error"
       },
       {
         "name": "¡Nueva página web! ¡Wiiiii~!:heart:",
@@ -617,7 +617,7 @@ client.on('message', message => {
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "neko")) {
-    const res = await got('https://nekos.life/api/neko', {json: true})
+    const res = await got('https://nekos.life/api/v2/img/neko', {json: true}) // Cambiado a v2 de la api
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -636,13 +636,34 @@ client.on('message', async message => {
   }
 });
 
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "patas")) {
+    const res = await got('https://nekos.life/api/v2/img/erofeet', {json: true});
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": "Mmm... patas",
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
 
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "hug")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está abrazando a " + args2;
-    if(!args2) text = "Aww, estás solito/a, toma un abrazo :heart:";
+    let text = "<@!" + message.author.id + "> está abrazando a " + message.mentions.members.first();
+    if(!message.mentions.members.first()) text = "Aww, estás solito/a, toma un abrazo n.n";
     const res = await got('https://nekos.life/api/hug', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -663,11 +684,11 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + "kiss")||message.content.startsWith(prefix + "beso")) {
+  if (message.content.startsWith(prefix + "kiss")||message.content.startsWith(prefix + "besar")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está besando a " + args2;
-    if(!args2) text = "Sé que no tienes a quién besar, yo te daré uno, *lo besa*";
+    let text = "<@!" + message.author.id + "> está besando a " + message.mentions.members.first();
+    if(!message.mentions.members.first()) text = "Sé que no tienes a quién besar, yo te daré uno, *lo besa*";
     const res = await got('https://nekos.life/api/kiss', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -694,6 +715,31 @@ client.on('message', async message => {
     let text = message.mentions.members.first() + " es un BAKA BAKA BAKAAAAA! <:tontotonto:427349831393083393>";
     if(!message.mentions.members.first()) text = "<@!" + message.author.id + "> debe ser un verdadero baka <:tontotonto:427349831393083393>";
     const res = await got('https://nekos.life/api/v2/img/baka', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "poke")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está fastidiando a " + message.mentions.members.first();
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** ¡Debes mencionar a una persona para fastidiarla! ònó\n**Uso**: `poke <mención>`") 
+    const res = await got('https://nekos.life/api/v2/img/poke', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -741,8 +787,8 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "smug")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> se ve un poco presumido ante " + message.mentions.members.first() + ", jeje";
-    if(!message.mentions.members.first()) text = "<@!" + message.author.id + ">, se ve satisfecho de sí mism@...";
+    // let text = "<@!" + message.author.id + "> se ve un poco presumido ante " + message.mentions.members.first() + ", jeje";
+    let text = "<@!" + message.author.id + "> está vanidoso(a)";
     const res = await got('https://nekos.life/api/v2/img/smug', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -767,7 +813,7 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
     let text = "<@!" + message.author.id + "> está alimentando a " + message.mentions.members.first() + ", aww :heart:";
-    if(!message.mentions.members.first()) return message.channel.send("**¡Menciona a una persona para alimentarla >u<!**")
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** ¡Debes mencionar a una persona para alimentarla! >u<\n**Uso**: `feed <mención>`")
     const res = await got('https://nekos.life/api/v2/img/feed', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
@@ -816,9 +862,59 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "pat")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "<@!" + message.author.id + "> está araciando a " + args2 + " <:pat:455391227785773066>";
-    if(!args2) text = "Está bien, yo te acariciaré, <@!" + message.author.id + "> <:pat:455391227785773066>";
-    const res = await got('https://nekos.life/api/pat', {json: true})
+    let text = "<@!" + message.author.id + "> está araciando a " + message.mentions.members.first() + " <:pat:455391227785773066>";
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** ¡Debes mencionar a una persona para acariciarla! >u<\n**Uso**: `pat <mención>`")
+    const res = await got('https://nekos.life/api/v2/img/pat', {json: true}); // Enlace cambiado a v2 api
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "cuddle")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> está mimando a " + message.mentions.members.first() + " <:pat:455391227785773066>";
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** ¡Debes mencionar a una persona para mimarla! >u<\n**Uso**: `cuddle <mención>`")
+    const res = await got('https://nekos.life/api/v2/img/cuddle', {json: true});
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      },
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "tickle")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "<@!" + message.author.id + "> le hace cosquillas a " + message.mentions.members.first() + " <:pat:455391227785773066>";
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** ¡Debes mencionar a una persona hacerle cosquillas! >o<\n**Uso**: `tickle <mención>`")
+    const res = await got('https://nekos.life/api/v2/img/tickle', {json: true});
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -963,6 +1059,31 @@ client.on('message', async message => {
 });
 
 client.on('message', async message => {
+  if (message.content.startsWith(prefix + "mmmpatas")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = "Mmm... patas...";
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    const res = await got('https://nekos.life/api/v2/img/feet', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
   if (message.content.startsWith(prefix + "smallboobs")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
@@ -1016,9 +1137,62 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "blowjob")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = "...";
+    let text = `<!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
     const res = await got('https://nekos.life/api/v2/img/blowjob', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "blowjob")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = `<!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
+    const res = await got('https://nekos.life/api/v2/img/blowjob', {json: true})
+    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    
+    const embed = {
+      "title": "",
+      "description": text,
+      "color": 2335,
+      "footer": {
+        "text": "Powered by nekos.life"
+      },
+      "image": {
+        "url": res.body.url
+      }
+    }
+
+    message.channel.send({ embed })
+  }
+});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "cum")) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args2 = args.slice(1).join(" ")
+    let text = `¡Ahh~! ¡<!${message.author.id}> se vino!`;
+    if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
+    // if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
+    const res = await got('https://nekos.life/api/v2/img/cum', {json: true})
     //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
@@ -1045,7 +1219,7 @@ client.on('message', async message => {
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     if(!args[1]) return message.channel.send('Coloca un tag a buscar en r34.')
     const res = await got(`https://r34-json-api.herokuapp.com/posts?tags=${args[1]}`, {json: true})
-    //if (!res || !res.body || !res.body.data) return message.channel.send("Lo sentimos, ocurrió un error.", {code: "py"})
+    if (!res || !res.body) return message.channel.send("**Error:** Lo sentimos, ocurrió un error.", {code: "py"})
     
     const embed = {
       "title": "",
@@ -1123,10 +1297,10 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "lyrics")) {
     var args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ");
-    if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.");
+    if(!args[1]) return message.channel.send("**Error:** No especificaste ningúna canción a buscar.\n**Uso:** `lyrics <canción>`");
     var remplazado = args2.split(' ').join('+');
     const res = await got(`https://api.genius.com/search?access_token=_FOO8dvw7TRaCkNMTXYLtOQ4p2jmTgK5zRlJR6EfSrkcjc8CMhl8o9nHHqsT5IAk&q=${remplazado}`, { json: true });
-    if(!res.body.response.hits[0].result) return message.channel.send(`¡No se ha encontrado la canción! :(`);
+    if(!res.body.response.hits[0].result) return message.channel.send(`**Error:** ¡No se ha encontrado la canción! :(`);
     // if(!res.body) return message.channel.send('there was an unk error');
 
     var nombre_w_ft = res.body.response.hits[0].result.title_with_featured;
@@ -1138,47 +1312,24 @@ client.on('message', async message => {
     let $ = cheerio.load(ress.data);
     const lyrics = $('div > div.lyrics').text().trim();
 
-    if(lyrics.length < 2048) { // En caso de que la letra no sea más larga que el límite de carácteres...
-      const embed = {
-        "title": `${artist} - ${nombre_w_ft}`,
-        "description": lyrics,
-        "color": 2335,
-        "thumbnail": {
-          "url": imagen_thumb,
-        },
-        "footer": {
-          "text": "Page 1/1 | Powered by Genius"
-        },
-      }
-      message.channel.send({ embed }); //testeando ahora con variables y token generica...
-    } else if(lyrics.length > 2048 && lyrics.length < 2048*2) {
-      if(args.pop() == "--1"||args.pop() !== "") letra_por_parte = lyrics.substring(0, 2048);
-      if(args.pop() == "--2") letra_por_parte = lyrics.substring(2048, 2048*2);
-      if(args.pop() == "--3") letra_por_parte = lyrics.substring(2048*2, 2048*3);
-      if(args.pop() == "--4") letra_por_parte = lyrics.substring(2048*3, 2048*4);
-      if(args.pop() == "--5") letra_por_parte = lyrics.substring(2048*4, 2048*5);
-
-      if(letra_por_parte = '') return message.channel.send("**Error:** No hay más páginas"); // Si retorna a nada, no hay más páginas entonces.
-      const embed = {
-        "title": `${artist} - ${nombre_w_ft}`,
-        "description": letra_por_parte,
-        "color": 2335,
-        "thumbnail": {
-          "url": imagen_thumb,
-        },
-        "footer": {
-          "text": "Multiple pages | Powered by Genius" // No consigo conseguir cuantos páginas hay en total y en cuál se encuentra.
-        }
-      };
-      message.channel.send({ embed });
-    } else return message.channel.send("**Error:** La letra es demasiado larga o no se ha encontrado una canción."); // Mensaje de error por si es demasiado larga o otro error ocurre.
-  }
-});
+    const embed = {
+      "title": `${artist} - ${nombre_w_ft}`,
+      "description": lyrics.substring(0, 2048), // Solo mostrará los caracteres que permite discord
+      "color": 2335,
+      "thumbnail": {
+        "url": imagen_thumb,
+      },
+      "footer": {
+        "text": "Powered by Genius"
+      },
+    }
+    message.channel.send({ embed }); //testeando ahora con variables y token generica...
+}});
 
 // Testeado con nuevo.channel.send('visto')
 
 client.on('messageUpdate', (anterior, nuevo) => {
-  if(nuevo.content.includes(":visto:")||nuevo.content.includes(":seen:")||nuevo.content.includes("visteado")){
+  if(nuevo.content.includes(":visto:")||nuevo.content.includes(":seen:")||nuevo.content.includes("visteado")||nuevo.content.includes("veido")){
     nuevo.react('518634205710647296'); // usa id, idiota.
   } else return;
 });
