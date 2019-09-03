@@ -93,12 +93,12 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.7-beta1"
+const version = "1.8.7-beta2"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
 client.on('ready', () => {
-  client.user.setGame(`En mantenimiento | ${prefix}ayuda | AnviBot - v${version} | anvi.cf/bot/`); // Juego
+  client.user.setGame(`${prefix}ayuda | AnviBot - v${version} | anvi.cf/bot/`); // Juego
   client.user.setStatus('dnd') // Status de "No molestar" para cuando el bot esté en mantenimiento
 });
 
@@ -593,11 +593,11 @@ client.on('message', message => {
       },
       {
         "name": "Nuevos comandos",
-        "value": "`patas`: Mmm... patas.\n`poke`: Menciona a un usuario para fastidiarlo -n-\n`cuddle`: Mima a un usuario con este comando nwn\n`tickle`: Hazle cosquillas a un usaurio con este comando >u<"
+        "value": "`dict`: Diccionario de Oxford proporcionado por lexico.com | BETA"
       },
       {
         "name": "Comandos modificados",
-        "value": '`neko`: Funcional neuvamente\n`hug`: Ahora necesitas mención para poder abrazar.\n`kiss`: Ahora necesitas mención para poder besar.\n`baka`: Se cambiaron argumentos por menciones para señalar que alguien es _baka_.\n`smug`: Se corrigió un error de traducción; ahora es entendible.\n`smug`: Ahora no puedes mencionar a un usuario con este comando.\n`nsfw`: Se agregaron nuevos comandos NSFW.\n`feo`: Ahora también puedes acceder a este comando ejecutando de `fea`\n`lyrics`: Se mostrará únicamente los primeros 2048 carácteres de la canción; porque es el límite de carácteres que permite Discord por Rich Embed.'
+        "value": '¡No hay! :('
       },
       {
         "name": "Comandos retirados",
@@ -1137,7 +1137,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "blowjob")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = `<!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
+    let text = `<@!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
     const res = await got('https://nekos.life/api/v2/img/blowjob', {json: true})
@@ -1163,7 +1163,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "blowjob")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = `<!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
+    let text = `<@!${message.author.id}> le hace una mamada a ${message.mentions.members.first()}`;
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
     const res = await got('https://nekos.life/api/v2/img/blowjob', {json: true})
@@ -1189,7 +1189,7 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + "cum")) {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const args2 = args.slice(1).join(" ")
-    let text = `¡Ahh~! ¡<!${message.author.id}> se vino!`;
+    let text = `¡Ahh~! ¡<@!${message.author.id}> se vino!`;
     if(!message.channel.nsfw) return message.channel.send(":underage: **Comando sólo para canales NSFW** :underage:");
     // if(!message.mentions.members.first()) return message.channel.send("**Error:** Necesitas mencionar a alguien para hacerla una mamada a.a\n**Uso:** `blowjob <mención>`")
     const res = await got('https://nekos.life/api/v2/img/cum', {json: true})
@@ -1352,5 +1352,44 @@ client.on('message', message => {
     message.channel.send(`Usaste ${remplazado} como tu argumento para URI`)
   }
 }});
+
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "dict")) {
+    var args = message.content.substring(prefix.length).split(" ");
+    if(!args[0]) return message.channel.send("**Error**: No especificaste una palabra a buscar.\n**Uso**: `dict [palabra]`");
+    const res = await axios.get(`https://www.lexico.com/en/definition/${args[0]}`)
+    let $ = cheerio.load(res.data);
+    const definicion = $('span.ind').eq(0).text().trim();
+    const palabra = $('span.hw').text().trim();
+    const ejemplo = $('span.ex > em').eq(0).attr('href');
+    const tipo = $('span.pos').text().trim();
+    const audioescuchar = $('audio').eq(0).attr('src');
+    
+    if(tipo === "verb") tipoacortado = "_v._";
+    if(tipo === "adjetive") tipoacortado = "_adj._";
+
+    const embed = {
+      "title": `${palabra}`,
+      "description": `${tipo}`,
+      "url": `https://www.lexico.com/en/definition/${args[0]}`,
+      "color": 2335,
+      "timestamp": new Date(),
+      "footer": {
+        "text": `Requested by ${message.author.username}`
+      },
+      "fields": [
+        {
+          "name": "Definición",
+          "value": `(${tipoacortado}) ${definicion}`,
+        },
+        {
+          "name": "Ejemplo",
+          "value": `${ejemplo}`,
+        }
+      ]
+    };
+    message.channel.send({ embed });
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
