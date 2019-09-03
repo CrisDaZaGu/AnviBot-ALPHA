@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.7-beta2"
+const version = "1.8.7-beta2.0.1"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1380,12 +1380,12 @@ client.on('message', async message => {
       "fields": [
         {
           "name": "Definición",
-          "value": `(${tipoacortado}) ${definicion}`,
+          "value": `${definicion}`,
         },
-        {
+        /* {
           "name": "Ejemplo",
           "value": `${ejemplo}`,
-        }
+        } */
       ]
     };
     message.channel.send({ embed });
