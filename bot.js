@@ -93,7 +93,7 @@ il.run();
 
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.7-beta2.0.1"
+const version = "1.8.7-beta2.0.2"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1356,8 +1356,8 @@ client.on('message', message => {
 client.on('message', async message => {
   if (message.content.startsWith(prefix + "dict")) {
     var args = message.content.substring(prefix.length).split(" ");
-    if(!args[0]) return message.channel.send("**Error**: No especificaste una palabra a buscar.\n**Uso**: `dict [palabra]`");
-    const res = await axios.get(`https://www.lexico.com/en/definition/${args[0]}`)
+    if(!args[1]) return message.channel.send("**Error**: No especificaste una palabra a buscar.\n**Uso**: `dict [palabra]`");
+    const res = await axios.get(`https://www.lexico.com/en/definition/${args[1]}`)
     let $ = cheerio.load(res.data);
     const definicion = $('span.ind').eq(0).text().trim();
     const palabra = $('span.hw').text().trim();
@@ -1371,7 +1371,7 @@ client.on('message', async message => {
     const embed = {
       "title": `${palabra}`,
       "description": `${tipo}`,
-      "url": `https://www.lexico.com/en/definition/${args[0]}`,
+      "url": `https://www.lexico.com/en/definition/${args[1]}`,
       "color": 2335,
       "timestamp": new Date(),
       "footer": {
