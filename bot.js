@@ -91,9 +91,26 @@ il.run();
 
 // console.log(randomQuote5());
 
+// Chistes v
+const palabrasSpellingBee = [
+  "Abscissa",
+  "Accomodate",
+  "Accreditation",
+  "Accrue",
+  "Achievement",
+  "Acknowledgement",
+  "Acolyte",
+  "Acquainted",
+  "More"
+]
+
+function randomSpellingBee() {
+	return palabrasSpellingBee[Math.floor(Math.random() * palabrasSpellingBee.length)];
+};
+
 // v INFORMACIÓN GLOBAL v
 const errores_detectados = 'Unknown'
-const version = "1.8.7-beta2.0.2"
+const version = "1.8.7-beta2.0.3"
 const veces_commit = "0" // Esto será deprecado en las siguientes versiones. Usaremos prerelases.
 // ^ FIN INFORMACIÓN GLOBAL ^
 
@@ -1362,7 +1379,7 @@ client.on('message', async message => {
     const definicion = $('span.ind').eq(0).text().trim();
     const palabra = $('span.hw').text().trim();
     const ejemplo = $('span.ex > em').eq(0).attr('href');
-    const tipo = $('span.pos').text().trim();
+    const tipo = $('span.pos').eq(0).text().trim();
     const audioescuchar = $('audio').eq(0).attr('src');
     
     if(tipo === "verb") tipoacortado = "_v._";
@@ -1389,7 +1406,9 @@ client.on('message', async message => {
       ]
     };
     message.channel.send({ embed });
+    message.channel.sendFile(audioescuchar, `${palabra}.mp3`)
   }
 });
+
 
 client.login(process.env.BOT_TOKEN);
