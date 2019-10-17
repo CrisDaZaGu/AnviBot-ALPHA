@@ -1410,5 +1410,14 @@ client.on('message', async message => {
   }
 });
 
+client.on('message', async message => {
+  if (message.content.startsWith(prefix + "pingear_lc")) {
+    const got = require("got"); // Uso el package de got, no request, ingéniatelas para usar tu 'request' en vez de este o cámbiate.
+    const urlDeLaAPI = "https://eu.mc-api.net/v3/server/ping/play.minelc.com"; // API, cambia y coloca variables en vez de estática si te parece :P
 
+    const cuantosHay = await got(urlDeLaAPI, { json: true }); // Me parsea de una vez el json, así que no hay pedo
+
+    message.content.send(`¡Uy! Al parecer, hay ${cuantosHay.body.players.online} jugadores en el servidor ahora mismo`);
+  }
+});
 client.login(process.env.BOT_TOKEN);
